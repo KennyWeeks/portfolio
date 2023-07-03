@@ -6,17 +6,33 @@
 		<link rel="icon" href="/portfolio/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		
-		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/start.b5bb137b.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/start.1b569e29.js">
 		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/scheduler.e108d1fd.js">
-		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/singletons.8041c390.js">
-		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/app.1cc60996.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/singletons.4f313002.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/app.75a49420.js">
 		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/index.0719bd3d.js">
 	</head>
+	<style>
+
+		html, body {
+			width:100vw;
+			height:100vh;
+			padding:0px;
+			margin:0px;
+			font-family:sans-serif
+		}
+		body {
+			overflow-x:hidden;
+			overflow-y:scroll;
+			background-color:#f2f2f2;
+			box-shadow:inset 0 0 0 1px #000;
+		}
+	</style>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">
 			<script>
 				{
-					__sveltekit_39vo2i = {
+					__sveltekit_1e969wd = {
 						assets: "/portfolio",
 						base: "/portfolio",
 						env: {}
@@ -25,8 +41,8 @@
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("/portfolio/_app/immutable/entry/start.b5bb137b.js"),
-						import("/portfolio/_app/immutable/entry/app.1cc60996.js")
+						import("/portfolio/_app/immutable/entry/start.1b569e29.js"),
+						import("/portfolio/_app/immutable/entry/app.75a49420.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
