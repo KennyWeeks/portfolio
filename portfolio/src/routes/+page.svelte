@@ -1,6 +1,7 @@
 <script lang="ts">
 
     import "../styles/fonts.css"
+    import { base } from '$app/paths';
     import Menu from "$lib/menu.svelte";
 
 </script>
@@ -13,7 +14,7 @@
 
         <h3 id="intro_text">Hi,<br> my name is Kenny Weeks. <br> Welcome to my ... </h3>
 
-        <img src="images/test.svg" alt="portfolio_text"/>
+        <img src="{base}/images/test.svg" alt="portfolio_text"/>
 
     </div>
 
