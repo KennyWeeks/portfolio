@@ -1,0 +1,21 @@
+$offWhite: #f2f2f2;
+$offBlack: #1e1919;
+
+@mixin flexRow {
+    display:flex;
+    justify-content:space-between;
+    flex-flow:row nowrap;
+} 
+
+@mixin flexCol {
+    display:flex;
+    justify-content:space-between;
+    flex-direction:column;
+}
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
