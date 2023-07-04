@@ -24,12 +24,21 @@
 
     <div id="picture_of_me"></div>
 
-    <div id="content_area">
 
-        <img src="{base}/images/pattern.svg" alt="pattern"/>
+    <div id="surrounding_area">
+        <div class="surrounding_image_intros" id="about_intro_area">
+            <img id="about_intro" src="{base}/images/about_header.png" width=200px alt="contact_header"/>
+        </div>
+        <div id="content_area">
 
-        <img src="{base}/images/pattern.svg" alt="pattern"/>
+            <img src="{base}/images/pattern.svg" alt="pattern"/>
 
+            <img src="{base}/images/pattern.svg" alt="pattern"/>
+
+        </div>
+        <div class="surrounding_image_intros">
+            <img id="project_intro" src="{base}/images/projects_header.png" width=300px alt="contact_header"/>
+        </div>
     </div>
 
 </div>
@@ -93,23 +102,45 @@
             margin-left:10px;
         }
 
-        #content_area {
+        #surrounding_area {
             width:200vw;
-            height:500px;
-            background-color:$offBlack;
-            margin-top:20px;
-            margin-left:-50vw;
+            overflow-x:hidden;
             transform:rotate(-25deg);
-            position:relative;
-            
-            img {
-                max-height:130px;
-                max-width:1300px;
-                position:absolute;
+            margin-left:-50vw;
+            text-align:right;
+
+            .surrounding_image_intros {
+                width:100%;
+                overflow:hidden;
+                text-align:left;
+                padding-left:40px;
             }
 
-            :nth-child(2) {
-                bottom:0px;
+            #about_intro_area {
+                text-align:right;
+
+                #about_intro {
+                    margin-bottom:0px;
+                    margin-right:80px;
+                }
+            }
+
+            #content_area {
+                width:200vw;
+                height:500px;
+                background-color:$offBlack;
+                text-align:left;
+                position:relative;
+                
+                img {
+                    max-height:130px;
+                    max-width:1300px;
+                    position:absolute;
+                }
+
+                :nth-child(2) {
+                    bottom:0px;
+                }
             }
         }
     }
