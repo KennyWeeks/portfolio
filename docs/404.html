@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Portfolio</title>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/portfolio/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		
+		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/start.95bb5a22.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/scheduler.a7e64d23.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/singletons.50466f60.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/paths.b2fdc802.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/app.a0681667.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/index.7b736971.js">
+	</head>
+	<style>
+
+		html, body {
+			width:100vw;
+			height:100vh;
+			padding:0px;
+			margin:0px;
+			font-family:sans-serif
+		}
+		body {
+			overflow-x:hidden;
+			overflow-y:scroll;
+			background-color:#f2f2f2;
+			box-shadow:inset 0 0 0 1px #000;
+		}
+	</style>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+			<script>
+				{
+					__sveltekit_1ckpqjd = {
+						assets: "/portfolio",
+						base: "/portfolio",
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("/portfolio/_app/immutable/entry/start.95bb5a22.js"),
+						import("/portfolio/_app/immutable/entry/app.a0681667.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
