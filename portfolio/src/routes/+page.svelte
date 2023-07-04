@@ -20,6 +20,20 @@
 
 </div>
 
+<div id="about">
+
+    <div id="picture_of_me"></div>
+
+    <div id="content_area">
+
+        <img src="{base}/images/pattern.svg" alt="pattern"/>
+
+        <img src="{base}/images/pattern.svg" alt="pattern"/>
+
+    </div>
+
+</div>
+
 <style lang="scss">
     @import "../styles/theme.scss";
 
@@ -38,6 +52,41 @@
                 font-family:"Goldoni";
                 font-size:25px;
                 margin-left:10px;
+            }
+        }
+    }
+
+    #about {
+        width:100vw;
+        background-color:$offWhite;
+        padding:20px 0px;
+        position:relative;
+
+        #picture_of_me {
+            width:40vw;
+            height:40vw;
+            box-shadow:inset 0 0 0 10px #000;
+            border-radius:50%;
+            margin-left:10px;
+        }
+
+        #content_area {
+            width:200vw;
+            height:500px;
+            background-color:$offBlack;
+            margin-top:20px;
+            margin-left:-50vw;
+            transform:rotate(-25deg);
+            position:relative;
+            
+            img {
+                max-height:130px;
+                max-width:1300px;
+                position:absolute;
+            }
+
+            :nth-child(2) {
+                bottom:0px;
             }
         }
     }
