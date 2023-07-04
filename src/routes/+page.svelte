@@ -148,6 +148,7 @@
             display:block;
             float:right;
             margin-right:10vw;
+            cursor:default;
 
             li {
                 text-align:right;
