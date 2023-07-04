@@ -6,9 +6,13 @@
 
 </script>
 
+
+
 <Menu/>
 
 <div id="landing">
+
+    <img id="wolf" alt="wolf" src="{base}/images/wolf.png" width=80px/>
 
     <div id="intro">
 
@@ -75,7 +79,14 @@
         height:100vh;
         background-color:$offWhite;
         overflow:hidden;
+        position:relative;
         @include flexCenter;
+
+        #wolf {
+            position:absolute;
+            top:10px;
+            left:10px;
+        }
 
         #intro {
             width:100vw;
