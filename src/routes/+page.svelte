@@ -34,6 +34,29 @@
 
 </div>
 
+<div id="projects">
+
+    <div id="projects_floating_tab"></div>
+
+</div>
+
+<div id="contacts">
+
+    <img src="{base}/images/contact_header.png" width=250px alt="contact_header"/>
+
+    <p>I AM CURRENTLY NOT ACCEPTING ANY
+        FREELANCE WORK, BUT FEEL FREE TO 
+        MESSAGE ME AND VIEW OTHER PROJECTS</p>
+
+    <ul>
+        <li>LinkedIN</li>
+        <li>Github</li>
+        <li>Resume</li>
+        <li>Email</li>
+    </ul>
+
+</div>
+
 <style lang="scss">
     @import "../styles/theme.scss";
 
@@ -87,6 +110,51 @@
 
             :nth-child(2) {
                 bottom:0px;
+            }
+        }
+    }
+
+    #projects {
+        width:100vw;
+        padding:10px 0px;
+
+        #projects_floating_tab {
+            width:90vw;
+            height:300vh;/*This will be a dummy height, will size to content*/
+            background-color:$offBlack;
+            border-radius:30px;
+            margin-top:calc(24vw + 10px);
+            margin-left:5vw;
+        }
+    }
+
+    #contacts {
+        padding-left:5vw;
+        overflow:hidden;
+        width:100vw; 
+        position:relative;
+
+        p {
+            margin-top:0px;
+            font-family:"Arial Black";
+            font-size:15px;
+            width:70vw;
+        }
+
+        ul {
+            text-decoration:none;
+            list-style: none;
+            padding:0px;
+            display:block;
+            float:right;
+            margin-right:10vw;
+
+            li {
+                text-align:right;
+                margin-bottom:2.5px;
+                font-family:"Goldoni";
+                font-weight:lighter;
+                font-size:25px;
             }
         }
     }
