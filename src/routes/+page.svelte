@@ -61,6 +61,7 @@
         background-color:$offWhite;
         padding:20px 0px;
         position:relative;
+        overflow-x:hidden;
 
         #picture_of_me {
             width:40vw;
