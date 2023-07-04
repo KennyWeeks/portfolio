@@ -24,11 +24,11 @@
 
     <div id="picture_of_me"></div>
 
+    <div class="surrounding_image_intros">
+        <img id="about_intro" src="{base}/images/about_header.png" width=200px alt="contact_header"/>
+    </div>
 
     <div id="surrounding_area">
-        <div class="surrounding_image_intros" id="about_intro_area">
-            <img id="about_intro" src="{base}/images/about_header.png" width=200px alt="contact_header"/>
-        </div>
         <div id="content_area">
 
             <img src="{base}/images/pattern.svg" alt="pattern"/>
@@ -36,9 +36,10 @@
             <img src="{base}/images/pattern.svg" alt="pattern"/>
 
         </div>
-        <div class="surrounding_image_intros">
-            <img id="project_intro" src="{base}/images/projects_header.png" width=300px alt="contact_header"/>
-        </div>
+    </div>
+
+    <div class="surrounding_image_intros">
+        <img id="projects_intro" src="{base}/images/projects_header.png" width=275px alt="contact_header"/>
     </div>
 
 </div>
@@ -100,6 +101,27 @@
             box-shadow:inset 0 0 0 10px #000;
             border-radius:50%;
             margin-left:10px;
+            margin-bottom:0px;
+        }
+
+        .surrounding_image_intros {
+            width:100%;
+            overflow:hidden;
+            text-align:left;
+            transform:rotate(-25deg);
+            margin-bottom:10px;
+            text-align:right;
+            
+        }
+
+        .surrounding_image_intros:nth-of-type(2) {
+            margin-top:-40px;
+        }
+
+        .surrounding_image_intros:nth-of-type(4) {
+            text-align:left;
+            margin-top:25px;
+            margin-bottom:0px;
         }
 
         #surrounding_area {
@@ -109,21 +131,6 @@
             margin-left:-50vw;
             text-align:right;
 
-            .surrounding_image_intros {
-                width:100%;
-                overflow:hidden;
-                text-align:left;
-                padding-left:40px;
-            }
-
-            #about_intro_area {
-                text-align:right;
-
-                #about_intro {
-                    margin-bottom:0px;
-                    margin-right:80px;
-                }
-            }
 
             #content_area {
                 width:200vw;
@@ -154,7 +161,7 @@
             height:300vh;/*This will be a dummy height, will size to content*/
             background-color:$offBlack;
             border-radius:30px;
-            margin-top:calc(24vw + 10px);
+            margin-top:calc(18vw);
             margin-left:5vw;
         }
     }
