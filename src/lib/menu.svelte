@@ -1,9 +1,26 @@
-<script lang="ts"></script>
+<script lang="ts">
 
-<div id="menu">
+    let marginLeft : number = 50;
+    let width : number = 50;
+    let open : number = -1;
+
+</script>
+
+<div id="menu" on:mouseenter={()=>{
+    marginLeft = 12.5;
+    width = 75;
+}} on:mouseleave={()=>{
+    console.log(marginLeft);
+    width = 50;
+    marginLeft = (open === -1) ? 50 : 0;
+}} on:click={()=>{
+   marginLeft = (open === -1) ? 0 : 50;
+   open *= -1;
+   width:50; 
+}}>
 
     <div class="menu_bar"></div>
-    <div class="menu_bar"></div>
+    <div class="menu_bar" style="margin-left:{marginLeft}%; width:{width}%"></div>
 
 </div>
 
@@ -30,16 +47,7 @@
         }
 
         :nth-child(2) {
-            width:50%;
-            margin-left:50%;
             transition:all 0.2s linear;
-        }
-
-        &:hover {
-            :nth-child(2) {
-                margin-left:12.5%;
-                width:75%;
-            }
         }
 
     }
