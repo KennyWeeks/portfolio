@@ -3,10 +3,11 @@
     import "../styles/fonts.css"
     import { base } from '$app/paths';
     import Menu from "$lib/menu.svelte";
+    import Clock from "$lib/clock.svelte";
 
 </script>
 
-
+<Clock/>
 
 <Menu/>
 
