@@ -4,6 +4,10 @@
     import { base } from '$app/paths';
     import Menu from "$lib/menu.svelte";
     import Clock from "$lib/clock.svelte";
+    import Contact from "$lib/sections/contact.svelte";
+    import Projects from "$lib/sections/projects.svelte";
+    import About from "$lib/sections/about.svelte";
+    import Landing from "$lib/sections/landing.svelte";
     let screenSize : number;
 
 </script>
@@ -12,233 +16,15 @@
 
 <Menu/>
 
-<div id="landing">
+<Landing path={base} screenSize={screenSize}/>
 
-    <img id="wolf" alt="wolf" src="{base}/images/wolf.png" width=80px/>
+<About path={base}/>
 
-    <div id="clocks">
-        <Clock/>
+<Projects/>
 
-        <Clock otherRegion={10} region="Bucharest"/>
-    </div>
-
-    <div id="intro">
-
-        <h3 id="intro_text">Hi,<br> my name is Kenny Weeks. <br> Welcome to my ... </h3>
-
-        <img src="{base}/images/portfolio_title{screenSize >= 811 ? "_large" : "_"}.svg" alt="portfolio_text"/>
-
-    </div>
-
-</div>
-
-<div id="about">
-
-    <div id="picture_of_me"></div>
-
-    <div class="surrounding_image_intros">
-        <img id="about_intro" src="{base}/images/about_header.png" width=200px alt="contact_header"/>
-    </div>
-
-    <div id="surrounding_area">
-        <div id="content_area">
-
-            <img src="{base}/images/pattern.svg" alt="pattern"/>
-
-            <img src="{base}/images/pattern.svg" alt="pattern"/>
-
-        </div>
-    </div>
-
-    <div class="surrounding_image_intros">
-        <img id="projects_intro" src="{base}/images/projects_header.png" width=275px alt="contact_header"/>
-    </div>
-
-</div>
-
-<div id="projects">
-
-    <div id="projects_floating_tab"></div>
-
-</div>
-
-<div id="contacts">
-
-    <img src="{base}/images/contact_header.png" width=250px alt="contact_header"/>
-
-    <p>I AM CURRENTLY NOT ACCEPTING ANY
-        FREELANCE WORK, BUT FEEL FREE TO 
-        MESSAGE ME AND VIEW OTHER PROJECTS</p>
-
-    <ul>
-        <li>LinkedIN</li>
-        <li>Github</li>
-        <li>Resume</li>
-        <li>Email</li>
-    </ul>
-
-</div>
+<Contact path={base}/>
 
 <style lang="scss">
     @import "../styles/theme.scss";
-
-    #landing {
-        width:100vw;
-        height:100vh;
-        background-color:$offWhite;
-        overflow:hidden;
-        position:relative;
-
-        @media only screen and (max-width:810px) {
-            @include flexCenter;
-        }
-
-        #wolf {
-            position:absolute;
-            top:10px;
-            left:10px;
-        }
-
-        #clocks {
-            display:flex;
-            justify-content:space-between;
-            flex-flow:row nowrap;
-            width:350px;
-            margin-left:calc((100vw - 300px) / 2);
-            margin-top:12.5px;
-        }
-
-        #intro {
-            width:100vw;
-            overflow:hidden;
-
-            @media only screen and (min-width:811px) {
-                position:absolute;
-                bottom:0px;
-            }
-
-            h3 {
-                font-family:"Goldoni";
-                @media only screen and (min-width:811px) {
-                    font-size:50px;
-                    margin-bottom:0px;
-                    margin-left:20px;
-                }
-                @media only screen and (max-width:810px) {
-                    font-size:25px;
-                    margin-left:10px;
-                }   
-            }
-        }
-    }
-
-    #about {
-        width:100vw;
-        background-color:$offWhite;
-        padding:20px 0px;
-        position:relative;
-
-        #picture_of_me {
-            width:40vw;
-            height:40vw;
-            box-shadow:inset 0 0 0 10px #000;
-            border-radius:50%;
-            margin-left:10px;
-            margin-bottom:0px;
-        }
-
-        .surrounding_image_intros {
-            width:100%;
-            overflow:hidden;
-            text-align:left;
-            transform:rotate(-25deg);
-            margin-bottom:10px;
-            text-align:right;
-            
-        }
-
-        .surrounding_image_intros:nth-of-type(2) {
-            margin-top:-40px;
-        }
-
-        .surrounding_image_intros:nth-of-type(4) {
-            text-align:left;
-            margin-top:25px;
-            margin-bottom:0px;
-        }
-
-        #surrounding_area {
-            width:200vw;
-            overflow-x:hidden;
-            transform:rotate(-25deg);
-            margin-left:-50vw;
-            text-align:right;
-
-
-            #content_area {
-                width:200vw;
-                height:500px;
-                background-color:$offBlack;
-                text-align:left;
-                position:relative;
-                
-                img {
-                    max-height:130px;
-                    max-width:1300px;
-                    position:absolute;
-                }
-
-                :nth-child(2) {
-                    bottom:0px;
-                }
-            }
-        }
-    }
-
-    #projects {
-        width:100vw;
-        padding:10px 0px;
-
-        #projects_floating_tab {
-            width:90vw;
-            height:300vh;/*This will be a dummy height, will size to content*/
-            background-color:$offBlack;
-            border-radius:30px;
-            margin-top:calc(18vw);
-            margin-left:5vw;
-        }
-    }
-
-    #contacts {
-        padding-left:5vw;
-        overflow:hidden;
-        width:100vw; 
-        position:relative;
-
-        p {
-            margin-top:0px;
-            font-family:"Arial Black";
-            font-size:15px;
-            width:70vw;
-        }
-
-        ul {
-            text-decoration:none;
-            list-style: none;
-            padding:0px;
-            display:block;
-            float:right;
-            margin-right:10vw;
-            cursor:default;
-
-            li {
-                text-align:right;
-                margin-bottom:2.5px;
-                font-family:"Goldoni";
-                font-weight:lighter;
-                font-size:25px;
-            }
-        }
-    }
 
 </style>

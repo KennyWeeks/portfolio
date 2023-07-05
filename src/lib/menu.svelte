@@ -85,7 +85,6 @@ right:{size == "100" ? "0px" : "15px"};">
             cursor:default;
 
             li {
-                transition:all 0.2s linear;
                 
                 &:hover {
                     color:red;
