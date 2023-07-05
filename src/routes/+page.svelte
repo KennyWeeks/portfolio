@@ -4,10 +4,11 @@
     import { base } from '$app/paths';
     import Menu from "$lib/menu.svelte";
     import Clock from "$lib/clock.svelte";
+    let screenSize : number;
 
 </script>
 
-<Clock/>
+<svelte:window bind:innerWidth={screenSize}/>
 
 <Menu/>
 
@@ -15,11 +16,17 @@
 
     <img id="wolf" alt="wolf" src="{base}/images/wolf.png" width=80px/>
 
+    <div id="clocks">
+        <Clock/>
+
+        <Clock otherRegion={10} region="Bucharest"/>
+    </div>
+
     <div id="intro">
 
         <h3 id="intro_text">Hi,<br> my name is Kenny Weeks. <br> Welcome to my ... </h3>
 
-        <img src="{base}/images/test.svg" alt="portfolio_text"/>
+        <img src="{base}/images/portfolio_title{screenSize >= 811 ? "_large" : "_"}.svg" alt="portfolio_text"/>
 
     </div>
 
@@ -81,7 +88,10 @@
         background-color:$offWhite;
         overflow:hidden;
         position:relative;
-        @include flexCenter;
+
+        @media only screen and (max-width:810px) {
+            @include flexCenter;
+        }
 
         #wolf {
             position:absolute;
@@ -89,14 +99,35 @@
             left:10px;
         }
 
+        #clocks {
+            display:flex;
+            justify-content:space-between;
+            flex-flow:row nowrap;
+            width:350px;
+            margin-left:calc((100vw - 300px) / 2);
+            margin-top:12.5px;
+        }
+
         #intro {
             width:100vw;
             overflow:hidden;
 
+            @media only screen and (min-width:811px) {
+                position:absolute;
+                bottom:0px;
+            }
+
             h3 {
                 font-family:"Goldoni";
-                font-size:25px;
-                margin-left:10px;
+                @media only screen and (min-width:811px) {
+                    font-size:50px;
+                    margin-bottom:0px;
+                    margin-left:20px;
+                }
+                @media only screen and (max-width:810px) {
+                    font-size:25px;
+                    margin-left:10px;
+                }   
             }
         }
     }
