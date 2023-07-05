@@ -20,7 +20,7 @@
 
         <h3 id="intro_text">Hi,<br> my name is Kenny Weeks. <br> Welcome to my ... </h3>
 
-        <img src="{path}/images/portfolio_title{screenSize >= 811 ? "_large" : "_"}.svg" alt="portfolio_text"/>
+        <img src="{path}/images/portfolio_title{screenSize >= 811 ? "_large" : "_small"}.svg" alt="portfolio_text"/>
 
     </div>
 
@@ -48,12 +48,18 @@
         }
 
         #clocks {
-            display:flex;
-            justify-content:space-between;
-            flex-flow:row nowrap;
+            @media only screen and (min-width:811px) {
+                @include flexRow;
+                margin-left:calc((100vw - 300px) / 2);
+                margin-top:12.5px;
+            }
+
+            @media only screen and (max-width:810px) {
+                position:absolute;
+                bottom:20px;
+                left:10px;
+            }
             width:350px;
-            margin-left:calc((100vw - 300px) / 2);
-            margin-top:12.5px;
         }
 
         #intro {
