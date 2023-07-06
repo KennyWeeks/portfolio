@@ -1,6 +1,17 @@
-<script lang="ts"></script>
+<script lang="ts">
 
-<div id="projects">
+    import { onMount } from "svelte";
+    export let scroll : number = 0;
+
+    onMount(() => {
+        const p = document.getElementById("projects");
+        console.log(p?.offsetTop);
+        console.log(scroll);
+    });
+
+</script>
+
+<div id="projects" data-scroll={scroll}>
 
     <div id="projects_floating_tab"></div>
 
