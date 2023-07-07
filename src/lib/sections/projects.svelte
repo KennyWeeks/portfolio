@@ -1,6 +1,8 @@
 <script lang="ts">
 
     import { onMount } from "svelte";
+    import project from "../data/projects.json"
+    console.log(JSON.stringify(project))
     export let scroll : number = 0;
     let top : any = 0;
 
@@ -15,7 +17,27 @@
 
 <div id="projects" data-scroll={scroll}>
 
-    <div id="projects_floating_tab" class:full_width={scroll > top} class:partial_width={scroll <= top}></div>
+    <div id="projects_floating_tab" class:full_width={scroll > top} class:partial_width={scroll <= top}>
+    
+        <div id="content-holder">
+            {#each project["project"] as p}
+                <div class="body_parts">
+                    <div class="project_image"></div>
+
+                    <div class="project_body">
+
+                        <h3>{p["title"]}</h3>
+
+                        <p>{p["description"]}</p>
+
+                        <p><i>stack - </i></p>
+
+                    </div>
+                </div>
+            {/each}
+        </div>
+
+    </div>
 
 </div>
 
@@ -25,7 +47,8 @@
 
     #projects {
         width:100vw;
-        padding:10px 0px;
+        padding:10px 0px 0px 0px;
+        font-family:"Arial Black";
 
         #projects_floating_tab {
             background-color:$offBlack;
@@ -35,11 +58,33 @@
                 margin-left:0vw;
             }
 
-            height:300vh;/*This will be a dummy height, will size to content*/
+            height:auto;/*This will be a dummy height, will size to content*/
+            padding-top:20px;
+            padding-bottom:20px;
             //background-color:$offBlack;
-            border-radius:30px;
+            border-top-right-radius:30px;
+            border-top-left-radius:30px;
             margin-top:calc(18vw);
             transition:all 0.2s linear;
+
+            #content-holder {
+                width:90vw;
+                margin:auto;
+
+                .body_parts {
+                    color:$offWhite;
+                    width:90%;
+                    margin:auto;
+                    font-family:"Arial";
+
+                    .project_image {
+                        width:100%;
+                        height:200px;
+                        background-color:$offWhite;
+                        border-radius:10px;
+                    }
+                }
+            }
         }
 
         .full_width {

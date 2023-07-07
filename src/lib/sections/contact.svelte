@@ -22,17 +22,22 @@
 
 <style lang="scss">
 
+    @import "../../styles/theme.scss";
+
     #contacts {
         padding-left:5vw;
         overflow:hidden;
         width:100vw; 
         position:relative;
+        background-color:$offBlack;
+        margin-top:0px;
 
         p {
             margin-top:0px;
             font-family:"Arial Black";
             font-size:15px;
             width:70vw;
+            color:$offWhite;
         }
 
         ul {
@@ -50,6 +55,11 @@
                 font-family:"Goldoni";
                 font-weight:lighter;
                 font-size:25px;
+                color:$offWhite;
+                
+                &:hover {
+                    text-decoration:line-through;
+                }
             }
         }
     }
