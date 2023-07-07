@@ -15,6 +15,17 @@
 
             <img src="{path}/images/pattern.svg" alt="pattern"/>
 
+            <p>I am a computer science
+                graduate, currently attending
+                the University of California,
+                Irvine. I have a Bachelors of Science
+                in Computer Science from UNLV and two
+                minors in mathematics and physics. I’ve
+                been programming since high school, and I
+                enjoy working at the lowest level of a 
+                computer, specifically O.S. and compilers.
+                </p>
+
             <img src="{path}/images/pattern.svg" alt="pattern"/>
 
         </div>
@@ -77,16 +88,29 @@
                 width:200vw;
                 height:500px;
                 background-color:$offBlack;
-                text-align:left;
+                text-align:center;
                 position:relative;
+                color:$offWhite;
+                overflow:hidden;
                 
                 img {
                     max-height:130px;
                     max-width:1300px;
                     position:absolute;
+                    left:0px;
                 }
 
-                :nth-child(2) {
+                p {
+                    width:250px;
+                    display:inline-block;
+                    margin:auto;
+                    text-align:center;
+                    transform:rotate(25deg);
+                    height:100%;
+                    @include flexCenter;
+                }
+
+                :nth-child(3) {
                     bottom:0px;
                 }
             }
