@@ -26,11 +26,17 @@
 
                     <div class="project_body">
 
-                        <h3>{p["title"]}</h3>
+                        <h3>{p["title"]} <span><img src="images/octocat.png" alt="octocat" width=20px/></span></h3>
 
                         <p>{p["description"]}</p>
 
                         <p><i>stack - </i></p>
+
+                        <p>
+                            {#each p["stack"] as st}
+                                <i>{st}, </i> 
+                            {/each}
+                        </p>
 
                     </div>
                 </div>
@@ -82,6 +88,13 @@
                         height:200px;
                         background-color:$offWhite;
                         border-radius:10px;
+                    }
+
+                    .project_body {
+                        h3 {
+                            width:100%;
+                            @include flexRow;
+                        }
                     }
                 }
             }
