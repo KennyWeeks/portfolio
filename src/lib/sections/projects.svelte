@@ -2,7 +2,6 @@
 
     import { onMount } from "svelte";
     import project from "../data/projects.json"
-    console.log(JSON.stringify(project))
     export let scroll : number = 0;
     let top : any = 0;
 
@@ -20,8 +19,8 @@
     <div id="projects_floating_tab" class:full_width={scroll > top} class:partial_width={scroll <= top}>
     
         <div id="content-holder">
-            {#each project["project"] as p}
-                <div class="body_parts">
+            {#each project["project"] as p, index}
+                <div class="body_parts" style="flex-direction:{index % 2 === 1 ? "row-reverse": "row"}">
                     <div class="project_image"></div>
 
                     <div class="project_body">
@@ -52,24 +51,32 @@
     @import "../../styles/theme.scss";
 
     #projects {
+        position:relative;
         width:100vw;
-        padding:10px 0px 0px 0px;
+        padding-top:10px;
+        @media only screen and (min-width:811px) {
+            padding-bottom:20px;
+        }
         font-family:"Arial Black";
 
         #projects_floating_tab {
             background-color:$offBlack;
 
+            @media only screen and (max-width:810px) {
+                border-top-right-radius:30px;
+                border-top-left-radius:30px;
+            }
+
             @media only screen and (min-width:811px) {
-                width:100vw;
-                margin-left:0vw;
+                width:90vw;
+                margin-left:5vw;
+                border-radius:20px;
             }
 
             height:auto;/*This will be a dummy height, will size to content*/
             padding-top:20px;
             padding-bottom:20px;
             //background-color:$offBlack;
-            border-top-right-radius:30px;
-            border-top-left-radius:30px;
             margin-top:calc(18vw);
             transition:all 0.2s linear;
 
@@ -82,15 +89,30 @@
                     width:90%;
                     margin:auto;
                     font-family:"Arial";
+                    border:2px solid #fff;
+
+                    @media only screen and (min-width:811px) {
+                        @include flexRow;
+                    }
 
                     .project_image {
-                        width:100%;
-                        height:200px;
+                        @media only screen and (max-width:810px) {
+                            width:100%;
+                            height:200px;
+                        }
+
+                        @media only screen and (min-width:811px) {
+                            width:400px;
+                            height:400px;
+                        }
                         background-color:$offWhite;
                         border-radius:10px;
                     }
 
                     .project_body {
+                        @media only screen and (min-width:811px) {
+                            width:calc(100% - 400px);
+                        }
                         h3 {
                             width:100%;
                             @include flexRow;
