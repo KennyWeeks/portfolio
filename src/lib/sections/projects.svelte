@@ -86,14 +86,15 @@
 
                 .body_parts {
                     color:$offWhite;
-                    width:90%;
-                    margin:auto;
-                    font-family:"Arial";
-                    border:2px solid #fff;
-
+                    @media only screen and (max-width:810px) {
+                        width:90%;
+                    }
                     @media only screen and (min-width:811px) {
+                        width:calc(90vw - 40px);
                         @include flexRow;
                     }
+                    margin:auto;
+                    font-family:"Arial";
 
                     .project_image {
                         @media only screen and (max-width:810px) {
