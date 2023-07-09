@@ -43,50 +43,108 @@
 
     #about {
         width:100vw;
+
+        @media only screen and (min-width:811px) {
+            height:700px;
+            max-width:1600px;
+            margin:auto;
+        }
         background-color:$offWhite;
         padding:20px 0px;
         position:relative;
 
         #picture_of_me {
-            width:40vw;
-            height:40vw;
-            box-shadow:inset 0 0 0 10px $offBlack;
-            border-radius:50%;
-            margin-left:10px;
-            margin-bottom:0px;
-        }
+            @media only screen and (max-width:810px) {
+                width:40vw;
+                height:40vw;
+                box-shadow:inset 0 0 0 10px $offBlack;
+                margin-left:10px;
+                margin-bottom:0px;
+            }
 
-        .surrounding_image_intros {
-            width:100%;
-            overflow:hidden;
-            text-align:left;
-            transform:rotate(-25deg);
-            margin-bottom:10px;
-            text-align:right;
+            @media only screen and (min-width:811px) {
+                width:340px;
+                height:340px;
+                box-shadow:inset 0 0 0 20px $offBlack;
+                margin-left:50px;
+            }
+            
+            border-radius:50%;
             
         }
 
+        .surrounding_image_intros {
+
+            @media only screen and (max-width:810px) {
+                width:100%;
+                text-align:right;
+            }
+
+            @media only screen and (min-width:811px) {
+                width:700px;
+                position:absolute;
+            }
+            overflow:hidden;  
+            margin-bottom:10px;
+            transform:rotate(-25deg);
+        }
+
         .surrounding_image_intros:nth-of-type(2) {
-            margin-top:-40px;
+            @media only screen and (max-width:810px) {
+                margin-top:-40px;
+            }
+
+            @media only screen and (min-width:811px) {
+                right:140px;
+                z-index:1000;
+                bottom:540px;
+            }
         }
 
         .surrounding_image_intros:nth-of-type(4) {
-            text-align:left;
-            margin-top:25px;
-            margin-bottom:0px;
+            @media only screen and (max-width:810px) {
+                text-align:left;
+                margin-top:25px;
+                margin-bottom:0px;
+            }
+
+            @media only screen and (min-width:811px) {
+                right:-140px;
+                bottom:-50px;
+            }
+            
         }
 
         #surrounding_area {
-            width:200vw;
-            overflow-x:hidden;
+
+            @media only screen and (max-width:810px) {
+                width:200vw;
+                margin-left:-50vw;
+            }
+
+            @media only screen and (min-width:811px) {
+                width:700px;
+                position:absolute;
+                bottom:0px;
+                right:0px;
+                border-radius:20px;
+            }
+            
             transform:rotate(-25deg);
-            margin-left:-50vw;
+            overflow-x:hidden;
             text-align:right;
 
 
             #content_area {
-                width:200vw;
-                height:500px;
+                @media only screen and (max-width:810px) {
+                    width:200vw;
+                    height:500px;
+                }
+                @media only screen and (min-width:811px) {
+                    width:700px;
+                    height:600px;
+                }
+                
                 background-color:$offBlack;
                 text-align:center;
                 position:relative;
@@ -101,9 +159,17 @@
                 }
 
                 p {
-                    width:250px;
-                    display:inline-block;
+                    @media only screen and (max-width:810px) {
+                        width:250px;
+                    }
+
+                    @media only screen and (min-width:811px) {
+                        width:400px;
+                        font-size:20px;
+                        text-align:left;
+                    }
                     margin:auto;
+                    display:inline-block;
                     text-align:center;
                     transform:rotate(25deg);
                     height:100%;
