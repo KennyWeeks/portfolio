@@ -4,6 +4,7 @@
     import project from "../data/projects.json"
     export let scroll : number = 0;
     let top : any = 0;
+    export let path : string = "";
 
     onMount(() => {
         const p = document.getElementById("projects");
@@ -20,12 +21,12 @@
     
         <div id="content-holder">
             {#each project["project"] as p, index}
-                <div class="body_parts" style="flex-direction:{index % 2 === 1 ? "row-reverse": "row"}">
+                <div class="body_parts" style="flex-direction:{index % 2 === 1 ? "row-reverse": "row"}; margin-top:{index !== 0 ? "50px" : "0px"}">
                     <div class="project_image"></div>
 
                     <div class="project_body">
 
-                        <h3>{p["title"]} <span><img src="images/octocat.png" alt="octocat" width=20px/></span></h3>
+                        <h3>{p["title"]} <span><img src="{path}/images/octocat.png" alt="octocat" width=20px/></span></h3>
 
                         <p>{p["description"]}</p>
 
@@ -113,9 +114,16 @@
                     .project_body {
                         @media only screen and (min-width:811px) {
                             width:calc(100% - 400px);
+                            @include flexCenter;
+                            h3, p {
+                                width:80%;
+                                margin-left:10%;
+                            }
                         }
                         h3 {
-                            width:100%;
+                            @media only screen and (max-width:810px) {
+                                width:100%;
+                            }
                             @include flexRow;
                         }
                     }

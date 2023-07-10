@@ -24,7 +24,7 @@
 
 <About path={base}/>
 
-<Projects scroll={h}/>
+<Projects scroll={h} path={base}/>
 
 <Contact path={base}/>
 

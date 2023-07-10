@@ -24,7 +24,7 @@
 
 <div>
 
-    <p><span>{region}</span> <span>{hours}</span> : <span>{minutes < 10 ? "0" : ""}{minutes}</span> <span>{amPm}</span></p>
+    <p><span>{region}</span> <span>{hours}</span> <span class="semi-colon">:</span> <span>{minutes < 10 ? "0" : ""}{minutes}</span> <span>{amPm}</span></p>
 
 </div>
 
@@ -32,12 +32,23 @@
 
     @import "../styles/theme.scss";
 
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
     p {
         :nth-child(1) {
-            padding:5px 10px 2px 10px;
+            padding:5px 10px 3px 10px;
             background-color:$offBlack;
             color:$offWhite;
             border-radius:20px;
+        }
+
+        .semi-colon {
+            opacity:1;
+            animation: blink 1s linear infinite;
         }
     }
 </style>

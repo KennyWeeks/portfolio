@@ -29,7 +29,12 @@
         overflow:hidden;
         width:100vw; 
         position:relative;
-        background-color:$offBlack;
+        @media only screen and (max-width:810px) {
+            background-color:$offBlack;
+        }
+        @media only screen and (min-width:811px) {
+            background-color:$offWhite;
+        }
         margin-top:0px;
 
         p {
@@ -37,7 +42,12 @@
             font-family:"Arial Black";
             font-size:15px;
             width:70vw;
-            color:$offWhite;
+            @media only screen and (max-width:810px) {
+                color:$offWhite;
+            }
+            @media only screen and (min-width:811px) {
+                color:$offBlack;
+            }
         }
 
         ul {
@@ -55,7 +65,12 @@
                 font-family:"Goldoni";
                 font-weight:lighter;
                 font-size:25px;
-                color:$offWhite;
+                @media only screen and (max-width:810px) {
+                    color:$offWhite;
+                }
+                @media only screen and (min-width:811px) {
+                    color:$offBlack;
+                }
                 
                 &:hover {
                     text-decoration:line-through;
