@@ -25,15 +25,16 @@
     @import "../../styles/theme.scss";
 
     #contacts {
-        padding-left:5vw;
         overflow:hidden;
         width:100vw; 
         position:relative;
         @media only screen and (max-width:810px) {
             background-color:$offBlack;
+            padding-left:10vw;
         }
         @media only screen and (min-width:811px) {
             background-color:$offWhite;
+            padding-left:5vw;
         }
         margin-top:0px;
 
@@ -56,7 +57,14 @@
             padding:0px;
             display:block;
             float:right;
-            margin-right:10vw;
+            @media only screen and (max-width:810px) {
+                margin-right:20vw;
+            }
+
+            @media only screen and (min-width:811px) {
+                margin-right:10vw;    
+            }
+            
             cursor:default;
 
             li {
