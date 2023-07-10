@@ -1,4 +1,4 @@
-## Creating a project
+## Project Summary
 
 This is my portfolio for my projects. I've been trying to make one for a while, and though I know I could probably have just used a template to build this, I wanted to try my hand again with front-end development. 
 
