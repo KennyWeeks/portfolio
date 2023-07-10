@@ -15,16 +15,38 @@
 
             <img src="{path}/images/pattern.svg" alt="pattern"/>
 
-            <p>I am a computer science
-                graduate, currently attending
-                the University of California,
-                Irvine. I have a Bachelors of Science
-                in Computer Science from UNLV and two
-                minors in mathematics and physics. I’ve
-                been programming since high school, and I
-                enjoy working at the lowest level of a 
-                computer, specifically O.S. and compilers.
+            <div class="content_container">
+
+                <p>
+                    I am a computer science
+                    graduate, currently attending
+                    the University of California,
+                    Irvine. I have a Bachelors of Science
+                    in Computer Science from UNLV and two
+                    minors in mathematics and physics. I’ve
+                    been programming since high school, and I
+                    enjoy working at the lowest level of a 
+                    computer, specifically O.S. and compilers.
                 </p>
+
+                <div id="education">
+
+                    <p>
+                        University of Nevada, Las Vegas<br>
+                        GPA: 3.657<br>
+                        Bachelors in Computer Science<br>
+                        Minors in Physics and Mathematics<br>
+                    </p>
+                    <hr/>
+                    <p>
+                        University of California, Irvine<br>
+                        GPA: 3.9<br>
+                        Masters in Computer Science
+                    </p>
+            
+                </div>
+
+            </div>
 
             <img src="{path}/images/pattern.svg" alt="pattern"/>
 
@@ -35,90 +57,79 @@
         <img id="projects_intro" src="{path}/images/projects_header.png" width=275px alt="contact_header"/>
     </div>
 
-    <div id="education">
-
-        <p>
-            University of Nevada, Las Vegas<br>
-            GPA: 3.657<br>
-            Bachelors in Computer Science<br>
-            Minors in Physics and Mathematics
-        </p>
-
-        <p>
-            University of California, Irvine<br>
-            GPA: 3.9<br>
-            Masters in Computer Science
-        </p>
-
-    </div>
-
 </div>
 
 <style lang="scss">
 
     @import "../../styles/theme.scss";
 
+    //So I know the max width should be 1080px, and the it will end around 600, before it switches to the mobile styles
     #about {
         width:100vw;
 
-        @media only screen and (min-width:811px) {
-            height:700px;
+        @media only screen and (min-width:1080px) {
+            //So this is the full screen size, and it will maximize the screen size.
+            height:100vh;
             max-width:1600px;
             margin:auto;
+            @include flexRow;
+        }
+
+        @media only screen and (min-width:601px) and (max-width:1079px) {
+            width:100vw;
+            padding:20px 0px;
+        }
+
+        @media only screen and (max-width:600px) {
+            //This will pretty much just be the mobile size of the content;
+            padding:20px 0px;
         }
         background-color:$offWhite;
-        padding:20px 0px;
         position:relative;
 
-        #education {
-            @media only screen and (max-width:810px) {
-                display:none;
-            }
-            width:340px;
-            overflow:hidden;
-            font-family:"Goldoni";
-            font-size:20px;
-            margin-left:5vw;
-            margin-top:50px;
-            p {
-                width:340px;
-            }
-            & > p:nth-of-type(2) {
-                border-top:2px solid #000;
-                padding-top:20px;
-            }
-        }
-
         #picture_of_me {
-            @media only screen and (max-width:810px) {
+            @media only screen and (max-width:600px) {
                 width:40vw;
                 height:40vw;
-                box-shadow:inset 0 0 0 10px $offBlack;
+                box-shadow:inset 0 0 0 15px $offBlack;
                 margin-left:10px;
                 margin-bottom:0px;
             }
 
-            @media only screen and (min-width:811px) {
+            @media only screen and (min-width:601px) and (max-width:1079px) {
+                margin:auto;
+                margin-bottom:0px;
                 width:340px;
                 height:340px;
-                box-shadow:inset 0 0 0 20px $offBlack;
-                margin-left:5vw;
+                
             }
-            
+
+            @media only screen and (min-width:1080px) {
+                width:340px;
+                height:340px;
+                margin-top:calc((100vh - 340px) / 2);
+                margin-left:calc(((100vw - 700px) - 340px) / 2);
+            }
+            box-shadow:inset 0 0 0 20px $offBlack;
             border-radius:50%;
             
         }
 
         .surrounding_image_intros {
 
-            @media only screen and (max-width:810px) {
+            @media only screen and (max-width:600px) {
                 width:100%;
                 text-align:right;
             }
 
-            @media only screen and (min-width:811px) {
+            @media only screen and (min-width:600px) and (max-width:1079px) {
+                display:none;
+            }
+
+            @media only screen and (min-width:1080px) {
                 width:700px;
                 position:absolute;
+                display:none;
             }
             overflow:hidden;  
             margin-bottom:10px;
@@ -126,11 +137,11 @@
         }
 
         .surrounding_image_intros:nth-of-type(2) {
-            @media only screen and (max-width:810px) {
+            @media only screen and (max-width:600px) {
                 margin-top:-40px;
             }
 
-            @media only screen and (min-width:811px) {
+            @media only screen and (min-width:1080px) {
                 right:140px;
                 z-index:1000;
                 bottom:540px;
@@ -138,13 +149,13 @@
         }
 
         .surrounding_image_intros:nth-of-type(4) {
-            @media only screen and (max-width:810px) {
+            @media only screen and (max-width:600px) {
                 text-align:left;
                 margin-top:25px;
                 margin-bottom:0px;
             }
 
-            @media only screen and (min-width:811px) {
+            @media only screen and (min-width:1080px) {
                 right:-140px;
                 bottom:-50px;
             }
@@ -153,32 +164,47 @@
 
         #surrounding_area {
 
-            @media only screen and (max-width:810px) {
+            @media only screen and (max-width:600px) {
                 width:200vw;
                 margin-left:-50vw;
+                transform:rotate(-25deg);
             }
 
-            @media only screen and (min-width:811px) {
+            @media only screen and (min-width:601px) and (max-width:1079px) {
+                width:100vw;
+                height:500px;
+                margin-top:40px;
+            }
+
+            @media only screen and (min-width:1080px) {
                 width:700px;
-                position:absolute;
                 bottom:0px;
                 right:0px;
-                border-radius:20px;
+                border-top-left-radius:20px;
+                border-bottom-left-radius:20px;
+                height:100vh;
             }
-            
-            transform:rotate(-25deg);
+
             overflow-x:hidden;
             text-align:right;
 
 
             #content_area {
-                @media only screen and (max-width:810px) {
+                @media only screen and (max-width:600px) {
                     width:200vw;
                     height:500px;
                 }
-                @media only screen and (min-width:811px) {
+                @media only screen and (min-width:601px) and (max-width:1079px) {
+                    width:90vw;
+                    height:500px;
+                    margin-left:5vw;
+                    border-radius:20px;
+                    @include flexCenter;
+                }
+                @media only screen and (min-width:1080px) {
                     width:700px;
-                    height:600px;
+                    height:100vh;
+                    @include flexCenter;
                 }
                 
                 background-color:$offBlack;
@@ -189,32 +215,75 @@
                 
                 img {
                     max-height:130px;
-                    max-width:1300px;
+                    max-width:1000px;
                     position:absolute;
                     left:0px;
                 }
 
-                p {
-                    @media only screen and (max-width:810px) {
-                        width:250px;
+                .content_container {
+                    @media only screen and (max-width:600px) {
+                        height:100%;
+                    }
+                    @media only screen and (min-width:601px) and (max-width:1079px) {
+                        width:80%;
+                    }
+                    p {
+                        @media only screen and (max-width:600px) {
+                            width:250px;
+                            transform:rotate(25deg);
+                            height:100%;
+                        }
+
+                        @media only screen and (min-width:601px) and (max-width:1079px) {
+                            text-align:left;
+                        }
+
+                        @media only screen and (min-width:1080px) {
+                            width:500px;
+                            font-size:17px;
+                            text-align:left;
+                        }
+                        margin:auto;
+                        display:inline-block;
+                        text-align:center;
+                        @include flexCenter;
+                        font-family:"Arial Black";
+                        font-size:15px;
                     }
 
-                    @media only screen and (min-width:811px) {
-                        width:400px;
-                        font-size:20px;
+                    #education {
+                        width:500px;
+                        overflow:hidden;
+                        
+                        margin-top:10px;
                         text-align:left;
+                        
+                        & > p {
+                            font-family:"Arial";
+                            font-size:15px;
+                            margin-left:0px;
+                            text-align:left;
+                            display:inline-block;
+                        }
+
+                        & > hr {
+                            width:50%;
+                            height:2px;
+                            background-color:$offWhite;
+                            margin-left:0px;
+                            border:none;
+                        }
                     }
-                    margin:auto;
-                    display:inline-block;
-                    text-align:center;
-                    transform:rotate(25deg);
-                    height:100%;
-                    @include flexCenter;
+
                 }
 
-                :nth-child(3) {
+                img:nth-of-type(1) {
+                    top:0px;
+                }
+                img:nth-of-type(2) {
                     bottom:0px;
                 }
+
             }
         }
     }
