@@ -21,6 +21,7 @@
 
 <Menu/>
 
+
 <Landing path={base} screenWidth={screenWidth} screenHeight={screenHeight}/>
 
 <About path={base}/>
