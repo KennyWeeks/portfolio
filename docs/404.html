@@ -6,18 +6,23 @@
 		<link rel="icon" href="/portfolio/images/wolf_white.png" />
 		<meta name="viewport" content="width=device-width" />
 		
-		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/start.20eccfce.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/start.4339ffe0.js">
 		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/scheduler.dfb2f7c0.js">
-		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/singletons.1218ee67.js">
-		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/paths.68bb7403.js">
-		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/app.d2900e73.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/singletons.75fb4224.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/paths.9ff6b2f2.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/app.8f1dbebe.js">
 		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/index.97c92902.js">
 	</head>
 	<style>
 
+		:root {
+			--doc-height:100%;
+		}
+
 		html, body {
 			width:100vw;
 			height:100vh;
+			height: var(--doc-height);
 			padding:0px;
 			margin:0px;
 			font-family:sans-serif;
@@ -27,7 +32,6 @@
 			overflow-x:hidden;
 			overflow-y:scroll;
 			background-color:#f2f2f2;
-			box-shadow:inset 0 0 0 1px #000;
 		}
 
 	</style>
@@ -35,7 +39,7 @@
 		<div style="display: contents">
 			<script>
 				{
-					__sveltekit_o4twz4 = {
+					__sveltekit_1psnz = {
 						assets: "/portfolio",
 						base: "/portfolio",
 						env: {}
@@ -44,8 +48,8 @@
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("/portfolio/_app/immutable/entry/start.20eccfce.js"),
-						import("/portfolio/_app/immutable/entry/app.d2900e73.js")
+						import("/portfolio/_app/immutable/entry/start.4339ffe0.js"),
+						import("/portfolio/_app/immutable/entry/app.8f1dbebe.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
