@@ -8,9 +8,6 @@
     import Clock from "../clock.svelte";
 
     onMount(()=>{
-        let body = document.getElementsByTagName("body");
-        let landing : any = document.getElementById("landing");
-        landing.style.height = body[0].clientHeight + "px";
        let hi : any = document.getElementById("hi");
        let my : any = document.getElementById("my");
        let wel : any = document.getElementById("welcome");
@@ -59,7 +56,7 @@
 
     #landing {
         width:100vw;
-        height:100vh;
+        height:100%;
         background-color:$offWhite;
         overflow:hidden;
         position:relative;
