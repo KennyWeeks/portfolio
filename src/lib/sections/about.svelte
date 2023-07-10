@@ -78,7 +78,7 @@
             overflow:hidden;
             font-family:"Goldoni";
             font-size:20px;
-            margin-left:80px;
+            margin-left:5vw;
             margin-top:50px;
             p {
                 width:340px;
@@ -102,7 +102,7 @@
                 width:340px;
                 height:340px;
                 box-shadow:inset 0 0 0 20px $offBlack;
-                margin-left:50px;
+                margin-left:5vw;
             }
             
             border-radius:50%;

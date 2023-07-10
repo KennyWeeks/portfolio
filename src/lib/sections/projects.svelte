@@ -17,6 +17,10 @@
 
 <div id="projects" data-scroll={scroll}>
 
+    <h3 class="projects_tag">all my projects can be viewed on
+        my github, and the links will be
+        provided for each.</h3>
+
     <div id="projects_floating_tab" class:full_width={scroll > top} class:partial_width={scroll <= top}>
     
         <div id="content-holder">
@@ -60,25 +64,35 @@
         }
         font-family:"Arial Black";
 
+        .projects_tag {
+            width:450px;
+            position:absolute;
+            top:50px;
+            left:5vw;
+            font-size:20px;
+            margin-bottom:0px;
+        }
+
         #projects_floating_tab {
             background-color:$offBlack;
 
             @media only screen and (max-width:810px) {
                 border-top-right-radius:30px;
                 border-top-left-radius:30px;
+                margin-top:calc(18vw);
             }
 
             @media only screen and (min-width:811px) {
                 width:90vw;
                 margin-left:5vw;
                 border-radius:20px;
+                margin-top:200px;
             }
 
             height:auto;/*This will be a dummy height, will size to content*/
             padding-top:20px;
             padding-bottom:20px;
             //background-color:$offBlack;
-            margin-top:calc(18vw);
             transition:all 0.2s linear;
 
             #content-holder {
