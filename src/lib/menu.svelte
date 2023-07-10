@@ -8,8 +8,7 @@
 
 </script>
 
-<!-- svelte-ignore a11y-autofocus -->
-<div id="menu" on:mouseenter={()=>{
+<button id="menu" on:mouseenter={()=>{
     marginLeft = 25;
 }} on:mouseleave={()=>{
     console.log(marginLeft);
@@ -23,7 +22,7 @@
     <div class="menu_bar"></div>
     <div class="menu_bar" style="margin-left:{marginLeft}%; width:{width}%"></div>
 
-</div>
+</button>
 
 <div id="background_menu" style="width:{size}{size == "100" ? "vw" : "px"}; 
 height:{size}{size == "100" ? "vh" : "px"}; 

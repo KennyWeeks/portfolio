@@ -35,6 +35,23 @@
         <img id="projects_intro" src="{path}/images/projects_header.png" width=275px alt="contact_header"/>
     </div>
 
+    <div id="education">
+
+        <p>
+            University of Nevada, Las Vegas<br>
+            GPA: 3.657<br>
+            Bachelors in Computer Science<br>
+            Minors in Physics and Mathematics
+        </p>
+
+        <p>
+            University of California, Irvine<br>
+            GPA: 3.9<br>
+            Masters in Computer Science
+        </p>
+
+    </div>
+
 </div>
 
 <style lang="scss">
@@ -52,6 +69,25 @@
         background-color:$offWhite;
         padding:20px 0px;
         position:relative;
+
+        #education {
+            @media only screen and (max-width:810px) {
+                display:none;
+            }
+            width:340px;
+            overflow:hidden;
+            font-family:"Goldoni";
+            font-size:20px;
+            margin-left:80px;
+            margin-top:50px;
+            p {
+                width:340px;
+            }
+            & > p:nth-of-type(2) {
+                border-top:2px solid #000;
+                padding-top:20px;
+            }
+        }
 
         #picture_of_me {
             @media only screen and (max-width:810px) {
