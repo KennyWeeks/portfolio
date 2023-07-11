@@ -90,7 +90,7 @@
         #picture_of_me {
             @media only screen and (max-width:600px) {
                 width:40vw;
-                height:40vw;
+                height:40vw;   
                 box-shadow:inset 0 0 0 15px $offBlack;
                 margin-left:10px;
                 margin-bottom:0px;
@@ -99,9 +99,9 @@
             @media only screen and (min-width:601px) and (max-width:1079px) {
                 margin:auto;
                 margin-bottom:0px;
-                width:340px;
-                height:340px;
-                
+                width:30vw;
+                height:30vw;  
+                box-shadow:inset 0 0 0 15px $offBlack; 
             }
 
             @media only screen and (min-width:1080px) {
