@@ -1,11 +1,12 @@
 <script lang="ts">
     export let path : string = ""
+    export let screenWidth : number;
 </script>
 
 
 <div id="contacts">
 
-    <img src="{path}/images/contact_header.png" width=250px alt="contact_header"/>
+    <img src="{path}/images/contact_header{screenWidth <= 810 ? "_no_overlay" : ""}.png" width=250px alt="contact_header"/>
 
     <p>I AM CURRENTLY NOT ACCEPTING ANY
         FREELANCE WORK, BUT FEEL FREE TO 

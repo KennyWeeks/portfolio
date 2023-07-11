@@ -8,6 +8,8 @@
 
     onMount(() => {
         const p = document.getElementById("projects");
+        const body = document.getElementsByTagName("body");
+        scroll = body[0].scrollTop;
         top = p?.offsetTop;
         console.log(p?.offsetTop);
         console.log(scroll);
@@ -16,10 +18,6 @@
 </script>
 
 <div id="projects" data-scroll={scroll}>
-
-    <h3 class="projects_tag">all my projects can be viewed on
-        my github, and the links will be
-        provided for each.</h3>
 
     <div id="projects_floating_tab" class:full_width={scroll > top} class:partial_width={scroll <= top}>
     
@@ -64,15 +62,6 @@
         }
         font-family:"Arial Black";
 
-        .projects_tag {
-            width:450px;
-            position:absolute;
-            top:50px;
-            left:5vw;
-            font-size:20px;
-            margin-bottom:0px;
-        }
-
         #projects_floating_tab {
             background-color:$offBlack;
 
@@ -114,7 +103,8 @@
                     .project_image {
                         @media only screen and (max-width:810px) {
                             width:100%;
-                            height:200px;
+                            height:50vw;
+                            min-height:200px;
                         }
 
                         @media only screen and (min-width:811px) {

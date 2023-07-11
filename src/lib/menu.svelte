@@ -46,12 +46,13 @@ right:{size == "100" ? "0px" : "15px"};">
         top:15px;
         right:15px;
         z-index:10000;
-        width:20px;
-        height:20px;
+        width:40px;
+        height:40px;
         padding:10px;
         border-radius:50%;
         @include flexCol;
         background-color:$offWhite;
+        border:none;
 
         .menu_bar {
             width:100%;
@@ -84,6 +85,13 @@ right:{size == "100" ? "0px" : "15px"};">
             cursor:default;
 
             li {
+
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Old versions of Firefox */
+                    -ms-user-select: none; /* Internet Explorer/Edge */
+                        user-select: none;
                 
                 &:hover {
                     color:red;

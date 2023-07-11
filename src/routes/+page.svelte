@@ -9,6 +9,7 @@
     import Landing from "$lib/sections/landing.svelte";
     let screenWidth : number;
     let screenHeight : number;
+    let test : number;
     let h : number = 0;
 
 </script>
@@ -28,7 +29,7 @@
 
 <Projects scroll={h} path={base}/>
 
-<Contact path={base}/>
+<Contact path={base} screenWidth={screenWidth}/>
 
 <style lang="scss">
     @import "../styles/theme.scss";
