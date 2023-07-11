@@ -13,10 +13,10 @@
         MESSAGE ME AND VIEW OTHER PROJECTS</p>
 
     <ul>
-        <li>LinkedIN</li>
-        <li>Github</li>
-        <li>Resume</li>
-        <li>Email</li>
+        <li><span><img src="{path}/images/linkedin.png" alt="linkedin" width=20/></span>LinkedIN</li>
+        <li><span><img src="{path}/images/octocat_off_black.png" alt="github" width=25/></span>Github</li>
+        <li><span><img src="{path}/images/resume.png" alt="resume" width=20/></span>Resume</li>
+        <li><span><img src="{path}/images/gmail.png" alt="gmail" width=20/></span>Email</li>
     </ul>
 
 </div>
@@ -83,6 +83,10 @@
                 
                 &:hover {
                     text-decoration:line-through;
+                }
+
+                span {
+                    margin-right:10px;
                 }
             }
         }

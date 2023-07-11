@@ -19,6 +19,18 @@
 
 <div id="projects" data-scroll={scroll}>
 
+    <div class="intro_block">
+        <img src="{path}/images/projects_header.png" width=275px alt="project_intro"/>
+
+        <div class="github_link">
+            
+            <div class="github_icon" style="background-image:url('{path}/images/octocat.png')">
+                <!--The octocat will be the background-->
+            </div>
+
+        </div>
+    </div>
+
     <div id="projects_floating_tab" class:full_width={scroll > top} class:partial_width={scroll <= top}>
     
         <div id="content-holder">
@@ -62,20 +74,60 @@
         }
         font-family:"Arial Black";
 
+        .intro_block{
+            @include flexRow;
+            width:90vw;
+            margin-top:5px;
+            @media only screen and (max-width:600px) {
+                margin-left:5vw;
+                flex-direction:row-reverse;
+            }
+            img {
+                margin-left:5vw;
+                margin-bottom:10px;
+
+                @media only screen and (max-width:600px) {
+                    display:none
+                }
+            }
+
+            .github_link {
+                width:73px;
+                height:73px;
+                background-color:$offBlack;
+                @media only screen and (min-width:600px) {
+                    margin-right:5vw;
+                }
+                border-radius:60px;
+                position:relative;
+
+                .github_icon {
+                    width:70px;
+                    height:70px;
+                    border-radius:50%;
+                    position:absolute;
+                    top:1.5px;
+                    right:1.5px;
+                    background-size:cover;
+                    background-repeat:no-repeat;
+                    background-position:center center;
+                }
+            }
+        }
+
         #projects_floating_tab {
             background-color:$offBlack;
 
             @media only screen and (max-width:810px) {
                 border-top-right-radius:30px;
                 border-top-left-radius:30px;
-                margin-top:calc(18vw);
+                margin-top:10px;
             }
 
             @media only screen and (min-width:811px) {
                 width:90vw;
                 margin-left:5vw;
                 border-radius:20px;
-                margin-top:200px;
             }
 
             height:auto;/*This will be a dummy height, will size to content*/
