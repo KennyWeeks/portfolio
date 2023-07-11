@@ -4,7 +4,11 @@
 
 <div id="about">
 
-    <div id="picture_of_me"></div>
+    <div id="picture_of_me">
+
+        <img src="{path}/images/about_ring.png" alt="about ring"/>
+
+    </div>
 
     <div class="surrounding_image_intros">
         <img id="about_intro" src="{path}/images/about_header.png" width=200px alt="contact_header"/>
@@ -63,6 +67,15 @@
 
     @import "../../styles/theme.scss";
 
+    @keyframes rotate {
+        0% {
+            transform:rotate(0deg);
+        }
+        100% {
+            transform:rotate(360deg);
+        }
+    }
+
     //So I know the max width should be 1080px, and the it will end around 600, before it switches to the mobile styles
     #about {
         width:100vw;
@@ -77,7 +90,7 @@
 
         @media only screen and (min-width:601px) and (max-width:1079px) {
             width:100vw;
-            padding:20px 0px;
+            padding:50px 0px;
         }
 
         @media only screen and (max-width:600px) {
@@ -112,7 +125,23 @@
             }
             box-shadow:inset 0 0 0 20px $offBlack;
             border-radius:50%;
-            
+            @include flexCenter;
+
+            img {
+                @media only screen and (min-width:1080px) {
+                    width:470px;
+                    animation: rotate 10s linear infinite;
+                }
+
+                @media only screen and (max-width:1079px) and (min-width:600px) {
+                    width:42vw;
+                    animation: rotate 10s linear infinite;
+                }
+
+                @media only screen and (max-width:600px) {
+                    display:none;
+                }
+            }
         }
 
         .surrounding_image_intros {
@@ -173,7 +202,7 @@
             @media only screen and (min-width:601px) and (max-width:1079px) {
                 width:100vw;
                 height:500px;
-                margin-top:40px;
+                margin-top:60px;
             }
 
             @media only screen and (min-width:1080px) {
