@@ -78,12 +78,12 @@
             @include flexRow;
             width:90vw;
             margin-top:5px;
+            margin-left:5vw;
             @media only screen and (max-width:600px) {
-                margin-left:5vw;
+                
                 flex-direction:row-reverse;
             }
             img {
-                margin-left:5vw;
                 margin-bottom:10px;
 
                 @media only screen and (max-width:600px) {
@@ -95,9 +95,10 @@
                 width:73px;
                 height:73px;
                 background-color:$offBlack;
-                @media only screen and (min-width:600px) {
+                @media only screen and (max-width:600px) {
                     margin-right:5vw;
                 }
+                margin-right:0px;
                 border-radius:60px;
                 position:relative;
 

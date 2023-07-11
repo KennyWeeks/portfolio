@@ -13,10 +13,10 @@
         MESSAGE ME AND VIEW OTHER PROJECTS</p>
 
     <ul>
-        <li><span><img src="{path}/images/linkedin.png" alt="linkedin" width=20/></span>LinkedIN</li>
-        <li><span><img src="{path}/images/octocat_off_black.png" alt="github" width=25/></span>Github</li>
-        <li><span><img src="{path}/images/resume.png" alt="resume" width=20/></span>Resume</li>
-        <li><span><img src="{path}/images/gmail.png" alt="gmail" width=20/></span>Email</li>
+        <li><span><img src="{path}/images/linkedin{screenWidth <= 810 ? "_off_white" : ""}.png" alt="linkedin" width=20/></span>LinkedIN</li>
+        <li><span><img src="{path}/images/octocat{screenWidth <= 810 ? "": "_off_black"}.png" alt="github" width=25/></span>Github</li>
+        <li><span><img src="{path}/images/resume{screenWidth <= 810 ? "_off_white" : ""}.png" alt="resume" width=20/></span>Resume</li>
+        <li><span><img src="{path}/images/gmail{screenWidth <= 810 ? "_off_white" : ""}.png" alt="gmail" width=20/></span>Email</li>
     </ul>
 
 </div>
