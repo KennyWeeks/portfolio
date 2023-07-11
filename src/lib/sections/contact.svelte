@@ -32,6 +32,7 @@
         @media only screen and (max-width:810px) {
             background-color:$offBlack;
             padding-left:10vw;
+            padding-bottom:30px;
         }
         @media only screen and (min-width:811px) {
             background-color:$offWhite;

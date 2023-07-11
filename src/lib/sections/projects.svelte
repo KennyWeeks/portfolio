@@ -92,19 +92,20 @@
             }
 
             .github_link {
-                width:73px;
-                height:73px;
+                width:50px;
+                height:50px;
                 background-color:$offBlack;
                 @media only screen and (max-width:600px) {
                     margin-right:5vw;
                 }
                 margin-right:0px;
+                margin-top:15px;
                 border-radius:60px;
                 position:relative;
 
                 .github_icon {
-                    width:70px;
-                    height:70px;
+                    width:47px;
+                    height:47px;
                     border-radius:50%;
                     position:absolute;
                     top:1.5px;
