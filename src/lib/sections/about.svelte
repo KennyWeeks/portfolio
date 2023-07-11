@@ -180,9 +180,10 @@
                 width:700px;
                 bottom:0px;
                 right:0px;
-                border-top-left-radius:20px;
-                border-bottom-left-radius:20px;
-                height:100vh;
+                border-radius:20px;
+                height:90vh;
+                margin-top:5vh;
+                @include flexCenter;
             }
 
             overflow-x:hidden;
@@ -202,8 +203,10 @@
                     @include flexCenter;
                 }
                 @media only screen and (min-width:1080px) {
-                    width:700px;
-                    height:100vh;
+                    width:calc(700px - 5vw);
+                    height:calc(700px - 5vw);
+                    border-radius:20px;
+                    margin-right:5vw;
                     @include flexCenter;
                 }
                 

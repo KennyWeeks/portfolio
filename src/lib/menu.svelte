@@ -32,7 +32,11 @@ right:{size == "100" ? "0px" : "15px"};">
 
     <ul id="menu-options" style="visibility:{size == "100" ? "visible" : "hidden"}">
         {#each menuOpts as mo}
-            <li>{mo}</li>
+            <li><a href="#{mo}" on:click={()=>{
+                marginLeft = (open === -1) ? 0 : 50;
+                open *= -1;
+                size = size == "20" ? "100" : "20";
+            }}>{mo}</a></li>
         {/each}
     </ul>
 
@@ -92,10 +96,15 @@ right:{size == "100" ? "0px" : "15px"};">
                 -moz-user-select: none; /* Old versions of Firefox */
                     -ms-user-select: none; /* Internet Explorer/Edge */
                         user-select: none;
-                
-                &:hover {
-                    color:red;
-                    text-decoration:line-through;
+
+                a {
+                    text-decoration:none;
+                    color:$offBlack;
+
+                    &:hover {
+                        color:red;
+                        text-decoration:line-through;
+                    }
                 }
             }
         }

@@ -36,7 +36,21 @@
         <div id="content-holder">
             {#each project["project"] as p, index}
                 <div class="body_parts" style="flex-direction:{index % 2 === 1 ? "row-reverse": "row"}; margin-top:{index !== 0 ? "50px" : "0px"}">
-                    <div class="project_image"></div>
+                    <div class="project_image">
+
+                        <div class="image_tracker">
+                            <div class="image_blip_mover"></div>
+
+                            {#each Array(10) as _, i}
+                                <div class="image_blip"></div>
+                            {/each}
+                        </div>
+
+                        <div class="picture_mover"></div>
+
+                        <div class="picture_mover"></div>
+
+                    </div>
 
                     <div class="project_body">
 
@@ -167,6 +181,57 @@
                         }
                         background-color:$offWhite;
                         border-radius:10px;
+                        overflow:hidden;
+                        position:relative;
+
+                        .picture_mover {
+                            width:50px;
+                            height:50px;
+                            border-radius:50%;
+                            background-color:$offBlack;
+                            position:absolute;
+                            top:calc((100% - 50px) / 2);
+                            box-shadow:inset 0 0 0 5px $offBlack, inset 0 0 0 4px $offWhite;
+                            transition:box-shadow 0.2s linear;
+                            &:hover {
+                                box-shadow:inset 0 0 0 5px $offBlack, inset 0 0 0 10px $offWhite;
+                            }
+                        }
+
+                        .picture_mover:nth-of-type(2) {
+                            left:-25px;
+                        }
+
+                        .picture_mover:nth-of-type(3) {
+                            right:-25px;
+                            
+                        }
+
+                        .image_tracker {
+                            width:80%;
+                            height:10px;
+                            position:absolute;
+                            left:10%;
+                            bottom:10px;
+                            @include flexRow;
+
+                            .image_blip {
+                                width:10px;
+                                height:10px;
+                                background-color:$offBlack;
+                                border-radius:50%;
+                            }
+
+                            .image_blip_mover {
+                                position:absolute;
+                                background-color:$offWhite;
+                                width:6px;
+                                height:6px;
+                                border-radius:50%;
+                                top:2px;
+                                left:2px;
+                            }
+                        }
                     }
 
                     .project_body {
