@@ -1,7 +1,8 @@
 <script lang="ts">
 
     import { onMount } from "svelte";
-    import project from "../data/projects.json"
+    import project from "../data/projects.json";
+    import Device from 'svelte-device-info';
     export let scroll : number = 0;
     let top : any = 0;
     export let path : string = "";
@@ -46,9 +47,9 @@
                             {/each}
                         </div>
 
-                        <div class="picture_mover"></div>
+                        <div class="picture_mover" style="{Device.isMobile ? "display:none;" : ""}"></div>
 
-                        <div class="picture_mover"></div>
+                        <div class="picture_mover" style="{Device.isMobile ? "display:none;" : ""}"></div>
 
                     </div>
 
@@ -177,10 +178,12 @@
                         @media only screen and (max-height:400px) {
                             width:300px;
                             height:300px;
+                            filter:blur(3px);
+                            opacity:0.5;
                         }
 
                         @media only screen and (max-width:810px) and (min-height:401px) {
-                            width:200px;
+                            width:100%;
                             min-height:200px;
                         }
 
