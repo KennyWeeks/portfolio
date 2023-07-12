@@ -38,7 +38,7 @@ $desktopMin: 1600px;
 
 @mixin desktop {
     @media only screen and (min-width:$desktopMin) {
-        //@content;
+        @content;
     }
 }
 
