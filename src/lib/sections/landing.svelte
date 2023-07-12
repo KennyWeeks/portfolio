@@ -44,7 +44,7 @@
 
         <h3 id="intro_text" style="font-size:{screenHeight <= 600 ? "30px" : "5vw"}"><span id="hi">Hi,</span><br> <span id="my">my name is Kenny Weeks. </span><br> <span id="welcome">Welcome to my  ...</span> </h3>
 
-        <img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_small"}.svg" alt="portfolio_text"/>
+        <img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_large"}.svg" alt="portfolio_text"/>
 
     </div>
 
@@ -60,6 +60,7 @@
         background-color:$offWhite;
         overflow:hidden;
         position:relative;
+        @include flexCenter;
 
         #wolf {
             position:absolute;
@@ -94,9 +95,7 @@
 
         #intro {
             width:90vw;
-            margin-left:5vw;
             overflow:hidden;
-            position:absolute;
 
             h3 {
                 font-family:"Goldoni";
@@ -108,7 +107,7 @@
                 }
 
                 @media only screen and (max-width:599px) {
-                    font-size:30px;
+                    font-size:35px;
                 }
 
                 margin-left:10px;
