@@ -23,7 +23,7 @@
 <div id="projects" data-scroll={scroll}>
 
     <div class="intro_block">
-        <img src="{path}/images/projects_header.png" width=275px alt="project_intro"/>
+        <img src="{path}/images/project_header_dark.png" width=275px alt="project_intro"/>
 
         <div class="github_link">
             
@@ -41,7 +41,21 @@
                 <div class="body_parts" style="flex-direction:{index % 2 === 1 ? "row-reverse": "row"}; margin-top:{index !== 0 ? "50px" : "0px"}">
                     <div class="project_image">
 
-                        <div class="image_tracker">
+                        <div class="main_image"></div>
+
+                        <div class="side_images">
+
+                            <div class="side_act_img"></div>
+
+                            <div class="side_act_img"></div>
+
+                            <div class="side_act_img"></div>
+
+                            <div class="side_act_img"></div>
+
+                        </div>
+
+                        <!--<div class="image_tracker">
                             <div class="image_blip_mover"></div>
 
                             {#each Array(10) as _, i}
@@ -51,7 +65,7 @@
 
                         <div class="picture_mover" style="{ mobile ? "display:none;" : ""}"></div>
 
-                        <div class="picture_mover" style="{ mobile ? "display:none;" : ""}"></div>
+                        <div class="picture_mover" style="{ mobile ? "display:none;" : ""}"></div>-->
 
                     </div>
 
@@ -184,29 +198,110 @@
                             opacity:0.5;
                         }
 
-                        @media only screen and (max-width:810px) and (min-width:500px) {
-                            width:300px;
+                        @media only screen and (max-width:1049px) and (min-width:800px) {
+                            width:600px;
                             height:300px;
                             filter:blur(3px);
                             opacity:0.5;
+                            @include flexRow;
+                        }
+
+                        @media only screen and (max-width:799px) and (min-width:500px) {
+                            width:450px;
+                            height:300px;
+                            filter:blur(3px);
+                            opacity:0.5;
+                            @include flexRow;
                         }
 
                         @media only screen and (max-width:499px) {
                             min-height:200px;
-                            height:calc(90vw * 0.9);
                             width:100%;
                         }
 
-                        @media only screen and (min-width:811px) {
-                            width:400px;
-                            height:400px;
+                        @media only screen and (min-width:1050px) {
+                            width:450px;
+                            height:300px;
+                            @include flexRow;
                         }
-                        background-color:$offWhite;
+
+                        .main_image {
+                            width:300px;
+                            height:300px;
+                            background-color:$offWhite;
+                            border-radius:20px;
+
+                            @media only screen and (max-width:499px) {
+                                width:100%;
+                                height:250px;
+                                background-color:$offWhite;
+                                border-radius:20px;
+                            }
+                        }
+
+                        @media only screen and (max-width:1049px) and (min-width:800px) {
+                            .side_images {
+                                width:295px;
+                                height:300px;
+                                margin-left:5px;
+                                @include flexRow;
+                                flex-wrap:wrap;
+
+                                .side_act_img {
+                                    width:145px;
+                                    height:147.5px;
+                                    border-radius:20px;
+                                    background-color:$offWhite;
+                                    margin-bottom:5px;
+                                }
+                            }
+                        }
+
+                        @media only screen and (max-width:799px) and (min-width:500px) {
+                            .side_images {
+                                width:145px;
+                                height:300px;
+                                margin-left:5px;
+
+                                .side_act_img {
+                                    width:145px;
+                                    height:147.5px;
+                                    border-radius:20px;
+                                    background-color:$offWhite;
+                                    margin-bottom:5px;
+                                }
+                            }
+                        }
+
+                        @media only screen and (max-width:499px) {
+                            .side_image {
+                                display:none;
+                            }
+                        }
+
+                        @media only screen and (min-width:1050px) {
+
+                            .side_images {
+                                width:145px;
+                                height:300px;
+                                margin-left:5px;
+
+                                .side_act_img {
+                                    width:145px;
+                                    height:147.5px;
+                                    border-radius:20px;
+                                    background-color:$offWhite;
+                                    margin-bottom:5px;
+                                }
+                            }
+
+                        }
+                        //background-color:$offWhite;
                         border-radius:10px;
                         overflow:hidden;
                         position:relative;
 
-                        .picture_mover {
+                        /*.picture_mover {
                             width:50px;
                             height:50px;
                             border-radius:50%;
@@ -253,7 +348,7 @@
                                 top:2px;
                                 left:2px;
                             }
-                        }
+                        }*/
                     }
 
                     .project_body {
@@ -268,7 +363,11 @@
                             border-radius:20px;
                         }
 
-                        @media only screen and (max-width:810px) and (min-width:500px) {
+                        //So here is the math, cause I don't like the look of the images crossing each other, it's
+                        //weird, and I just don't like the look of it.
+                        //So the width is 450px pixels, and I don't want the description to go under 450px, so that's 900px
+                        //The padding is 40px for both sides, and the width is 90vw over all. So when it is 960px, change it.
+                        @media only screen and (max-width:1050px) and (min-width:500px) {
                             width:70%;
                             position:absolute;
                             box-shadow:inset 0 0 0 2px #fff;
@@ -283,12 +382,13 @@
                             width:100%;
                         }
 
-                        @media only screen and (min-width:811px) {
-                            width:calc(100% - 400px);
+                        @media only screen and (min-width:1050px) {
+                            //So this is the larger screens of this stuff
+                            width:calc(100% - 450px);
                             @include flexCenter;
                             h3, p {
                                 width:80%;
-                                margin-left:10%;
+                                margin-left:0%;
                             }
                         }
                         h3 {
