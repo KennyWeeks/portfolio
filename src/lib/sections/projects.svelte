@@ -351,8 +351,10 @@
                         }*/
                     }
 
+                    
+
                     .project_body {
-                        @media only screen and (max-height:400px) {
+                        @include phoneHoriz {
                             width:70%;
                             position:absolute;
                             box-shadow:inset 0 0 0 2px #fff;
@@ -363,26 +365,23 @@
                             border-radius:20px;
                         }
 
-                        //So here is the math, cause I don't like the look of the images crossing each other, it's
-                        //weird, and I just don't like the look of it.
-                        //So the width is 450px pixels, and I don't want the description to go under 450px, so that's 900px
-                        //The padding is 40px for both sides, and the width is 90vw over all. So when it is 960px, change it.
-                        @media only screen and (max-width:1050px) and (min-width:500px) {
-                            width:70%;
-                            position:absolute;
-                            box-shadow:inset 0 0 0 2px #fff;
-                            background-color:$offBlack;
-                            top:50%;
-                            transform:translateY(-50%);
-                            padding:20px;
-                            border-radius:20px;
-                        }
-
-                        @media only screen and (max-width:499px) {
+                        //Here are the horizontal styles
+                        @include phoneVert {
                             width:100%;
                         }
 
-                        @media only screen and (min-width:1050px) {
+                        @include tablet {
+                            width:70%;
+                            position:absolute;
+                            box-shadow:inset 0 0 0 2px #fff;
+                            background-color:$offBlack;
+                            top:50%;
+                            transform:translateY(-50%);
+                            padding:20px;
+                            border-radius:20px;
+                        }
+
+                        @include laptop {
                             //So this is the larger screens of this stuff
                             width:calc(100% - 450px);
                             @include flexCenter;
@@ -391,9 +390,12 @@
                                 margin-left:0%;
                             }
                         }
+
+                        //I realistically don't know why I did this, but okay
                         h3 {
-                            @media only screen and (max-width:810px) {
+                            @include randomTest("<810px") {
                                 width:100%;
+                                color:#00ff00;
                             }
                             @include flexRow;
                         }
@@ -404,14 +406,14 @@
 
         //These are the styles to get the full screen
         .full_width {
-            @media only screen and (max-width:810px) {
+            @include randomTest("<810px") {
                 width:100vw;
                 margin-left:0vw;
             }
         }
 
         .partial_width {
-            @media only screen and (max-width:810px) {
+            @include userDef(810px) {
                 width:90vw;
                 margin-left:5vw;
             }

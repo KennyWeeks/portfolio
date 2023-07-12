@@ -108,6 +108,7 @@
         position:relative;
 
         #picture_of_me {
+            @include randomTest(("#000000", "#00ff00"));
             @media only screen and (max-width:600px) {
                 width:40vw;
                 height:40vw;   

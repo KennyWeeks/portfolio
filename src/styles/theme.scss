@@ -1,6 +1,74 @@
 $offWhite: #f2f2f2;
 $offBlack: #1e1919;
 
+//Defining breakpoints here in the code
+$mobile: 499px;
+$tabletMin: 500px;
+$tabletMax: 1049px;
+$laptopMin: 1050px;
+$laptopMax: 1599px;
+$desktopMin: 1600px;
+
+//These are the two phone breakpoints
+@mixin phoneVert {
+    @media only screen and (max-width:$mobile) {
+        @content;
+    }
+}
+
+@mixin phoneHoriz {
+    @media only screen and (max-height:$mobile) {
+        @content;
+    }
+}
+
+//This will be the main tablet breakpoint
+@mixin tablet {
+    @media only screen and (max-width:$tabletMax) and (min-width:$tabletMin) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media only screen and (min-width:$laptopMin) and (max-width:$laptopMax) 
+    {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (min-width:$desktopMin) {
+        //@content;
+    }
+}
+
+@mixin userDef($width) {
+    @media only screen and (max-width:$width) {
+        @content;
+    }
+}
+
+@function minOrMax($string) {
+    @if str-slice($string, 1, 1) == "<" {
+        $sep : str-slice($string, 2);
+        @return "max-width:" + $sep;
+    } @else {
+        $sep : str-slice($string, 2);
+        @return "min-width:" + $sep;
+    }
+}
+
+@mixin randomTest($list) {
+    $sep : "";
+    @for $i from 1 through length($list) {
+        @if str-slice(nth($list, $i), 2, 2) != "=" {
+            @media only screen and (minOrMax(nth($list, $i))) {
+                @content;
+            }
+        }
+    }
+}
+
 @mixin flexRow {
     display:flex;
     justify-content:space-between;
