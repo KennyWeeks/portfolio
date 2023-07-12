@@ -52,7 +52,7 @@
 
                     </div>
 
-                    <div class="project_body">
+                    <div class="project_body" style="{index % 2 == 0 ? "right:0px;" : "left:0px;"}">
 
                         <h3>{p["title"]} <span><img src="{path}/images/octocat.png" alt="octocat" width=20px/></span></h3>
 
@@ -161,17 +161,26 @@
                     @media only screen and (max-width:810px) {
                         width:90%;
                     }
+                    @media only screen and (max-width:810px) and (min-width:600px) {
+                        @include flexRow;
+                    }
                     @media only screen and (min-width:811px) {
                         width:calc(90vw - 40px);
                         @include flexRow;
                     }
                     margin:auto;
                     font-family:"Arial";
+                    position:relative;
 
                     .project_image {
-                        @media only screen and (max-width:810px) {
-                            width:100%;
-                            height:50vw;
+
+                        @media only screen and (max-height:400px) {
+                            width:300px;
+                            height:300px;
+                        }
+
+                        @media only screen and (max-width:810px) and (min-height:401px) {
+                            width:200px;
                             min-height:200px;
                         }
 
@@ -235,6 +244,16 @@
                     }
 
                     .project_body {
+                        @media only screen and (max-height:400px) {
+                            width:70%;
+                            position:absolute;
+                            box-shadow:inset 0 0 0 2px #fff;
+                            background-color:$offBlack;
+                            top:50%;
+                            transform:translateY(-50%);
+                            padding:20px;
+                            border-radius:20px;
+                        }
                         @media only screen and (min-width:811px) {
                             width:calc(100% - 400px);
                             @include flexCenter;
@@ -254,6 +273,7 @@
             }
         }
 
+        //These are the styles to get the full screen
         .full_width {
             @media only screen and (max-width:810px) {
                 width:100vw;

@@ -2,12 +2,12 @@
 
     export let otherRegion : number = 0;
     export let region : string = "Irvine";
-    let date : Date = new Date();
+    let date : Date = new Date(); //This will be the date here
     let day : number = date.getDay();
     let hours : number = date.getHours();
     hours += otherRegion;
+    hours = hours >= 24 ? hours - 24 : hours;
     let amPm : string = hours > 12 ? "PM" : "AM";
-    hours = hours > 12 ? hours - 12 : hours;
     let year : number = date.getUTCFullYear();
     let minutes : number = date.getMinutes();
 
@@ -15,8 +15,8 @@
         minutes += 1;
         minutes = minutes == 60 ? 0 : minutes; //If it has been 60 minutes, then you are back at 0
         hours = minutes == 60 ? hours + 1 : hours; //Otherwise, you are starting the new hour;
+        hours = hours >= 24 ? hours - 24 : hours;
         amPm = hours > 12 ? "PM" : "AM";
-        hours = hours > 12 ? hours - 12 : hours;
     }, 60000);
 
 
