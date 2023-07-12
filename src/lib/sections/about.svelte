@@ -108,8 +108,7 @@
         position:relative;
 
         #picture_of_me {
-            @include randomTest(("#000000", "#00ff00"));
-            @media only screen and (max-width:600px) {
+            @include phoneVert {
                 width:40vw;
                 height:40vw;   
                 box-shadow:inset 0 0 0 15px $offBlack;
@@ -117,7 +116,7 @@
                 margin-bottom:0px;
             }
 
-            @media only screen and (min-width:601px) and (max-width:1079px) {
+            @include tablet {
                 margin:auto;
                 margin-bottom:0px;
                 width:30vw;
@@ -125,14 +124,14 @@
                 box-shadow:inset 0 0 0 15px $offBlack; 
             }
 
-            @media only screen and (min-width:1080px) and (max-width:1599px) {
+            @include laptop {
                 width:340px;
                 height:340px;
                 margin-top:calc((100vh - 340px) / 2);
                 margin-left:calc(((100vw - 700px) - 340px) / 2);
             }
 
-            @media only screen and (min-width:1600px) {
+            @include desktop {
                 width:340px;
                 height:340px;
                 margin-top:calc((100vh - 340px) / 2);
