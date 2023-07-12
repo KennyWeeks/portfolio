@@ -124,11 +124,18 @@
                 box-shadow:inset 0 0 0 15px $offBlack; 
             }
 
-            @media only screen and (min-width:1080px) {
+            @media only screen and (min-width:1080px) and (max-width:1599px) {
                 width:340px;
                 height:340px;
                 margin-top:calc((100vh - 340px) / 2);
                 margin-left:calc(((100vw - 700px) - 340px) / 2);
+            }
+
+            @media only screen and (min-width:1600px) {
+                width:340px;
+                height:340px;
+                margin-top:calc((100vh - 340px) / 2);
+                margin-left:calc(((1600px - 700px) - 340px) / 2);
             }
             box-shadow:inset 0 0 0 20px $offBlack;
             border-radius:50%;

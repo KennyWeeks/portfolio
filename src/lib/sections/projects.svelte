@@ -164,7 +164,7 @@
                     @media only screen and (max-width:810px) {
                         width:90%;
                     }
-                    @media only screen and (max-width:810px) and (min-width:600px) {
+                    @media only screen and (max-width:810px) and (min-width:500px) {
                         @include flexRow;
                     }
                     @media only screen and (min-width:811px) {
@@ -184,9 +184,17 @@
                             opacity:0.5;
                         }
 
-                        @media only screen and (max-width:810px) and (min-height:401px) {
-                            width:100%;
+                        @media only screen and (max-width:810px) and (min-width:500px) {
+                            width:300px;
+                            height:300px;
+                            filter:blur(3px);
+                            opacity:0.5;
+                        }
+
+                        @media only screen and (max-width:499px) {
                             min-height:200px;
+                            height:calc(90vw * 0.9);
+                            width:100%;
                         }
 
                         @media only screen and (min-width:811px) {
@@ -259,6 +267,22 @@
                             padding:20px;
                             border-radius:20px;
                         }
+
+                        @media only screen and (max-width:810px) and (min-width:500px) {
+                            width:70%;
+                            position:absolute;
+                            box-shadow:inset 0 0 0 2px #fff;
+                            background-color:$offBlack;
+                            top:50%;
+                            transform:translateY(-50%);
+                            padding:20px;
+                            border-radius:20px;
+                        }
+
+                        @media only screen and (max-width:499px) {
+                            width:100%;
+                        }
+
                         @media only screen and (min-width:811px) {
                             width:calc(100% - 400px);
                             @include flexCenter;
