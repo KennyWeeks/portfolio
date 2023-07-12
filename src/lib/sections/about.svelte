@@ -21,34 +21,41 @@
 
             <div class="content_container">
 
-                <p>
-                    I am a computer science
-                    graduate, currently attending
-                    the University of California,
-                    Irvine. I have a Bachelors of Science
-                    in Computer Science from UNLV and two
-                    minors in mathematics and physics. I’ve
-                    been programming since high school, and I
-                    enjoy working at the lowest level of a 
-                    computer, specifically O.S. and compilers.
-                </p>
+                <div class="content_section">
+                    <p>
+                        I am a computer science
+                        graduate, currently attending
+                        the University of California,
+                        Irvine. I have a Bachelors of Science
+                        in Computer Science from UNLV and two
+                        minors in mathematics and physics. I’ve
+                        been programming since high school, and I
+                        enjoy working at the lowest level of a 
+                        computer, specifically O.S. and compilers.
+                    </p>
+                </div>
 
                 <div id="education">
 
-                    <p>
-                        University of Nevada, Las Vegas<br>
-                        GPA: 3.657<br>
-                        Bachelors in Computer Science<br>
-                        Minors in Physics and Mathematics<br>
-                    </p>
-                    <hr/>
-                    <p>
-                        University of California, Irvine<br>
-                        GPA: 3.9<br>
-                        Masters in Computer Science
-                    </p>
+                    <div id="in-edu">
+
+                        <p>
+                            University of Nevada, Las Vegas<br>
+                            GPA: 3.657<br>
+                            Bachelors in Computer Science<br>
+                            Minors in Physics and Mathematics<br>
+                        </p>
+                        <p>
+                            University of California, Irvine<br>
+                            GPA: 3.9<br>
+                            Masters in Computer Science
+                        </p>
+
+                    </div>
             
                 </div>
+
+                <div id="skills"></div>
 
             </div>
 
@@ -105,7 +112,7 @@
                 width:40vw;
                 height:40vw;   
                 box-shadow:inset 0 0 0 15px $offBlack;
-                margin-left:10px;
+                margin-left:5vw;
                 margin-bottom:0px;
             }
 
@@ -191,6 +198,7 @@
             
         }
 
+        //This is the black box that the content is stored in.
         #surrounding_area {
 
             @media only screen and (max-width:600px) {
@@ -236,10 +244,8 @@
                     height:calc(700px - 5vw);
                     border-radius:20px;
                     margin-right:5vw;
-                    @include flexCenter;
                 }
                 
-                background-color:$offBlack;
                 text-align:center;
                 position:relative;
                 color:$offWhite;
@@ -253,62 +259,109 @@
                 }
 
                 .content_container {
+                    display:flex;
+                    flex-direction:row;
+                    flex-wrap:wrap;
                     @media only screen and (max-width:600px) {
                         height:100%;
                     }
+                    //So this is when the screen shrinks
                     @media only screen and (min-width:601px) and (max-width:1079px) {
                         width:80%;
+                        height:100%;
                     }
-                    p {
-                        @media only screen and (max-width:600px) {
-                            width:250px;
-                            transform:rotate(25deg);
-                            height:100%;
-                        }
 
-                        @media only screen and (min-width:601px) and (max-width:1079px) {
-                            text-align:left;
-                        }
+                    @media only screen and (min-width:1080px) {
+                        width:100%;
+                        height:100%;
+                    }
 
-                        @media only screen and (min-width:1080px) {
-                            width:500px;
-                            font-size:17px;
-                            text-align:left;
-                        }
-                        margin:auto;
-                        display:inline-block;
-                        text-align:center;
+
+                    .content_section {
+                        width:100%;
+                        height:50%;
+                        border-bottom-right-radius:20px;
+                        border-bottom-left-radius:20px;
                         @include flexCenter;
-                        font-family:"Arial Black";
-                        font-size:15px;
+                        background-color:$offBlack;
+
+                        p {
+                            @media only screen and (max-width:600px) {
+                                width:250px;
+                                transform:rotate(25deg);
+                                height:100%;
+                            }
+
+                            @media only screen and (min-width:601px) and (max-width:1079px) {
+                                text-align:left;
+                            }
+
+                            @media only screen and (min-width:1080px) {
+                                width:500px;
+                                font-size:17px;
+                                text-align:left;
+                            }
+                            margin:auto;
+                            display:inline-block;
+                            text-align:center;
+                            @include flexCenter;
+                            font-family:"Arial Black";
+                            font-size:15px;
+                            padding-top:35px;
+                        }
                     }
+
+                    
 
                     #education {
-                        width:500px;
+                        width:calc(50% - 5px);
+                        
                         overflow:hidden;
+                        background-color:$offBlack;
+                        border-radius:20px;
                         
                         margin-top:10px;
                         text-align:left;
+                        height:calc(50% - 10px);
+                        position:relative;
+                        @include flexCenter;
                         
-                        & > p {
-                            font-family:"Arial";
-                            font-size:15px;
-                            margin-left:0px;
-                            text-align:left;
-                            display:inline-block;
-                        }
+                        #in-edu {
+                            position:absolute;
+                            text-align:center;
+                            overflow:hidden;
+                            margin-top:-40px;
 
-                        & > hr {
-                            width:50%;
-                            height:2px;
-                            background-color:$offWhite;
-                            margin-left:0px;
-                            border:none;
+                            p {
+                                //width:calc(100% - 10px);
+                                width:80%;
+                                font-family:"Arial";
+                                font-size:15px;
+                                text-align:left;
+                                display:inline-block;
+                            }
+
+                            & > p:nth-of-type(2) {
+                                margin-top:10px;
+                            }
                         }
+                    }
+
+                    #skills {
+                        width:calc(50% - 5px);
+                        overflow:hidden;
+                        background-color:$offBlack;
+                        border-radius:20px;
+                        
+                        margin-top:10px;
+                        margin-left:10px;
+                        text-align:left;
+                        height:calc(50% - 10px);
                     }
 
                 }
 
+                //So this will position both images in there respective position
                 img:nth-of-type(1) {
                     top:0px;
                 }
