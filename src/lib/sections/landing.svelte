@@ -42,7 +42,7 @@
 
     <div id="intro" class:layout_2_intro={screenWidth <= screenHeight} class:layout_1_intro={screenWidth > screenHeight} >
 
-        <h3 id="intro_text" style="font-size:{screenHeight <= 600 ? "30px" : "5vw"}"><span id="hi">Hi,</span><br> <span id="my">my name is Kenny Weeks. </span><br> <span id="welcome">Welcome to my  ...</span> </h3>
+        <h3 id="intro_text"><span id="hi">Hi,</span><br> <span id="my">my name is Kenny Weeks. </span><br> <span id="welcome">Welcome to my  ...</span> </h3>
 
         <img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_large"}.svg" alt="portfolio_text"/>
 
@@ -99,17 +99,8 @@
 
             h3 {
                 font-family:"Goldoni";
-                font-size:50px;
                 margin-bottom:0px;
-
-                @media only screen and (min-width:600px) {
-                    font-size:5vw;
-                }
-
-                @media only screen and (max-width:599px) {
-                    font-size:35px;
-                }
-
+                font-size:6vw;
                 margin-left:10px;
                 
                 span {
