@@ -4,6 +4,7 @@
     import project from "../data/projects.json";
     import Device from 'svelte-device-info';
     export let scroll : number = 0;
+    let mobile : boolean = false;
     let top : any = 0;
     export let path : string = "";
 
@@ -14,6 +15,7 @@
         top = p?.offsetTop;
         console.log(p?.offsetTop);
         console.log(scroll);
+        mobile = Device.isMobile;
     });
 
 </script>
@@ -47,9 +49,9 @@
                             {/each}
                         </div>
 
-                        <div class="picture_mover" style="{Device.isMobile ? "display:none;" : ""}"></div>
+                        <div class="picture_mover" style="{ mobile ? "display:none;" : ""}"></div>
 
-                        <div class="picture_mover" style="{Device.isMobile ? "display:none;" : ""}"></div>
+                        <div class="picture_mover" style="{ mobile ? "display:none;" : ""}"></div>
 
                     </div>
 
