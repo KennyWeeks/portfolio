@@ -96,12 +96,30 @@
         #intro {
             width:90vw;
             overflow:hidden;
+            @include phoneHoriz {
+                position:absolute;
+                bottom:-20px;
+                left:50%;
+                transform:translateX(-50%);
+            }
 
             h3 {
                 font-family:"Goldoni";
                 margin-bottom:0px;
-                font-size:6vw;
-                margin-left:10px;
+
+                @include phoneVert {
+                    font-size:6vw;
+                }
+                @include tablet {
+                    font-size:4vw;
+                }
+
+                @include laptop {
+                    font-size: 5vw;
+                }
+                @include desktop {
+                    font-size: 5vw;
+                }
                 
                 span {
                     opacity:0;
@@ -112,6 +130,7 @@
             img {
                 opacity: 0;
                 transition: opacity 1s linear;
+                width:90vw;
             }
 
         }

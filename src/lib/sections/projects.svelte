@@ -110,25 +110,15 @@
             width:90vw;
             margin-top:5px;
             margin-left:5vw;
-            @media only screen and (max-width:600px) {
-                
-                flex-direction:row-reverse;
-            }
+
             img {
                 margin-bottom:10px;
-
-                @media only screen and (max-width:600px) {
-                    display:none
-                }
             }
 
             .github_link {
                 width:50px;
                 height:50px;
                 background-color:$offBlack;
-                @media only screen and (max-width:600px) {
-                    margin-right:5vw;
-                }
                 margin-right:0px;
                 margin-top:15px;
                 border-radius:60px;

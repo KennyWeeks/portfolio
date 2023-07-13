@@ -16,6 +16,12 @@ $desktopMin: 1600px;
     }
 }
 
+@mixin phoneHorizFont {
+    @media only screen and (max-height:$mobile) and (max-width:800px) {
+        @content;
+    }
+}
+
 @mixin phoneHoriz {
     @media only screen and (max-height:$mobile) {
         @content;
