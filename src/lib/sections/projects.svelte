@@ -385,7 +385,6 @@
                         h3 {
                             @include randomTest("<810px") {
                                 width:100%;
-                                color:#00ff00;
                             }
                             @include flexRow;
                         }

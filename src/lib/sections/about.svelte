@@ -35,14 +35,16 @@
 
                     <div id="in-edu">
 
+                        <h3>Education</h3>
+
                         <p>
-                            University of Nevada, Las Vegas<br>
+                            <span class="university">University of Nevada, Las Vegas</span>
                             GPA: 3.657<br>
                             Bachelors in Computer Science<br>
                             Minors in Physics and Mathematics<br>
                         </p>
                         <p>
-                            University of California, Irvine<br>
+                            <span class="university">University of California, Irvine</span>
                             GPA: 3.9<br>
                             Masters in Computer Science
                         </p>
@@ -51,7 +53,12 @@
             
                 </div>
 
-                <div id="skills"></div>
+                <div id="skills">
+
+                    <h3>Skills</h3>
+
+
+                </div>
 
             </div>
 
@@ -155,6 +162,7 @@
         //This is the black box that the content is stored in.
         #surrounding_area {
             overflow-x:hidden;
+            overflow-y:visible;
             text-align:right;
 
             @include phoneVert {
@@ -164,8 +172,10 @@
 
             @include tablet {
                 width:100vw;
-                height:650px;
+                height:auto;
+                padding:20px 0px;
                 margin-top:80px;
+                box-shadow:inset 0 0 0 2px #000;
             }
 
             @include laptop {
@@ -183,7 +193,6 @@
                 text-align:center;
                 position:relative;
                 color:$offWhite;
-                overflow:hidden;
 
                 @include phoneVert {
                     width:90vw;
@@ -192,7 +201,6 @@
 
                 @include tablet {
                     width:90vw;
-                    height:650px;
                     margin-left:5vw;
                     border-radius:20px;
                 }
@@ -219,19 +227,16 @@
                     flex-direction:row;
                     flex-wrap:wrap;
                     
-                    @media only screen and (max-width:600px) {
+                    @include phoneVert {
                         height:100%;
                         padding:20px 0px;
                     }
                     //So this is when the screen shrinks
                     @include tablet {
-                        width:80%;
-                        margin-left:10%;
-                        height:100%;
                         border-radius:20px;
                     }
 
-                    @media only screen and (min-width:1080px) {
+                    @include laptop {
                         width:100%;
                         height:100%;
                     }
@@ -240,8 +245,8 @@
                     .content_section {
                         width:100%;
 
-                        @include randomTest(">600px") {
-                            height:50%;
+                        @include tablet {
+                            padding:50px 0px;
                         }
 
                         border-radius:20px;
@@ -254,7 +259,8 @@
                             display:inline-block;
                             text-align:center;
                             @include flexCenter;
-                            font-family:"Arial Black";
+                            font-family:"Arial";
+                            font-weight:bolder;
 
                             @include phoneVert {
                                 width:80%;
@@ -281,14 +287,19 @@
                     
 
                     #education {
-                        @include randomTest(">600px") {
+                        @include randomTest(">500px") {
                             width:calc(50% - 5px);
-                            height:calc(50% - 10px);
+                            height:auto;
+                            padding:50px 0px;
                         }
 
                         @include phoneVert {
                             width:100%;
                             padding:20px 0px;
+                        }
+
+                        @include tablet {
+                            align-self:center;
                         }
                         
                         overflow:hidden;
@@ -296,16 +307,19 @@
                         border-radius:20px;
                         margin-top:10px;
                         text-align:left;
-                        position:relative;
                         @include flexCenter;
                         
                         #in-edu {
-                            @include randomTest(">600px") {
-                                position:absolute;
-                            }
 
                             text-align:center;
                             overflow:hidden;
+
+                            h3 {
+                                font-weight:bolder;
+                                text-transform:uppercase;
+                                margin-bottom:0px;
+                                margin-top:0px;
+                            }
 
                             p {
                                 //width:calc(100% - 10px);
@@ -314,6 +328,21 @@
                                 font-size:15px;
                                 text-align:left;
                                 display:inline-block;
+
+                                .university {
+                                    font-weight:bolder;
+                                    font-size:18px;
+
+                                    &:after {
+                                        height:2px;
+                                        width:50%;
+                                        background-color:$offWhite;
+                                        display:block;
+                                        content:"";
+                                        margin-bottom:0px;
+                                    }
+                                }
+
                             }
 
                             & > p:nth-of-type(2) {
@@ -323,9 +352,17 @@
                     }
 
                     #skills {
-                        @include randomTest(">600px") {
+                        @include tablet {
                             width:calc(50% - 5px);
-                            height:calc(50% - 10px);
+                            //height:calc(50% - 10px);
+                            padding:50px 0px;
+                            margin-left:10px;
+                        }
+
+                        @include laptop {
+                            width:calc(50% - 5px);
+                            //height:calc(50% - 10px);
+                            padding:50px 0px;
                             margin-left:10px;
                         }
 
@@ -338,7 +375,15 @@
                         background-color:$offBlack;
                         border-radius:20px;
                         margin-top:10px;
-                        text-align:left;
+                        text-align:center;
+                        align-self:center;
+
+                        h3 {
+                            font-weight:bolder;
+                            text-transform:uppercase;
+                            margin-bottom:0px;
+                            margin-top:0px;
+                        }
                     }
 
                 }

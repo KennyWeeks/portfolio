@@ -25,6 +25,23 @@
         port.style.opacity = 1;
        }, 3600);
 
+       const resizeChange = () => {
+        let wolf : any = document.getElementById("wolf");
+        let intro : any = document.getElementById("intro");
+        let intro_text : any = document.getElementById("intro_text");
+        if(window.innerHeight < 500) {
+            if(wolf.offsetTop + wolf.clientHeight >= (intro.offsetTop + intro_text.offsetTop)) {
+                let pixel : number = parseInt(window.getComputedStyle(intro_text).fontSize);
+                intro_text.style.fontSize = pixel - 10 + "px";
+            }
+        }
+
+       }
+
+       document.addEventListener("resize", ()=>{
+        resizeChange();
+       });
+
        let wolf : any = document.getElementById("wolf");
        console.log("This is the wolf logo " + wolf.offsetTop);
        console.log("This is the height of the logo " + wolf.clientHeight);
@@ -39,7 +56,6 @@
             if(wolf.offsetTop + wolf.clientHeight >= (intro.offsetTop + intro_text.offsetTop)) {
                 let pixel : number = parseInt(window.getComputedStyle(intro_text).fontSize);
                 intro_text.style.fontSize = pixel - 10 + "px";
-                intro_text.style.color = "#00ff0f";
             }
        }
     });
