@@ -70,6 +70,12 @@
             cursor:default;
 
             li {
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Old versions of Firefox */
+                    -ms-user-select: none; /* Internet Explorer/Edge */
+                        user-select: none;
                 text-align:right;
                 margin-bottom:2.5px;
                 font-family:"Goldoni";

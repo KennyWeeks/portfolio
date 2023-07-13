@@ -38,26 +38,12 @@
 
        }
 
-       document.addEventListener("resize", ()=>{
+       //Will need to add this tomorrow
+       window.addEventListener("resize", ()=>{
         resizeChange();
        });
 
-       let wolf : any = document.getElementById("wolf");
-       console.log("This is the wolf logo " + wolf.offsetTop);
-       console.log("This is the height of the logo " + wolf.clientHeight);
-
-       let intro : any = document.getElementById("intro");
-       console.log("This is where the intro begins " + intro.offsetTop);
-       let intro_text : any = document.getElementById("intro_text");
-       console.log("This is the where the text begins " + intro_text.offsetTop);
-       console.log(window.getComputedStyle(intro_text).fontSize);
-
-       if(window.innerHeight < 500) {
-            if(wolf.offsetTop + wolf.clientHeight >= (intro.offsetTop + intro_text.offsetTop)) {
-                let pixel : number = parseInt(window.getComputedStyle(intro_text).fontSize);
-                intro_text.style.fontSize = pixel - 10 + "px";
-            }
-       }
+       resizeChange();
     });
 
 
