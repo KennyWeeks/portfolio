@@ -38,7 +38,8 @@
        if(window.innerHeight < 500) {
             if(wolf.offsetTop + wolf.clientHeight >= (intro.offsetTop + intro_text.offsetTop)) {
                 let pixel : number = parseInt(window.getComputedStyle(intro_text).fontSize);
-                intro.style.fontSize = pixel - 10 + "px";
+                intro_text.style.fontSize = pixel - 10 + "px";
+                intro_text.style.color = "#00ff0f";
             }
        }
     });
