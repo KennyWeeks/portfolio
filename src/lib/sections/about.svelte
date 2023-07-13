@@ -1,5 +1,6 @@
 <script lang="ts">
     export let path : string = ""
+    import skills from "../data/skills.json"
 </script>
 
 <div id="about">
@@ -57,6 +58,31 @@
 
                     <h3>Skills</h3>
 
+                    <h4>Compiled Languages</h4>
+
+                    <div class="skills_blocks">
+                        {#each skills["programming_languages"] as cl}
+                            <p> {cl} </p>
+                        {/each}
+                    </div>
+
+                    <h4>Scripting Languages</h4>
+
+                    <div class="skills_blocks">
+                        {#each skills["scripting_languages"] as sl}
+                            <p> {sl} </p>
+                        {/each}
+
+                    </div>
+
+                    <h4>Design Tools</h4>
+
+                    <div class="skills_blocks">
+                        {#each skills["design_tools"] as dt}
+                            <p> {dt} </p>
+                        {/each}
+                    </div>
+
 
                 </div>
 
@@ -98,9 +124,10 @@
 
         @include laptop {
             //So this is the full screen size, and it will maximize the screen size.
-            height:100vh;
+            height:auto;
             max-width:1600px;
             margin:auto;
+            padding:20px 0px;
             @include flexRow;
         }
 
@@ -136,7 +163,7 @@
             @include desktop {
                 width:340px;
                 height:340px;
-                margin-top:calc((100vh - 340px) / 2);
+                margin-top:calc((100% - 340px) / 2);
                 margin-left:calc(((1600px - 700px) - 340px) / 2);
             }
 
@@ -190,7 +217,6 @@
                 text-align:center;
                 position:relative;
                 color:$offWhite;
-                box-shadow:inset 0 0 0 2px $offBlack;
 
                 @include phoneVert {
                     width:90vw;
@@ -204,7 +230,7 @@
                 }
                 @include laptop {
                     width:calc(700px - 5vw);
-                    height:calc(700px - 5vw);
+                    height:auto;
                     border-radius:20px;
                     margin-right:5vw;
                     @include flexCenter;
@@ -236,7 +262,7 @@
 
                     @include laptop {
                         width:100%;
-                        height:100%;
+                        height:auto;
                     }
 
 
@@ -257,8 +283,7 @@
                             display:inline-block;
                             text-align:center;
                             @include flexCenter;
-                            font-family:"Arial";
-                            font-weight:bolder;
+                            font-family:"Gill Sans";
 
                             @include phoneVert {
                                 width:80%;
@@ -270,14 +295,15 @@
 
                             @include tablet {
                                 text-align:left;
-                                font-size: 17px;
+                                font-size: 19px;
                                 width:80%;
                             }
 
                             @include laptop {
                                 width:500px;
-                                font-size:17px;
+                                font-size:19px;
                                 text-align:left;
+                                padding:50px 0px;
                             }
                         }
                     }
@@ -285,11 +311,6 @@
                     
 
                     #education {
-                        @include randomTest(">500px") {
-                            width:calc(50% - 5px);
-                            height:auto;
-                            padding:50px 0px;
-                        }
 
                         @include phoneVert {
                             width:100%;
@@ -298,6 +319,16 @@
 
                         @include tablet {
                             align-self:center;
+                            width:calc(50% - 5px);
+                            height:auto;
+                            padding:50px 0px;
+                        }
+
+                        @include laptop {
+                            align-self:center;
+                            width:calc(50% - 5px);
+                            height:auto;
+                            padding:50px 0px;
                         }
                         
                         overflow:hidden;
@@ -381,6 +412,24 @@
                             text-transform:uppercase;
                             margin-bottom:0px;
                             margin-top:0px;
+                        }
+
+                        .skills_blocks {
+                            width:80%;
+                            @include flexRow;
+                            margin-left:10%;
+                            flex-wrap:wrap;
+                            justify-content:space-between;
+
+                            p {
+                                line-height:0px;
+                                padding:20px;
+                                box-shadow:inset 0 0 0 2px $offWhite;
+                                align-items:left;
+                                margin-bottom:2px;
+                                margin-top:2px;
+                                border-radius:20px;
+                            }
                         }
                     }
 

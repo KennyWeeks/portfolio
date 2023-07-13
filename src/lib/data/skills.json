@@ -1,0 +1,5 @@
+{
+    "programming_languages": ["C", "C++", "Java", "GoLang"],
+    "scripting_languages": ["Python", "ReactJS", "Svelte", "Javascript", "PHP"],
+    "design_tools": ["Adobe Illustrator", "Adobe Photoshop", "Adobe Premier", "Figma"]
+}

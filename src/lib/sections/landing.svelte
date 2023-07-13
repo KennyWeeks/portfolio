@@ -68,11 +68,32 @@
 
     </div>
 
+    <div id="move_into_website">
+        <div id="beacon_circle"></div>
+    </div>
+
 </div>
 
 <style lang="scss">
 
     @import "../../styles/theme.scss";
+
+    @keyframes beacon {
+        0% {
+            width:50px;
+            height:50px;
+        }
+        20% {
+            width:80px;
+            height:80px;
+            border:0px solid $offBlack;
+        }
+        100% {
+            width:80px;
+            height:80px;
+            border:0px solid $offBlack;
+        }
+    }
 
     #landing {
         width:100vw;
@@ -89,7 +110,7 @@
         }
 
         #clocks {
-            width:350px;
+            width:400px;
         }
 
         .layout_1_clocks {
@@ -153,6 +174,30 @@
                 width:90vw;
             }
 
+        }
+
+        #move_into_website {
+            width:50px;
+            height:50px;
+            border:5px solid #000;
+            border-radius:50%;
+            position:absolute;
+            bottom:30px;
+            left:50%;
+            transform:translateX(-50%);
+
+            #beacon_circle {
+                width:50px;
+                height:50px;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform: translate(-50%, -50%);
+                border:5px solid $offBlack;
+                border-radius:50%;
+                animation: beacon 5s linear infinite;
+                animation-delay:5s;
+            }
         }
     }
 
