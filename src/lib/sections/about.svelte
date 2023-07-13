@@ -175,7 +175,6 @@
                 height:auto;
                 padding:20px 0px;
                 margin-top:80px;
-                box-shadow:inset 0 0 0 2px #000;
             }
 
             @include laptop {
