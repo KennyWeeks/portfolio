@@ -182,9 +182,7 @@
                 width:700px;
                 bottom:0px;
                 right:0px;
-                border-radius:20px;
-                height:90vh;
-                margin-top:5vh;
+                height:auto;
                 @include flexCenter;
             }
 
@@ -193,6 +191,7 @@
                 text-align:center;
                 position:relative;
                 color:$offWhite;
+                box-shadow:inset 0 0 0 2px $offBlack;
 
                 @include phoneVert {
                     width:90vw;
