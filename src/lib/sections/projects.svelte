@@ -55,18 +55,6 @@
 
                         </div>
 
-                        <!--<div class="image_tracker">
-                            <div class="image_blip_mover"></div>
-
-                            {#each Array(10) as _, i}
-                                <div class="image_blip"></div>
-                            {/each}
-                        </div>
-
-                        <div class="picture_mover" style="{ mobile ? "display:none;" : ""}"></div>
-
-                        <div class="picture_mover" style="{ mobile ? "display:none;" : ""}"></div>-->
-
                     </div>
 
                     <div class="project_body" style="{index % 2 == 0 ? "right:0px;" : "left:0px;"}">
@@ -100,16 +88,25 @@
         position:relative;
         width:100vw;
         padding-top:10px;
-        @media only screen and (min-width:811px) {
+        @include randomTest(">#{$tabletMax}") {
             padding-bottom:20px;
         }
         font-family:"Arial Black";
 
         .intro_block{
             @include flexRow;
-            width:90vw;
             margin-top:5px;
-            margin-left:5vw;
+            
+            @include randomTest("<#{$laptopMax}") {
+                width:90vw;
+                margin-left:5vw;
+            }
+            @include randomTest(">#{$laptopMax}") {
+                width:1600px;
+                margin:auto;
+            }
+            
+            
 
             img {
                 margin-bottom:10px;
@@ -138,68 +135,88 @@
             }
         }
 
+        //This is is the body of the content;
+
         #projects_floating_tab {
             background-color:$offBlack;
+            height:auto;/*This will be a dummy height, will size to content*/
+            padding-top:20px;
+            //background-color:$offBlack;
+            transition:all 0.2s linear;
 
-            @media only screen and (max-width:810px) {
-                border-top-right-radius:30px;
-                border-top-left-radius:30px;
+            @include tablet {
                 margin-top:10px;
             }
 
-            @media only screen and (min-width:811px) {
+            @include laptop {
                 width:90vw;
+                max-width:1600px;
                 margin-left:5vw;
                 border-radius:20px;
             }
 
-            height:auto;/*This will be a dummy height, will size to content*/
-            padding-top:20px;
-            padding-bottom:20px;
-            //background-color:$offBlack;
-            transition:all 0.2s linear;
+            @include desktop {
+                width:1600px;
+                margin:auto;
+                border-radius:20px;
+            }
 
             #content-holder {
-                width:90vw;
                 margin:auto;
+                @include randomTest("<#{$laptopMax}") {
+                    width:calc(90vw);
+                }
+                @include randomTest(">#{$laptopMax}") {
+                    width:1600px;
+                }
+                
 
                 .body_parts {
                     color:$offWhite;
-                    @media only screen and (max-width:810px) {
+                    margin:auto;
+                    font-family:"Gill Sans";
+                    position:relative;
+
+                    @include phoneVert {
                         width:90%;
                     }
-                    @media only screen and (max-width:810px) and (min-width:500px) {
+                    @include randomTest(">#{$tabletMin}") {
                         @include flexRow;
                     }
-                    @media only screen and (min-width:811px) {
+
+                    //We'll make the custom one in sass first, but we can shrink they two down
+                    @include tablet {
                         width:calc(90vw - 40px);
-                        @include flexRow;
                     }
-                    margin:auto;
-                    font-family:"Arial";
-                    position:relative;
+                    @include laptop {
+                        width:calc(90vw - 40px);
+                    }
+
+                    @include desktop {
+                        width:calc(100% - 40px);
+                    }
 
                     .project_image {
 
+                        //background-color:$offWhite;
+                        border-radius:10px;
+                        overflow:hidden;
+                        position:relative;
+                        height:300px;
+
                         @media only screen and (max-height:400px) {
                             width:300px;
-                            height:300px;
-                            filter:blur(3px);
                             opacity:0.5;
                         }
 
                         @media only screen and (max-width:1049px) and (min-width:800px) {
                             width:600px;
-                            height:300px;
-                            filter:blur(3px);
                             opacity:0.5;
                             @include flexRow;
                         }
 
                         @media only screen and (max-width:799px) and (min-width:500px) {
                             width:450px;
-                            height:300px;
-                            filter:blur(3px);
                             opacity:0.5;
                             @include flexRow;
                         }
@@ -211,7 +228,6 @@
 
                         @media only screen and (min-width:1050px) {
                             width:450px;
-                            height:300px;
                             @include flexRow;
                         }
 
@@ -221,7 +237,8 @@
                             background-color:$offWhite;
                             border-radius:20px;
 
-                            @media only screen and (max-width:499px) {
+                            @include phoneVert {
+                                //So on a vertical phone screen, this will be the final height
                                 width:100%;
                                 height:250px;
                                 background-color:$offWhite;
@@ -264,7 +281,7 @@
                         }
 
                         @media only screen and (max-width:499px) {
-                            .side_image {
+                            .side_images {
                                 display:none;
                             }
                         }
@@ -286,73 +303,20 @@
                             }
 
                         }
-                        //background-color:$offWhite;
-                        border-radius:10px;
-                        overflow:hidden;
-                        position:relative;
 
-                        /*.picture_mover {
-                            width:50px;
-                            height:50px;
-                            border-radius:50%;
-                            background-color:$offBlack;
-                            position:absolute;
-                            top:calc((100% - 50px) / 2);
-                            box-shadow:inset 0 0 0 5px $offBlack, inset 0 0 0 4px $offWhite;
-                            transition:box-shadow 0.2s linear;
-                            &:hover {
-                                box-shadow:inset 0 0 0 5px $offBlack, inset 0 0 0 10px $offWhite;
-                            }
-                        }
-
-                        .picture_mover:nth-of-type(2) {
-                            left:-25px;
-                        }
-
-                        .picture_mover:nth-of-type(3) {
-                            right:-25px;
-                            
-                        }
-
-                        .image_tracker {
-                            width:80%;
-                            height:10px;
-                            position:absolute;
-                            left:10%;
-                            bottom:10px;
-                            @include flexRow;
-
-                            .image_blip {
-                                width:10px;
-                                height:10px;
-                                background-color:$offBlack;
-                                border-radius:50%;
-                            }
-
-                            .image_blip_mover {
-                                position:absolute;
-                                background-color:$offWhite;
-                                width:6px;
-                                height:6px;
-                                border-radius:50%;
-                                top:2px;
-                                left:2px;
-                            }
-                        }*/
                     }
 
-                    
-
                     .project_body {
+                        padding:20px;
+                        border-radius:20px;
+                        background-color:$offBlack;
+
                         @include phoneHoriz {
                             width:70%;
                             position:absolute;
-                            box-shadow:inset 0 0 0 2px #fff;
-                            background-color:$offBlack;
+                            
                             top:50%;
                             transform:translateY(-50%);
-                            padding:20px;
-                            border-radius:20px;
                         }
 
                         //Here are the horizontal styles
@@ -363,12 +327,16 @@
                         @include tablet {
                             width:70%;
                             position:absolute;
-                            box-shadow:inset 0 0 0 2px #fff;
-                            background-color:$offBlack;
                             top:50%;
                             transform:translateY(-50%);
-                            padding:20px;
-                            border-radius:20px;
+
+                            h3 {
+                                width:100%;
+                            }
+
+                            h3, p {
+                                font-size:18px;
+                            }
                         }
 
                         @include laptop {
@@ -378,33 +346,41 @@
                             h3, p {
                                 width:80%;
                                 margin-left:0%;
+                                font-size:20px;
                             }
                         }
 
-                        //I realistically don't know why I did this, but okay
-                        h3 {
-                            @include randomTest("<810px") {
-                                width:100%;
+                        @include desktop {
+                            width:calc(100% - 450px);
+                            @include flexCenter;
+                            h3, p {
+                                width:80%;
+                                margin-left:0%;
+                                font-size:20px;
                             }
-                            @include flexRow;
                         }
                     }
+
                 }
             }
         }
 
         //These are the styles to get the full screen
         .full_width {
-            @include randomTest("<810px") {
+            @include randomTest("<#{$tabletMax}") {
                 width:100vw;
                 margin-left:0vw;
+                border-top-left-radius:20px;
+                border-top-right-radius:20px;
             }
         }
 
         .partial_width {
-            @include userDef(810px) {
+            @include randomTest("<#{$tabletMax}") {
                 width:90vw;
                 margin-left:5vw;
+                border-top-left-radius:20px;
+                border-top-right-radius:20px;
             }
         }
     }

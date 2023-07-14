@@ -6,17 +6,17 @@
 
 <div id="contacts">
 
-    <img src="{path}/images/contact_header{screenWidth <= 810 ? "_no_overlay" : "_dark"}.png" width=250px alt="contact_header"/>
+    <img src="{path}/images/contact_header{screenWidth <= 1049 ? "_no_overlay" : "_dark"}.png" width=250px alt="contact_header"/>
 
     <p>I AM CURRENTLY NOT ACCEPTING ANY
         FREELANCE WORK, BUT FEEL FREE TO 
         MESSAGE ME AND VIEW OTHER PROJECTS</p>
 
     <ul>
-        <li><span><img src="{path}/images/linkedin{screenWidth <= 810 ? "_off_white" : ""}.png" alt="linkedin" width=20/></span>LinkedIN</li>
-        <li><span><img src="{path}/images/octocat{screenWidth <= 810 ? "": "_off_black"}.png" alt="github" width=25/></span>Github</li>
-        <li><span><img src="{path}/images/resume{screenWidth <= 810 ? "_off_white" : ""}.png" alt="resume" width=20/></span>Resume</li>
-        <li><span><img src="{path}/images/gmail{screenWidth <= 810 ? "_off_white" : ""}.png" alt="gmail" width=20/></span>Email</li>
+        <li><span><img src="{path}/images/linkedin{screenWidth <= 1049 ? "_off_white" : ""}.png" alt="linkedin" width=20/></span>LinkedIN</li>
+        <li><span><img src="{path}/images/octocat{screenWidth <= 1049 ? "": "_off_black"}.png" alt="github" width=25/></span>Github</li>
+        <li><span><img src="{path}/images/resume{screenWidth <= 1049 ? "_off_white" : ""}.png" alt="resume" width=20/></span>Resume</li>
+        <li><span><img src="{path}/images/gmail{screenWidth <= 1049 ? "_off_white" : ""}.png" alt="gmail" width=20/></span>Email</li>
     </ul>
 
 </div>
@@ -29,26 +29,37 @@
         overflow:hidden;
         width:100vw; 
         position:relative;
-        @media only screen and (max-width:810px) {
+        margin-top:0px;
+        padding-bottom:30px; 
+
+        @include phoneVert {
             background-color:$offBlack;
             padding-left:10vw;
-            padding-bottom:30px;
         }
-        @media only screen and (min-width:811px) {
+        @include tablet {
+            background-color:$offBlack;
+            padding-left:calc(5vw + 20px);
+        }
+        @include laptop {
             background-color:$offWhite;
-            padding-left:5vw;
+            padding-left:calc(5vw + 20px);
         }
-        margin-top:0px;
+        @include desktop {
+            width:1600px;
+            margin-left:calc((100vw - 1600px) / 2);
+            padding-left:20px;
+        }
+        
 
         p {
             margin-top:0px;
             font-family:"Arial Black";
             font-size:15px;
             width:70vw;
-            @media only screen and (max-width:810px) {
+            @include randomTest("<#{$tabletMax}") {
                 color:$offWhite;
             }
-            @media only screen and (min-width:811px) {
+            @include laptop {
                 color:$offBlack;
             }
         }
@@ -59,12 +70,20 @@
             padding:0px;
             display:block;
             float:right;
-            @media only screen and (max-width:810px) {
+            @include phoneVert {
                 margin-right:20vw;
             }
 
-            @media only screen and (min-width:811px) {
-                margin-right:10vw;    
+            @include tablet {
+                margin-right:15vw;
+            }
+
+            @include laptop {
+                margin-right:calc(10vw + 40px);    
+            }
+
+            @include desktop {
+                margin-right:40px;
             }
             
             cursor:default;
@@ -81,10 +100,10 @@
                 font-family:"Goldoni";
                 font-weight:lighter;
                 font-size:25px;
-                @media only screen and (max-width:810px) {
+                @include randomTest("<#{$tabletMax}") {
                     color:$offWhite;
                 }
-                @media only screen and (min-width:811px) {
+                @include randomTest(">#{$tabletMax}") {
                     color:$offBlack;
                 }
                 
