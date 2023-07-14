@@ -55,9 +55,9 @@
     <img id="wolf" alt="wolf" src="{path}/images/wolf.png" width=80px/>
 
     <div id="clocks" class:layout_1_clocks={screenWidth > screenHeight} class:layout_2_clocks={screenWidth <= screenHeight}>
-        <Clock/>
+        <Clock path={path}/>
 
-        <Clock otherRegion={10} region="Bucharest"/>
+        <Clock path={path} otherRegion={10} region="Bucharest"/>
     </div>
 
     <div id="intro" class:layout_2_intro={screenWidth <= screenHeight} class:layout_1_intro={screenWidth > screenHeight} >
@@ -179,11 +179,13 @@
         #move_into_website {
             width:50px;
             height:50px;
-            border:5px solid #000;
+            border:5px solid hsl(0, 0%, 0%);
             border-radius:50%;
-            position:absolute;
-            bottom:30px;
-            left:50%;
+            @include randomTest(">#{$tabletMin}") {
+                position:absolute;
+                bottom:30px;
+                left:50%;
+            }
             transform:translateX(-50%);
 
             #beacon_circle {

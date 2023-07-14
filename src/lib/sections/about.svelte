@@ -133,12 +133,12 @@
 
         @include phoneVert {
             //This will pretty much just be the mobile size of the content;
-            padding:20px 0px;
+            padding:50px 0px 10px 0px;
         }
 
         @include randomTest((">#{$tabletMin}", "<1200px")) {
             width:100vw;
-            padding:80px 0px;
+            padding:80px 0px 10px 0px;
         }
 
         @include randomTest((">1200px", "<#{$laptopMax}")) {

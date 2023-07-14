@@ -144,6 +144,10 @@
             //background-color:$offBlack;
             transition:all 0.2s linear;
 
+            @include phoneVert {
+                padding-bottom:20px;
+            }
+
             @include tablet {
                 margin-top:10px;
                 padding-bottom:20px;
@@ -224,6 +228,7 @@
 
                         @media only screen and (max-width:499px) {
                             min-height:200px;
+                            height:250px;
                             width:100%;
                         }
 
@@ -243,7 +248,8 @@
                                 width:100%;
                                 height:250px;
                                 background-color:$offWhite;
-                                border-radius:20px;
+                                border-radius:10px;
+                                margin-bottom:0px;
                             }
                         }
 
@@ -308,7 +314,11 @@
                     }
 
                     .project_body {
-                        padding:20px;
+                        padding-top:20px;
+                        padding-bottom:20px;
+                        @include randomTest(">#{$tabletMin}") {
+                            padding:20px;
+                        }
                         border-radius:20px;
                         background-color:$offBlack;
 
@@ -322,7 +332,18 @@
 
                         //Here are the horizontal styles
                         @include phoneVert {
-                            width:100%;
+                            margin-left:0px;
+                            h3 {
+                                @include flexRow;
+                                font-size:22px;
+                                width:100%;
+                                margin-top:0px;
+                            }
+                            p {
+                                font-size:20px;
+                                margin-bottom:0px;
+                                width:100%;
+                            }
                         }
 
                         @include tablet {
@@ -333,10 +354,11 @@
 
                             h3 {
                                 width:100%;
+                                font-size:22px;
                             }
 
-                            h3, p {
-                                font-size:18px;
+                            p {
+                                font-size:20px;
                             }
                         }
 
