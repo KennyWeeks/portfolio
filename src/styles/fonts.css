@@ -5,3 +5,10 @@
     font-weight:900;
     src: url('/fonts/Goldoni_DEMO.otf');
 }
+
+@font-face {
+    font-family:"Gill Sans";
+    font-style:normal;
+    font-weight:500;
+    src: url('/fonts/Gill_Sans.otf');
+}

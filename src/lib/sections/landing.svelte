@@ -147,7 +147,7 @@
             }
 
             h3 {
-                font-family:"Goldoni";
+                font-family:"Gill Sans";
                 margin-bottom:0px;
 
                 @include phoneVert {
