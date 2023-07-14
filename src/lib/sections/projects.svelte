@@ -61,15 +61,15 @@
 
                         <h3>{p["title"]} <span><img src="{path}/images/octocat.png" alt="octocat" width=20px/></span></h3>
 
-                        <p>{p["description"]}</p>
+                        <p class="desc">{p["description"]}</p>
 
-                        <p><i>stack - </i></p>
+                        <p class="stack"><i>stack - </i></p>
 
-                        <p>
+                        <div>
                             {#each p["stack"] as st, j}
-                                {st}{#if j !== p["stack"].length - 1},&nbsp;{/if}  
+                                <p class="tools">{st}{#if j !== p["stack"].length - 1},&nbsp;{/if}</p>
                             {/each}
-                        </p> 
+                        </div> 
 
                     </div>
                 </div>
@@ -143,9 +143,10 @@
             padding-top:20px;
             //background-color:$offBlack;
             transition:all 0.2s linear;
+            padding-bottom:20px;
 
             @include phoneVert {
-                padding-bottom:20px;
+                
             }
 
             @include tablet {
@@ -333,16 +334,22 @@
                         //Here are the horizontal styles
                         @include phoneVert {
                             margin-left:0px;
-                            h3 {
+                            h3, .desc, .stack, {
                                 @include flexRow;
                                 font-size:22px;
                                 width:100%;
                                 margin-top:0px;
                             }
-                            p {
-                                font-size:20px;
-                                margin-bottom:0px;
+                            .desc {
+                                margin:0px;
+                            }
+                            div {
                                 width:100%;
+                                p {
+                                    font-size:20px;
+                                    display:inline-block;
+                                    margin:0px;
+                                }
                             }
                         }
 
@@ -352,34 +359,69 @@
                             top:50%;
                             transform:translateY(-50%);
 
-                            h3 {
+                            h3, .desc, .stack {
                                 width:100%;
                                 font-size:22px;
                             }
 
-                            p {
+                            .desc, .stack {
+                                margin-top:0px;
                                 font-size:20px;
                             }
+
+                            div {
+                                width:100%;
+                                p {
+                                    font-size:20px;
+                                    display:inline-block;
+                                    margin:0px
+                                }
+                            }
+
                         }
 
                         @include laptop {
                             //So this is the larger screens of this stuff
                             width:calc(100% - 450px);
                             @include flexCenter;
-                            h3, p {
-                                width:80%;
+
+                            h3, .desc, .stack {
                                 margin-left:0%;
+                                width:80%;
+                                font-size:22px;
+                            }
+
+                            .desc, .stack {
+                                margin:0px;
                                 font-size:20px;
+                            }
+
+                            div {
+                                width:80%;
+                                .tools {
+                                    display:inline-block;
+                                    font-size:20px;
+                                    margin:0px;
+                                }
                             }
                         }
 
                         @include desktop {
                             width:calc(100% - 450px);
                             @include flexCenter;
-                            h3, p {
+                            h3, .desc, .stack {
                                 width:80%;
                                 margin-left:0%;
                                 font-size:20px;
+                            }
+
+                            div {
+                                width:80%;
+                                p {
+                                    display:inline-block;
+                                    margin:0px;
+                                    font-size:20px;
+                                }
                             }
                         }
                     }
