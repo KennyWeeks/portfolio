@@ -66,10 +66,10 @@
                         <p><i>stack - </i></p>
 
                         <p>
-                            {#each p["stack"] as st}
-                                <i>{st}, </i> 
+                            {#each p["stack"] as st, j}
+                                {st}{#if j !== p["stack"].length - 1},&nbsp;{/if}  
                             {/each}
-                        </p>
+                        </p> 
 
                     </div>
                 </div>
@@ -97,11 +97,11 @@
             @include flexRow;
             margin-top:5px;
             
-            @include randomTest("<#{$laptopMax}") {
+            @include randomTest(("<#{$laptopMax}")) {
                 width:90vw;
                 margin-left:5vw;
             }
-            @include randomTest(">#{$laptopMax}") {
+            @include randomTest((">#{$laptopMax}")) {
                 width:1600px;
                 margin:auto;
             }
@@ -146,6 +146,7 @@
 
             @include tablet {
                 margin-top:10px;
+                padding-bottom:20px;
             }
 
             @include laptop {

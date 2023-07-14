@@ -5,11 +5,22 @@
 
     onMount(()=>{
         let about : any = document.getElementById("about");
-        if(window.innerWidth > 1600) {
+        if(window.innerWidth > 1200) {
             let marginTop : number = (about.clientHeight - 340) / 2;
             let pom: any = document.getElementById("picture_of_me");
             pom.style.marginTop = marginTop + "px";
         }
+        window.addEventListener("resize", ()=>{
+            let about : any = document.getElementById("about");
+            if(window.innerWidth > 1200) {
+                let marginTop : number = (about.clientHeight - 340) / 2;
+                let pom: any = document.getElementById("picture_of_me");
+                pom.style.marginTop = marginTop + "px";
+            } else {
+                let pom: any = document.getElementById("picture_of_me");
+                pom.style.marginTop = "0px";
+            }
+        });
     });
 </script>
 
@@ -125,12 +136,12 @@
             padding:20px 0px;
         }
 
-        @include tablet {
+        @include randomTest((">#{$tabletMin}", "<1200px")) {
             width:100vw;
-            padding:50px 0px;
+            padding:80px 0px;
         }
 
-        @include laptop {
+        @include randomTest((">1200px", "<#{$laptopMax}")) {
             //So this is the full screen size, and it will maximize the screen size.
             height:auto;
             max-width:1600px;
@@ -145,7 +156,6 @@
             margin:auto;
             padding:20px 0px;
             @include flexRow;
-            box-shadow:inset 0 0 0 2px #000;
         }
 
         #picture_of_me {
@@ -162,7 +172,7 @@
                 margin-top:30px;
             }
 
-            @include tablet {
+            @include randomTest((">#{$tabletMin}", "<1200px")) {
                 margin:auto;
                 margin-bottom:0px;
                 width:30vw;
@@ -170,10 +180,9 @@
                 box-shadow:inset 0 0 0 15px $offBlack; 
             }
 
-            @include laptop {
+            @include randomTest((">1200px", "<#{$laptopMax}")) {
                 width:340px;
                 height:340px;
-                margin-top:calc((100vh - 340px) / 2);
                 margin-left:calc(((100vw - 700px) - 340px) / 2);
             }
 
@@ -190,12 +199,12 @@
                     width:470px;
                     animation: rotate 10s linear infinite; 
                 }
-                @include laptop {
+                @include randomTest((">1200px", "<#{$laptopMax}")) {
                     width:470px;
                     animation: rotate 10s linear infinite;
                 }
 
-                @include tablet {
+                @include randomTest((">#{$tabletMin}", "<1200px")) {
                     width:42vw;
                     animation: rotate 10s linear infinite;
                 }
@@ -218,14 +227,14 @@
                 height:auto;
             }
 
-            @include tablet {
+            @include randomTest((">#{$tabletMin}", "<1200px")) {
                 width:100vw;
                 height:auto;
                 padding:20px 0px;
                 margin-top:80px;
             }
 
-            @include laptop {
+            @include randomTest((">1200px", "<#{$laptopMax}")) {
                 width:700px;
                 bottom:0px;
                 right:0px;
@@ -239,7 +248,6 @@
                 right:0px;
                 height:auto;
                 @include flexCenter;
-                box-shadow:inset 0 0 0 2px #000;
             }
 
 
@@ -253,12 +261,12 @@
                     margin-left:5vw;
                 }
 
-                @include tablet {
+                @include randomTest((">#{$tabletMin}", "<1200px")) {
                     width:90vw;
                     margin-left:5vw;
                     border-radius:20px;
                 }
-                @include laptop {
+                @include randomTest((">1200px", "<#{$laptopMax}")) {
                     width:calc(700px - 5vw);
                     height:auto;
                     border-radius:20px;
@@ -270,7 +278,6 @@
                     width:100%;
                     height:auto;
                     @include flexCenter;
-                    box-shadow:inset 0 0 0 2px #00ff00;
                 }
 
                 //This is the pattern at the top
@@ -286,11 +293,11 @@
                         padding:20px 0px;
                     }
                     //So this is when the screen shrinks
-                    @include tablet {
+                    @include randomTest((">#{$tabletMin}", "<1200px")) {
                         border-radius:20px;
                     }
 
-                    @include laptop {
+                    @include randomTest((">1200px", "<#{$laptopMax}")) {
                         width:100%;
                         height:auto;
                     }
@@ -323,14 +330,14 @@
                                 padding:50px 0px;
                             }
 
-                            @include tablet {
+                            @include randomTest((">#{$tabletMin}", "<1200px")) {
                                 text-align:left;
                                 font-size: 19px;
                                 padding:50px 0px;
                                 width:80%;
                             }
 
-                            @include laptop {
+                            @include randomTest((">1200px", "<#{$laptopMax}")) {
                                 width:500px;
                                 font-size:19px;
                                 text-align:left;
@@ -359,14 +366,14 @@
                             padding:20px 0px;
                         }
 
-                        @include tablet {
+                        @include randomTest((">#{$tabletMin}", "<1200px")) {
                             align-self:center;
                             width:calc(50% - 5px);
                             height:auto;
                             padding:50px 0px;
                         }
 
-                        @include laptop {
+                        @include randomTest((">1200px", "<#{$laptopMax}")) {
                             align-self:center;
                             width:calc(50% - 5px);
                             height:auto;
@@ -427,14 +434,14 @@
                     }
 
                     #skills {
-                        @include tablet {
+                        @include randomTest((">#{$tabletMin}", "<1200px")) {
                             width:calc(50% - 5px);
                             //height:calc(50% - 10px);
                             padding:50px 0px;
                             margin-left:10px;
                         }
 
-                        @include laptop {
+                        @include randomTest((">1200px", "<#{$laptopMax}"))  {
                             width:calc(50% - 5px);
                             //height:calc(50% - 10px);
                             padding:50px 0px;

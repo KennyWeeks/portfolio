@@ -66,11 +66,14 @@ $desktopMin: 1600px;
 
 @mixin randomTest($list) {
     $sep : "";
-    @for $i from 1 through length($list) {
-        @if str-slice(nth($list, $i), 2, 2) != "=" {
-            @media only screen and (minOrMax(nth($list, $i))) {
-                @content;
-            }
+
+    @if length($list) == 2 {
+        @media only screen and (minOrMax(nth($list, 1))) and (minOrMax(nth($list, 2))) {
+            @content;
+        }
+    } @else {
+        @media only screen and (minOrMax(nth($list, 1))) {
+            @content;
         }
     }
 }
