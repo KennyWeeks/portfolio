@@ -181,12 +181,17 @@
             height:50px;
             border:5px solid hsl(0, 0%, 0%);
             border-radius:50%;
+            position:relative;
             @include randomTest(">#{$tabletMin}") {
                 position:absolute;
                 bottom:30px;
                 left:50%;
+                transform:translateX(-50%);
             }
-            transform:translateX(-50%);
+            @include randomTest("<#{$tabletMin}") {
+                background-color:#000;
+            }
+            
 
             #beacon_circle {
                 width:50px;
