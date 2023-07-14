@@ -1,6 +1,16 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     export let path : string = ""
     import skills from "../data/skills.json"
+
+    onMount(()=>{
+        let about : any = document.getElementById("about");
+        if(window.innerWidth > 1600) {
+            let marginTop : number = (about.clientHeight - 340) / 2;
+            let pom: any = document.getElementById("picture_of_me");
+            pom.style.marginTop = marginTop + "px";
+        }
+    });
 </script>
 
 <div id="about">
@@ -13,8 +23,6 @@
 
     <div id="surrounding_area">
         <div id="content_area">
-
-            <img src="{path}/images/pattern.png" alt="pattern"/>
 
             <div class="content_container">
 
@@ -131,6 +139,15 @@
             @include flexRow;
         }
 
+        @include desktop {
+            height:auto;
+            width:1600px;
+            margin:auto;
+            padding:20px 0px;
+            @include flexRow;
+            box-shadow:inset 0 0 0 2px #000;
+        }
+
         #picture_of_me {
             box-shadow:inset 0 0 0 20px $offBlack;
             border-radius:50%;
@@ -163,12 +180,16 @@
             @include desktop {
                 width:340px;
                 height:340px;
-                margin-top:calc((100% - 340px) / 2);
-                margin-left:calc(((1600px - 700px) - 340px) / 2);
+                margin-left:calc(((1600px - 800px) - 340px) / 2);
             }
 
             //This is the spinning part of the image
             img {
+
+                @include desktop {
+                    width:470px;
+                    animation: rotate 10s linear infinite; 
+                }
                 @include laptop {
                     width:470px;
                     animation: rotate 10s linear infinite;
@@ -212,6 +233,15 @@
                 @include flexCenter;
             }
 
+            @include desktop {
+                width:800px;
+                bottom:0px;
+                right:0px;
+                height:auto;
+                @include flexCenter;
+                box-shadow:inset 0 0 0 2px #000;
+            }
+
 
             #content_area {
                 text-align:center;
@@ -236,15 +266,15 @@
                     @include flexCenter;
                 }
 
+                @include desktop {
+                    width:100%;
+                    height:auto;
+                    @include flexCenter;
+                    box-shadow:inset 0 0 0 2px #00ff00;
+                }
+
                 //This is the pattern at the top
                 
-                img {
-                    height:50px;
-                    position:absolute;
-                    left:0px;
-                    top:0px;
-                    display:none;
-                }
 
                 .content_container {
                     display:flex;
@@ -265,18 +295,18 @@
                         height:auto;
                     }
 
+                    @include desktop {
+                        width:100%;
+                        height:auto;
+                    }
+
 
                     .content_section {
                         width:100%;
-
-                        @include tablet {
-                            padding:50px 0px;
-                        }
-
                         border-radius:20px;
                         background-color:$offBlack;
                         @include flexCenter;
-                        
+
 
                         p {
                             margin:auto;
@@ -296,6 +326,7 @@
                             @include tablet {
                                 text-align:left;
                                 font-size: 19px;
+                                padding:50px 0px;
                                 width:80%;
                             }
 
@@ -305,12 +336,23 @@
                                 text-align:left;
                                 padding:50px 0px;
                             }
+
+                            @include desktop {
+                                width:500px;
+                                font-size:20px;
+                                text-align:left;
+                                padding:50px 0px;
+                            }
                         }
                     }
 
-                    
-
                     #education {
+                        overflow:hidden;
+                        background-color:$offBlack;
+                        border-radius:20px;
+                        margin-top:10px;
+                        text-align:left;
+                        @include flexCenter;
 
                         @include phoneVert {
                             width:100%;
@@ -330,18 +372,22 @@
                             height:auto;
                             padding:50px 0px;
                         }
-                        
-                        overflow:hidden;
-                        background-color:$offBlack;
-                        border-radius:20px;
-                        margin-top:10px;
-                        text-align:left;
-                        @include flexCenter;
+
+                        @include desktop {
+                            align-self:center;
+                            width:calc(50% - 5px);
+                            height:auto;
+                            padding:50px 0px;
+                        }
                         
                         #in-edu {
 
                             text-align:center;
                             overflow:hidden;
+
+                            @include desktop {
+                                font-size:20px;
+                            }
 
                             h3 {
                                 font-weight:bolder;
@@ -395,6 +441,13 @@
                             margin-left:10px;
                         }
 
+                        @include desktop {
+                            width:calc(50% - 5px);
+                            //height:calc(50% - 10px);
+                            padding:50px 0px;
+                            margin-left:10px;
+                        }
+
                         @include phoneVert {
                             width:100%;
                             padding:20px 0px;
@@ -429,6 +482,11 @@
                                 margin-bottom:2px;
                                 margin-top:2px;
                                 border-radius:20px;
+                                cursor:default;
+
+                                &:hover {
+                                    box-shadow:inset 0 0 0 5px $offWhite;
+                                }
                             }
                         }
                     }
