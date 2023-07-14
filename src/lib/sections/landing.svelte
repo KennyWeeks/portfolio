@@ -69,6 +69,7 @@
     </div>
 
     <div id="move_into_website">
+        <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
         <div id="beacon_circle"></div>
     </div>
 
@@ -80,6 +81,7 @@
 
     @keyframes beacon {
         0% {
+            border:5px solid $offBlack;
             width:50px;
             height:50px;
         }
@@ -179,7 +181,6 @@
         #move_into_website {
             width:50px;
             height:50px;
-            border:5px solid hsl(0, 0%, 0%);
             border-radius:50%;
             position:relative;
             @include randomTest(">#{$tabletMin}") {
@@ -188,8 +189,12 @@
                 left:50%;
                 transform:translateX(-50%);
             }
-            @include randomTest("<#{$tabletMin}") {
-                background-color:#000;
+
+            img {
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
             }
             
 
@@ -200,7 +205,6 @@
                 top:50%;
                 left:50%;
                 transform: translate(-50%, -50%);
-                border:5px solid $offBlack;
                 border-radius:50%;
                 animation: beacon 5s linear infinite;
                 animation-delay:5s;
