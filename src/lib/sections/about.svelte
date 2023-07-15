@@ -140,7 +140,7 @@
             #about-summary {
                 position:relative;
                 border-radius:$text-block-border-radius;
-                @include desktop {
+                @include randomTest((">1200px")) {
                     //So this will be the desktop styles
                     width:800px;
                     margin:auto;
@@ -166,7 +166,7 @@
                     font-family:$font-family;
                     width:90%;
                     margin-left:5%;
-                    @include desktop {
+                    @include randomTest((">1200px")) {
                         font-size:25px;
                     }
                 }
@@ -176,7 +176,7 @@
                 margin:auto;
                 height:100%;
 
-                @include desktop {
+                @include randomTest((">1200px")) {
                     width:400px;
                     display:block;
                 }
@@ -189,7 +189,7 @@
                     font-size:25px;
                     @include flexCenter;
 
-                    @include desktop {
+                    @include randomTest((">1200px")) {
                         width:400px;
                         height:49%;
 
@@ -265,7 +265,7 @@
                             display:inline-block;
                             border-radius:50px;
                             box-shadow:inset 0 0 0 2px $offWhite;
-                            @include desktop {
+                            @include randomTest((">1200px")) {
                                 font-size:25px;
                                 padding:10px 20px;
                                 margin-right:15px;

@@ -20,8 +20,6 @@
     h = e["target"].scrollTop;
 }}/>
 
-<Menu/>
-
 
 <Landing path={base} screenWidth={screenWidth} screenHeight={screenHeight}/>
 

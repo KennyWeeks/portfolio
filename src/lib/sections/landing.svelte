@@ -1,6 +1,7 @@
 <script lang="ts">
 
     import {onMount} from "svelte";
+    import Menu from "../menu.svelte";
 
     export let path : string = "";
     export let screenWidth : number;
@@ -12,6 +13,14 @@
        let my : any = document.getElementById("my");
        let wel : any = document.getElementById("welcome");
        let port : any = document.getElementById("portfolio_text");
+       let wolf : any = document.getElementById("wolf");
+       let bl : any = document.getElementById("bottom_line");
+       let ml : any = document.getElementById("middle_line");
+        bl.style.top = wolf.offsetTop + wolf.clientHeight + "px";
+        ml.style.top = wolf.offsetTop + (wolf.clientHeight / 2) + "px";
+        let menu : any = document.getElementById("menu");
+        menu.style.top = wolf.offsetTop + ((wolf.clientHeight - menu.clientHeight) / 2) + "px";
+        let intro : any = document.getElementById("intro");
        setTimeout(()=>{
         hi.style.opacity = 1;
        }, 500);
@@ -26,9 +35,9 @@
        }, 3600);
 
        const resizeChange = () => {
-        let wolf : any = document.getElementById("wolf");
         let intro : any = document.getElementById("intro");
         let intro_text : any = document.getElementById("intro_text");
+
         if(window.innerHeight < 500) {
             if(wolf.offsetTop + wolf.clientHeight >= (intro.offsetTop + intro_text.offsetTop)) {
                 let pixel : number = parseInt(window.getComputedStyle(intro_text).fontSize);
@@ -41,6 +50,9 @@
        //Will need to add this tomorrow
        window.addEventListener("resize", ()=>{
         //resizeChange();
+        if(window.innerHeight <= intro.clientHeight) {
+            intro.style.scale = (0.9 * window.innerHeight) + "px";
+        }
        });
 
        //resizeChange();
@@ -50,11 +62,17 @@
 
 </script>
 
+<Menu/>
+
+<div id="middle_line"></div>
+
+<div id="bottom_line"></div>
+
 <div id="landing">
 
     <img id="wolf" alt="wolf" src="{path}/images/wolf.png" width=80px/>
 
-    <div id="clocks" class:layout_1_clocks={screenWidth > screenHeight} class:layout_2_clocks={screenWidth <= screenHeight}>
+    <div id="clocks">
         <Clock path={path}/>
 
         <Clock path={path} otherRegion={10} region="Bucharest"/>
@@ -66,19 +84,39 @@
 
         <!--<img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_large"}.svg" alt="portfolio_text"/>
         -->
+        <br>
         <h1 id="portfolio_text">Portfolio</h1>
+
+        <div id="move_into_website">
+            <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
+            <div id="beacon_circle"></div>
+        </div>
     </div>
 
-    <div id="move_into_website">
-        <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
-        <div id="beacon_circle"></div>
-    </div>
+    
 
 </div>
 
 <style lang="scss">
 
     @import "../../styles/theme.scss";
+
+    #bottom_line,
+    #middle_line {
+        width:100vw;
+        height:2px;
+        position:absolute;
+        left:0px;
+        z-index:10000;
+    }
+
+    /*#bottom_line {
+        background-color:#00ff00;
+    }
+
+    #middle_line {
+        background-color:#ff0000;
+    }*/
 
     @keyframes beacon {
         0% {
@@ -102,50 +140,37 @@
         width:100vw;
         height:100%;
         background-color:$offWhite;
-        overflow:hidden;
         position:relative;
         @include flexCenter;
 
         #wolf {
             position:absolute;
             top:10px;
-            left:10px;
+            left:15px;
         }
 
         #clocks {
-            width:400px;
-        }
-
-        .layout_1_clocks {
-            @include flexRow;
-            position:absolute;
-            top:15px;
-            left:calc((100vw - 350px) / 2);
-        }
-
-        .layout_2_clocks {
+            width:290px;
+            height:auto;
             position:absolute;
             bottom:10px;
-            left:calc(5vw + 10px);
-        }
-
-        .layout_1_intro {
-            bottom:-30px;
-        }
-
-        .layout_2_intro {
-            bottom:60px;
+            left:15px;
         }
 
         #intro {
             //width:90vw;
-            overflow:hidden;
-
+            display:inline-block;
+            cursor:default;
+            box-shadow:inset 0 0 0 2px #000;
+            /*position:absolute;
+            top:50%;
+            transform:translateY(-50%);*/
 
             h3 {
                 font-family:"Gill Sans";
                 margin-bottom:0px;
-                margin-top:0px; 
+                margin-top:0px;
+                padding-left:1vw;
 
                 @include phoneVert {
                     font-size:6vw;
@@ -163,7 +188,7 @@
                 }
 
                 @include desktopFullScreen {
-                    font-size:80px;
+                    font-size:3vw
                 }
                 
                 span {
@@ -180,12 +205,16 @@
                 }
 
                 @include desktopFullScreen {
-                    width:90vw;
-                    font-size:350px;
+                    font-size:15vw;
+                }
+                @include laptop {
+                    font-size:10vw;
                 }
                 margin-top:0px;
                 margin-bottom:0px;
                 padding:0px;
+                display:inline-block;
+                line-height:13vw;
             }
 
         }
@@ -195,6 +224,8 @@
             height:50px;
             border-radius:50%;
             position:relative;
+            margin:auto;
+            margin-top:10px;
 
             @include desktopSmallScreen {
                 position:absolute;

@@ -35,10 +35,7 @@
     <!--<p><span><img src="{path}/images/sun.png"alt="time_of_day"/></span><span>{region}</span> <span>{hours}</span> <span class="semi-colon">:</span> <span>{minutes < 10 ? "0" : ""}{minutes}</span> <span>{amPm}</span></p>-->
 
     <div class="total_time_area">
-        <div class="title_image_color">
-            <img src="{path}/images/{image}.png"alt="time_of_day"/>
             <p>{region}</p>
-        </div>
 
         <p>{hours} <span class="semi-colon">:</span> {minutes < 10 ? "0" : ""}{minutes} {amPm}</p>
     </div>
@@ -56,51 +53,23 @@
     }
 
     .total_time_area {
-        @include flexRow;
-        .title_image_color {
-            background-color:$offBlack;
-            @include flexRow;
-            padding:5px 10px;
+        margin-top:10px;
+        p {
+            line-height:0px;
+            margin:0px;
+            padding:20px;
+            display:inline-block;
             border-radius:20px;
-
-            img {
-                height:20px;
-            }
-
-            p {
-                color:$offWhite;
-                margin:3px 0px 0px 5px;
+            @include desktop {
+                font-size:20px;
             }
         }
 
-        p {
-            margin:8px 0px 0px 5px;
+        p:nth-of-type(1) {
+            background-color:$offBlack;
+            color:$offWhite;
         }
 
     }
 
-    /*p {
-        :nth-child(1),
-        :nth-child(2) {
-            padding:7px 10px 5px 10px;
-            background-color:$offBlack;
-            color:$offWhite;
-            border-radius:20px;
-            line-height:0px;
-            text-transform:uppercase;
-        }
-
-        :nth-child(1) {
-            padding:0px;
-        }
-
-        .semi-colon {
-            opacity:1;
-            animation: blink 1s linear infinite;
-        }
-
-        span > img {
-            height:20px;
-        }
-    }*/
 </style>
