@@ -64,8 +64,9 @@
 
         <h3 id="intro_text"><span id="hi">Hi,</span><br> <span id="my">my name is Kenny Weeks. </span><br> <span id="welcome">Welcome to my  ...</span> </h3>
 
-        <img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_large"}.svg" alt="portfolio_text"/>
-
+        <!--<img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_large"}.svg" alt="portfolio_text"/>
+        -->
+        <h1 id="portfolio_text">Portfolio</h1>
     </div>
 
     <div id="move_into_website">
@@ -139,6 +140,7 @@
         #intro {
             width:90vw;
             overflow:hidden;
+            box-shadow:inset 0 0 0 2px #00ff00;
             @include phoneHoriz {
                 position:absolute;
                 bottom:-20px;
@@ -149,6 +151,7 @@
             h3 {
                 font-family:"Gill Sans";
                 margin-bottom:0px;
+                box-shadow:inset 0 0 0 2px #0000ff;
 
                 @include phoneVert {
                     font-size:6vw;
@@ -170,10 +173,14 @@
                 }
             }
 
-            img {
-                opacity: 0;
+            #portfolio_text {
                 transition: opacity 1s linear;
                 width:90vw;
+                font-size:10vw;
+                margin-left:-5px;
+                margin-top:0px;
+                box-shadow:inset 0 0 0 2px #ff0000;
+                padding:0px;
             }
 
         }
