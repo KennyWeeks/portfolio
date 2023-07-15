@@ -40,10 +40,10 @@
 
        //Will need to add this tomorrow
        window.addEventListener("resize", ()=>{
-        resizeChange();
+        //resizeChange();
        });
 
-       resizeChange();
+       //resizeChange();
     });
 
 
@@ -138,20 +138,14 @@
         }
 
         #intro {
-            width:90vw;
+            //width:90vw;
             overflow:hidden;
-            box-shadow:inset 0 0 0 2px #00ff00;
-            @include phoneHoriz {
-                position:absolute;
-                bottom:-20px;
-                left:50%;
-                transform:translateX(-50%);
-            }
+
 
             h3 {
                 font-family:"Gill Sans";
                 margin-bottom:0px;
-                box-shadow:inset 0 0 0 2px #0000ff;
+                margin-top:0px; 
 
                 @include phoneVert {
                     font-size:6vw;
@@ -163,8 +157,13 @@
                 @include laptop {
                     font-size: 5vw;
                 }
-                @include desktop {
-                    font-size: 5vw;
+                @include desktopSmallScreen {
+                    font-size:10vh;
+                    display:inline-block;
+                }
+
+                @include desktopFullScreen {
+                    font-size:80px;
                 }
                 
                 span {
@@ -174,12 +173,18 @@
             }
 
             #portfolio_text {
+                font-family:"Gill Sans";
                 transition: opacity 1s linear;
-                width:90vw;
-                font-size:10vw;
-                margin-left:-5px;
+                @include desktopSmallScreen {
+                    font-size:50vh;
+                }
+
+                @include desktopFullScreen {
+                    width:90vw;
+                    font-size:350px;
+                }
                 margin-top:0px;
-                box-shadow:inset 0 0 0 2px #ff0000;
+                margin-bottom:0px;
                 padding:0px;
             }
 
@@ -190,11 +195,12 @@
             height:50px;
             border-radius:50%;
             position:relative;
-            @include randomTest(">#{$tabletMin}") {
+
+            @include desktopSmallScreen {
                 position:absolute;
-                bottom:30px;
-                left:50%;
-                transform:translateX(-50%);
+                right:30px;
+                top:50%;
+                transform:translateY(-50%);
             }
 
             img {

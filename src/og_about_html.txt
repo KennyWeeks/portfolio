@@ -1,0 +1,83 @@
+<!--<div id="picture_of_me">
+
+        <img src="{path}/images/about_ring.png" alt="about ring"/>
+
+    </div>
+
+    <div id="surrounding_area">
+        <div id="content_area">
+
+            <div class="content_container">
+
+                <div class="content_section">
+                    <p>
+                        I am a computer science
+                        graduate, currently attending
+                        the University of California,
+                        Irvine. I have a Bachelors of Science
+                        in Computer Science from UNLV and two
+                        minors in mathematics and physics. I’ve
+                        been programming since high school, and I
+                        enjoy working at the lowest level of a 
+                        computer, specifically O.S. and compilers.
+                    </p>
+                </div>
+
+                <div id="education">
+
+                    <div id="in-edu">
+
+                        <h3>Education</h3>
+
+                        <p>
+                            <span class="university">University of Nevada, Las Vegas</span>
+                            GPA: 3.657<br>
+                            Bachelors in Computer Science<br>
+                            Minors in Physics and Mathematics<br>
+                        </p>
+                        <p>
+                            <span class="university">University of California, Irvine</span>
+                            GPA: 3.9<br>
+                            Masters in Computer Science
+                        </p>
+
+                    </div>
+            
+                </div>
+
+                <div id="skills">
+
+                    <h3>Skills</h3>
+
+                    <h4>Compiled Languages</h4>
+
+                    <div class="skills_blocks">
+                        {#each skills["programming_languages"] as cl}
+                            <p> {cl} </p>
+                        {/each}
+                    </div>
+
+                    <h4>Scripting Languages</h4>
+
+                    <div class="skills_blocks">
+                        {#each skills["scripting_languages"] as sl}
+                            <p> {sl} </p>
+                        {/each}
+
+                    </div>
+
+                    <h4>Design Tools</h4>
+
+                    <div class="skills_blocks">
+                        {#each skills["design_tools"] as dt}
+                            <p> {dt} </p>
+                        {/each}
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>-->

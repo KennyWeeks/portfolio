@@ -9,6 +9,9 @@ $laptopMin: 1050px;
 $laptopMax: 1599px;
 $desktopMin: 1600px;
 
+$text-block-border-radius: 10px;
+$font-family: "Gill Sans";
+
 //These are the two phone breakpoints
 @mixin phoneVert {
     @media only screen and (max-width:$mobile) {
@@ -44,6 +47,18 @@ $desktopMin: 1600px;
 
 @mixin desktop {
     @media only screen and (min-width:$desktopMin) {
+        @content;
+    }
+}
+
+@mixin desktopFullScreen {
+    @media only screen and (min-width:$desktopMin) and (min-height:$tabletMin) {
+        @content;
+    }
+}
+
+@mixin desktopSmallScreen  {
+    @media only screen and (min-width:$desktopMin) and (max-height: $mobile) {
         @content;
     }
 }
