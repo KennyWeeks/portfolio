@@ -34,26 +34,18 @@
         port.style.opacity = 1;
        }, 3600);
 
-       const resizeChange = () => {
-        let intro : any = document.getElementById("intro");
-        let intro_text : any = document.getElementById("intro_text");
-
-        if(window.innerHeight < 500) {
-            if(wolf.offsetTop + wolf.clientHeight >= (intro.offsetTop + intro_text.offsetTop)) {
-                let pixel : number = parseInt(window.getComputedStyle(intro_text).fontSize);
-                intro_text.style.fontSize = pixel - 10 + "px";
-            }
-        }
-
-       }
-
-       //Will need to add this tomorrow
        window.addEventListener("resize", ()=>{
-        //resizeChange();
-        if(window.innerHeight <= intro.clientHeight) {
-            intro.style.scale = (0.9 * window.innerHeight) + "px";
+        if(window.innerHeight < 500) {
+            intro.style.transform = "scale(" + (0.8 * window.innerHeight / 500) + ")"; 
+        } if (window.innerHeight >= 500) {
+            intro.style.transform = "scale(1.0)";
         }
        });
+
+
+       if(window.innerHeight <= 500) {
+        intro.style.transform = "scale(0.8)"; 
+       }
 
        //resizeChange();
     });
@@ -161,7 +153,6 @@
             //width:90vw;
             display:inline-block;
             cursor:default;
-            box-shadow:inset 0 0 0 2px #000;
             /*position:absolute;
             top:50%;
             transform:translateY(-50%);*/
@@ -200,21 +191,31 @@
             #portfolio_text {
                 font-family:"Gill Sans";
                 transition: opacity 1s linear;
+                margin-top:0px;
+                margin-bottom:0px;
+                padding:0px;
+                display:inline-block;
                 @include desktopSmallScreen {
                     font-size:50vh;
                 }
 
                 @include desktopFullScreen {
-                    font-size:15vw;
+                    font-size:20vw;
+                    line-height:13vw;
                 }
                 @include laptop {
-                    font-size:10vw;
+                    font-size:20vw;
+                    line-height:15vw;
                 }
-                margin-top:0px;
-                margin-bottom:0px;
-                padding:0px;
-                display:inline-block;
-                line-height:13vw;
+
+                @include tablet {
+                    font-size:25vw;
+                    line-height:17vw;
+                }
+
+                @include phoneVert {
+                    font-size:25vw;
+                }
             }
 
         }
@@ -225,13 +226,25 @@
             border-radius:50%;
             position:relative;
             margin:auto;
-            margin-top:10px;
+            
 
             @include desktopSmallScreen {
                 position:absolute;
                 right:30px;
                 top:50%;
                 transform:translateY(-50%);
+            }
+
+            @include tablet {
+                margin-top:30px;
+            }
+
+            @include laptop {
+                margin-top:30px;
+            }
+
+            @include desktopFullScreen {
+                margin-top:30px;
             }
 
             img {

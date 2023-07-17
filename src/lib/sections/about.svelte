@@ -129,11 +129,15 @@
     #about {
         width:100vw;
         height:auto;
-        padding:250px 0px 200px 0px;
         overflow:hidden;
         cursor:default;
         @include randomTest((">800px")) {
             @include flexCenter;
+            padding:250px 0px 200px 0px;
+        }
+
+        @include randomTest(("<800px")) {
+            padding:250px 0px 10vw 0px;
         }
 
         #about-content-area {
@@ -148,7 +152,6 @@
             @include randomTest(("<800px")) {
                 width:90vw;
                 margin-left:5vw;
-                box-shadow:inset 0 0 0 2px #00ff00;
             }
 
             #about_image {
@@ -158,18 +161,39 @@
                 top:-170px;
                 @include randomTest((">800px")) {
                     left:calc((800px - 340px) / 2);
+                    width:340px;
+                    height:340px;
+                    top:-170px;
                 }
-                @include randomTest(("<800px")) {
+                @include randomTest(("<800px", ">500px")) {
                     left:calc((90vw - 340px) / 2);
+                    width:340px;
+                    height:340px;
+                    top:-170px;
+                }
+                @include randomTest(("<500px")) {
+                    width:50vw;
+                    height:50vw;
+                    top:-25vw;
+                    left:calc((90vw - 50vw) / 2);
                 }
                 border-radius:50%;
                 box-shadow:inset 0 0 0 2px #000;
 
                 img {
-                    width:500px;
                     animation: rotate 10s linear infinite;
-                    margin-left:calc((340px - 500px) / 2);
-                    margin-top:calc((350px - 500px) / 2);
+                    @include randomTest((">500px")) {
+                        width:500px;   
+                        margin-left:calc((340px - 500px) / 2);
+                        margin-top:calc((350px - 500px) / 2);
+                    }
+
+                    @include randomTest(("<500px")) {
+                        width:75vw;
+                        margin-left:calc((50vw - 75vw) / 2);
+                        margin-top:calc((50vw - 75vw) / 2);
+                    }
+                    
                 }
             }
 
@@ -182,7 +206,6 @@
                     position:relative;
                     background-color:$offBlack;
                     border-radius:$text-block-border-radius;
-                    padding-top:170px;
                     padding-bottom:20px;
                     @include randomTest((">800px")) {
                         //So this will be the desktop styles
@@ -197,16 +220,35 @@
                         width:100%;
                     }
 
+                    @include randomTest((">500px")) {
+                        padding-top:170px;
+                    }
+
+                    @include randomTest(("<500px")) {
+                        padding-top:25vw;
+                    }
+
                     #picture {
-                        width:320px;
-                        height:320px;
                         position:absolute;
                         border-radius:50%;
                         background-color:$offWhite;
-                        top:-170px;
+                        
                         left:50%;
                         transform:translate(-50%);
-                        border:20px solid $offBlack;
+                        
+                        @include randomTest((">500px")) {
+                            width:320px;
+                            height:320px;
+                            border:20px solid $offBlack;
+                            top:-170px;
+                        }
+
+                        @include randomTest(("<500px")) {
+                            width:50vw;
+                            height:50vw;
+                            box-shadow:inset 0 0 0 20px $offBlack;
+                            top:-25vw;
+                        }
                     }
 
                     p {
@@ -235,12 +277,18 @@
                         display:block;
                     }
 
-                    @include randomTest(("<800px")) {
+                    @include randomTest(("<800px", ">600px")) {
                         width:100%;
                         height:auto;
                         margin-top:7px;
                         @include flexRow;
                     }
+
+                    @include randomTest(("<600px")) {
+                        width:100%;
+                        height:auto;
+                        margin-top:7px;
+                    } 
 
                     .individual-edu {
                         background-color:$offBlack;
@@ -262,11 +310,19 @@
                             }
                         }
 
-                        @include randomTest(("<800px")) {
+                        @include randomTest(("<800px", ">600px")) {
                             width:49.5%;
                             padding:20px 0px;
                             font-size:20px;
+                        }
+                        @include randomTest(("<600px")) {
+                            width:100%;
+                            padding:20px 0px;
+                            font-size:20px;
 
+                            &:nth-of-type(2) {
+                                margin-top:7px;
+                            }
                         }
 
                         .university {
@@ -300,27 +356,56 @@
                 font-family:$font-family;
                 color:$offWhite;
                 position:relative;
-                @include flexRow;
+                @include randomTest((">800px")) {
+                    @include flexRow;
+                }
 
                 .vert-divide {
-                    height:80%;
-                    width:2.5px;
                     background-color:$offWhite;
                     position:absolute;
-                    top:10%;
-                    right:0px;
+                    @include randomTest((">800px")) {
+                        height:80%;
+                        width:2.5px;
+                        top:10%;
+                        right:0px;
+                    }
+
+                    @include randomTest(("<800px")) {
+                        width:80%;
+                        height:2.5px;
+                        bottom:0px;
+                        left:10%;
+                    }
                     
                 }
 
                 .skills-body {
-                    width:33.33%;
-                    height:400px;
                     position:relative;
+                    @include randomTest((">800px")) {
+                        width:33.33%;
+                        height:400px;
+                    }
+                    @include randomTest(("<800px")) {
+                        width:100%;
+                        padding:20px 0px;
+                    }
+                    
 
                     .individual-skill-contain {
+                        width:80%;
+                        margin:auto;
 
                         h3 {
-                            font-size:25px;
+                            @include randomTest((">800px")) {
+                                font-size:25px;                    
+                                margin-top:10%;
+                            }
+
+                            @include randomTest(("<800px")) {
+                                font-size:20px;
+
+                            }
+
                             text-transform:capitalize;
                             margin-top:0px;
 
@@ -332,9 +417,7 @@
                                 display:block;
                             }
                         }
-                        width:80%;
-                        margin:auto;
-                        margin-top:10%;
+                        
                         .individual-skill {
                             display:inline-block;
                             border-radius:50px;
@@ -345,6 +428,14 @@
                                 margin-right:15px;
                                 margin-top:0px;
                                 margin-bottom:10px;
+                            }
+
+                            @include randomTest(("<800px")) {
+                                font-size:20px;
+                                padding:10px 20px;
+                                margin-top:0px;
+                                margin-bottom:10px;
+                                margin-right:15px;
                             }
                         }
                     }

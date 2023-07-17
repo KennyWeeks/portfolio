@@ -6,11 +6,11 @@
 		<link rel="icon" href="/portfolio/images/wolf_white.png" />
 		<meta name="viewport" content="width=device-width" />
 		
-		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/start.d334b983.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/start.5d945203.js">
 		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/scheduler.dfb2f7c0.js">
-		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/singletons.f39d8cbc.js">
-		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/paths.57b16f99.js">
-		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/app.a15ff1ba.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/singletons.016c3d16.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/paths.492b7812.js">
+		<link rel="modulepreload" href="/portfolio/_app/immutable/entry/app.32ddb9d6.js">
 		<link rel="modulepreload" href="/portfolio/_app/immutable/chunks/index.97c92902.js">
 	</head>
 	<style>
@@ -34,12 +34,16 @@
 			background-color:#f2f2f2;
 		}
 
+		body::-webkit-scrollbar {
+			display:none;
+		}
+
 	</style>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">
 			<script>
 				{
-					__sveltekit_175h7w6 = {
+					__sveltekit_a5vian = {
 						assets: "/portfolio",
 						base: "/portfolio",
 						env: {}
@@ -48,8 +52,8 @@
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("/portfolio/_app/immutable/entry/start.d334b983.js"),
-						import("/portfolio/_app/immutable/entry/app.a15ff1ba.js")
+						import("/portfolio/_app/immutable/entry/start.5d945203.js"),
+						import("/portfolio/_app/immutable/entry/app.32ddb9d6.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
