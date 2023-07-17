@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
     import project from "../data/projects.json";
     import Device from 'svelte-device-info';
+    import { inview } from "svelte-inview";
     export let scroll : number = 0;
     let mobile : boolean = false;
     let top : any = 0;

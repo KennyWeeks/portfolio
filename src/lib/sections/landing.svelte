@@ -151,7 +151,6 @@
             //width:90vw;
             display:inline-block;
             cursor:default;
-            box-shadow:inset 0 0 0 2px #00ff00;
             /*position:absolute;
             top:50%;
             transform:translateY(-50%);*/
@@ -162,7 +161,8 @@
             }
 
             h3 {
-                font-family:$font-family;
+                font-family:"Arial";
+                font-weight:lighter;
                 margin-bottom:0px;
                 margin-top:0px;
 

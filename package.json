@@ -23,6 +23,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-device-info": "^1.0.0"
+		"svelte-device-info": "^1.0.0",
+		"svelte-inview": "^4.0.1"
 	}
 }
