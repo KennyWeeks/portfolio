@@ -49,26 +49,6 @@
         intro.style.transform = "scale(" + 0.8 * window.innerHeight / 500 + ")"; 
        }
 
-       if(intro.clientWidth >= window.innerWidth) {
-        intro.style.transform = "scale(" + 0.8 * window.innerWidth / 500 + ")";
-       }
-
-       let r : any = document.querySelector(":root");
-       r.style.setProperty("--minuteAngleStart", (360 * (min / 60)) + "deg");
-       r.style.setProperty("--hourAngleStart", (360 * (hours % 12 / 12)) + "deg");
-       
-
-       setInterval(()=>{
-        let angle : number = parseFloat(getComputedStyle(r).getPropertyValue("--minuteAngleStart"));
-        r.style.setProperty("--minuteAngleStart", angle + 6 + "deg");
-       }, 60000);
-
-       setInterval(()=>{
-        let angle : number = parseFloat(getComputedStyle(r).getPropertyValue("--hourAngleStart"));
-        r.style.setProperty("--hourAngleStart", angle + 30 + "deg");
-       }, 3600000);
-
-       //resizeChange();
     });
 
 
@@ -114,27 +94,6 @@
 
     @import "../../styles/theme.scss";
 
-    :root {
-        --minuteAngleStart: 5deg;
-        --hourAngleStart: 0deg;
-    }
-
-    #bottom_line,
-    #middle_line {
-        width:100vw;
-        height:2px;
-        position:absolute;
-        left:0px;
-        z-index:10000;
-    }
-
-    /*#bottom_line {
-        background-color:#00ff00;
-    }
-
-    #middle_line {
-        background-color:#ff0000;
-    }*/
 
     @keyframes beacon {
         0% {
@@ -154,33 +113,6 @@
         }
     }
 
-    @keyframes rotate {
-        0% {
-            transform:rotate(0deg);
-        }
-        100% {
-            transform:rotate(360deg);
-        }
-    }
-
-    @keyframes rotateMinute {
-        0% {
-            transform:rotate(var(--minuteAngleStart));
-        }
-        100% {
-            transform:rotate(calc(var(--minuteAngleStart) + 6deg));
-        }
-    }
-
-    @keyframes rotateHours {
-        0% {
-            transform:rotate(var(--hourAngleStart));
-        }
-        100% {
-            transform:rotate(calc(var(--hourAngleStart) + 30deg));
-        }
-    }
-
     @keyframes blink {
         0% {
             opacity:0.0;
@@ -196,6 +128,7 @@
         background-color:$offWhite;
         position:relative;
         @include flexCenter;
+        text-size-adjust:none;
 
         #clock {
             position:absolute;
