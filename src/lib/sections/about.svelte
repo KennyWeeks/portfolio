@@ -298,12 +298,13 @@
                         
                         @include flexCenter;
                         overflow:hidden;
-                        margin-top:0px;
+                        margin-right:0px;
 
                         @include randomTest((">800px")) {
-                            width:400px;
+                            width:405px;
                             height:49%;
                             font-size:25px;
+                            margin-right:0px;
 
                             &:nth-of-type(2) {
                                 margin-top:2%;

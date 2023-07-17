@@ -47,6 +47,27 @@
         intro.style.transform = "scale(" + 0.8 * window.innerHeight / 500 + ")"; 
        }
 
+       if(intro.clientWidth >= window.innerWidth) {
+        alert("Sup");
+       }
+
+       let r : any = document.querySelector(":root");
+       let min : any = new Date().getMinutes();
+       let hours : any = new Date().getHours();
+       r.style.setProperty("--minuteAngleStart", (360 * (min / 60)) + "deg");
+       r.style.setProperty("--hourAngleStart", (360 * (hours % 12 / 12)) + "deg");
+       
+
+       setInterval(()=>{
+        let angle : number = parseFloat(getComputedStyle(r).getPropertyValue("--minuteAngleStart"));
+        r.style.setProperty("--minuteAngleStart", angle + 6 + "deg");
+       }, 60000);
+
+       setInterval(()=>{
+        let angle : number = parseFloat(getComputedStyle(r).getPropertyValue("--hourAngleStart"));
+        r.style.setProperty("--hourAngleStart", angle + 30 + "deg");
+       }, 3600000);
+
        //resizeChange();
     });
 
@@ -62,13 +83,15 @@
 
 <div id="landing">
 
-    <img id="wolf" alt="wolf" src="{path}/images/wolf.png" width=80px/>
+    <div id="clock">
 
-    <div id="clocks">
-        <Clock path={path}/>
+        <div id="hour_hand"></div>
+        <div id="minute_hand"></div>
+        <div id="second_hand"></div>
 
-        <Clock path={path} otherRegion={10} region="Bucharest"/>
     </div>
+
+    <img id="wolf" alt="wolf" src="{path}/images/wolf.png" width=80px/>
 
     <div id="intro" class:layout_2_intro={screenWidth <= screenHeight} class:layout_1_intro={screenWidth > screenHeight} >
 
@@ -92,6 +115,11 @@
 <style lang="scss">
 
     @import "../../styles/theme.scss";
+
+    :root {
+        --minuteAngleStart: 5deg;
+        --hourAngleStart: 0deg;
+    }
 
     #bottom_line,
     #middle_line {
@@ -128,6 +156,33 @@
         }
     }
 
+    @keyframes rotate {
+        0% {
+            transform:rotate(0deg);
+        }
+        100% {
+            transform:rotate(360deg);
+        }
+    }
+
+    @keyframes rotateMinute {
+        0% {
+            transform:rotate(var(--minuteAngleStart));
+        }
+        100% {
+            transform:rotate(calc(var(--minuteAngleStart) + 6deg));
+        }
+    }
+
+    @keyframes rotateHours {
+        0% {
+            transform:rotate(var(--hourAngleStart));
+        }
+        100% {
+            transform:rotate(calc(var(--hourAngleStart) + 30deg));
+        }
+    }
+
     #landing {
         width:100vw;
         height:100%;
@@ -135,17 +190,56 @@
         position:relative;
         @include flexCenter;
 
+        #clock {
+            position:absolute;
+            bottom:20px;
+            left:20px;
+            border-radius:50%;
+            width:40px;
+            height:40px;
+            padding:15px;
+            box-shadow:0 0 5px $offBlack;
+
+            #hour_hand {
+                width:5px;
+                height:25px;
+                background-color:$offBlack;
+                border-radius:50px;
+                position:absolute;
+                left:calc((100% - 5px) / 2);
+                top:calc((50% - 25px));
+                transform-origin:bottom;
+                animation:rotateHours 3600s linear infinite;
+            }
+
+            #minute_hand {
+                width:5px;
+                height:30px;
+                background-color:$offBlack;
+                border-radius:50px;
+                position:absolute;
+                left:calc((100% - 5px) / 2);
+                top:calc((50% - 30px));
+                transform-origin:bottom;
+                animation:rotateMinute 60s linear infinite;
+            }
+
+            #second_hand {
+                width:2px;
+                height:20px;
+                background-color:red;
+                border-radius:50px;
+                position:absolute;
+                left:calc((100% - 2px) / 2);
+                top:calc((50% - 20px));
+                transform-origin:bottom;
+                animation:rotate 1s linear infinite;
+            }
+        }
+
         #wolf {
             position:absolute;
             top:10px;
-            left:15px;
-        }
-
-        #clocks {
-            width:290px;
-            height:auto;
-            position:absolute;
-            bottom:10px;
             left:15px;
         }
 
