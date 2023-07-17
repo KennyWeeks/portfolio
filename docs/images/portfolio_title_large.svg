@@ -1,1 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1379.85 279.36"><defs><style>.cls-1{font-family:GillSans, 'Gill Sans';font-size:260px;}.cls-2{letter-spacing:-.09em;}</style></defs><text class="cls-1" transform="translate(0 219.31)"><tspan x="0" y="0">PO</tspan><tspan class="cls-2" x="346.58" y="0">R</tspan><tspan x="480.26" y="0">TFOLIO</tspan></text></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1379.85 279.36">
+    <defs>
+    <style>
+    @font-face {
+        font-family:"Gill Sans";
+        font-style:normal;
+        font-weight:500;
+        src: url('/fonts/Gill_Sans.otf');
+    }
+        .cls-1{font-family:"Gill Sans";font-size:260px;}
+    </style>
+    </defs>
+    <text class="cls-1" transform="translate(0 250.31)">
+        <tspan x="0" y="0">PORTFOLIO</tspan>
+    </text>
+    </svg>

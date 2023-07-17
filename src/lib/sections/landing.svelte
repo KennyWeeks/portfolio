@@ -14,7 +14,6 @@
        let hi : any = document.getElementById("hi");
        let my : any = document.getElementById("my");
        let wel : any = document.getElementById("welcome");
-       let port : any = document.getElementById("portfolio_text");
        let wolf : any = document.getElementById("wolf");
        let bl : any = document.getElementById("bottom_line");
        let ml : any = document.getElementById("middle_line");
@@ -32,9 +31,6 @@
        setTimeout(()=>{
         wel.style.opacity = 1;
        }, 2500);
-       setTimeout(()=>{
-        port.style.opacity = 1;
-       }, 3600);
 
        window.addEventListener("resize", ()=>{
         if(window.innerHeight < 500) {
@@ -78,7 +74,7 @@
         <!--<img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_large"}.svg" alt="portfolio_text"/>
         -->
         <br>
-        <h1 id="portfolio_text">Portfolio</h1>
+        <object data="{path}/images/portfolio_title_large.svg"></object>
 
         <div id="move_into_website">
             <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
@@ -155,15 +151,20 @@
             //width:90vw;
             display:inline-block;
             cursor:default;
+            box-shadow:inset 0 0 0 2px #00ff00;
             /*position:absolute;
             top:50%;
             transform:translateY(-50%);*/
+
+            object {
+                font-family:"Gill Sans";
+                width:80vw;
+            }
 
             h3 {
                 font-family:$font-family;
                 margin-bottom:0px;
                 margin-top:0px;
-                padding-left:1vw;
 
                 @include phoneVert {
                     font-size:6vw;
@@ -186,44 +187,7 @@
                 }
             }
 
-            #portfolio_text {
-                font-family:"Gill Sans";
-                transition: opacity 1s linear;
-                margin-top:0px;
-                margin-bottom:0px;
-                padding:0px;
-                display:inline-block;
-                @include desktopSmallScreen {
-                    font-size:50vh;
-                }
-
-                @include desktopFullScreen {
-                    font-size:20vw;
-                    line-height:13vw;
-                }
-                @include laptop {
-                    font-size:20vw;
-                    line-height:15vw;
-                }
-
-                @include tabletPhone {
-                    font-size:25vw;
-                    line-height:20vw;
-                }
-
-                @include tabletLarge {
-                    font-size:25vw;
-                    line-height:17vw;
-                }
-
-                @include phoneVert {
-                    font-size:25vw;
-                    line-height:15vw;
-                }
-            }
-
         }
-
         #move_into_website {
             width:50px;
             height:50px;
