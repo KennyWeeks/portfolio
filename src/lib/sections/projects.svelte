@@ -7,6 +7,12 @@
     let mobile : boolean = false;
     let top : any = 0;
     export let path : string = "";
+    let zIndexImages : number[] = [100, 100, 100];
+    let zIndexBody : number[] = [10000, 1000, 1000];
+    let opacity : number[] = [0.3, 0.3, 0.3];
+
+    let stackButton : boolean[] = [false, false, false];
+    let stackButtonTrigger : number[] = Array(stackButton.length);
 
     onMount(() => {
         const p = document.getElementById("projects");
@@ -16,6 +22,22 @@
         console.log(p?.offsetTop);
         console.log(scroll);
         mobile = Device.isMobile;
+
+        const bodyParts = [...document.querySelectorAll(".project_body")];
+        const bodyP = document.querySelector(".body_parts");
+        window.addEventListener("resize", ()=>{
+            bodyParts.forEach((e, i)=>{
+                console.log(e);
+                if(bodyP.clientHeight < e.clientHeight) {
+                    stackButton[i] = true;
+                    stackButtonTrigger[i] = window.innerWidth;
+                } else {
+                    if(window.innerWidth > stackButtonTrigger[i]) {
+                        stackButton[i] = false;
+                    }
+                }
+            });
+        });
     });
 
 </script>
@@ -39,7 +61,7 @@
         <div id="content-holder">
             {#each project["project"] as p, index}
                 <div class="body_parts" style="flex-direction:{index % 2 === 1 ? "row-reverse": "row"}; margin-top:{index !== 0 ? "50px" : "0px"}">
-                    <div class="project_image">
+                    <div class="project_image" style="z-index:{zIndexImages[index]}; opacity:{opacity[index]};">
 
                         <div class="main_image"></div>
 
@@ -57,24 +79,40 @@
 
                     </div>
 
-                    <div class="tablet_menu_options" style="{index % 2 == 0 ? "left:10px;" : "right:10px;"}">
+                    <div class="tablet_menu_options" style="{index % 2 == 0 ? "left:10px;" : "right:10px;"}; z-index:{zIndexBody[index]};">
 
-                        <div class="option_button"></div>
+                        <div class="option_button" on:click={()=>{
+                            zIndexImages[index] = zIndexBody[index];
+                            zIndexBody[index] = 100;
+                            opacity[index] = 1.0;
+                        }}>
+                        
+                            <img src="{path}/images/gallery.png" width=30 alt="gallery"/>
 
-                        <div class="option_button"></div>
+                        </div>
+
+                        <div class="option_button">
+
+                            <img src="{path}/images/link.png" width=30 alt="gallery"/>
+
+                        </div>
 
                     </div>
 
-                    <div class="project_body" style="{index % 2 == 0 ? "right:0px;" : "left:0px;"}">
+                    <div class="project_body" style="{index % 2 == 0 ? "right:0px;" : "left:0px;"}; z-index:{zIndexBody[index]}">
 
                         <h3>{p["title"]} <span><img src="{path}/images/octocat.png" alt="octocat" width=20px/></span></h3>
 
                         <p class="desc">{p["description"]}</p>
 
                         <div>
-                            {#each p["stack"] as st, j}
-                                <p class="tools">{st}</p>
-                            {/each}
+                            {#if stackButton[index] === false}
+                                {#each p["stack"] as st, j}
+                                    <p class="tools">{st}</p>
+                                {/each}
+                            {:else}
+                                <button>stack {stackButton[index]}</button>
+                            {/if}
                         </div> 
 
                     </div>
@@ -115,11 +153,12 @@
             
             
             h3 {
-                font-family:$font-family;
                 font-size:50px;
+                font-family:$font-family;
                 margin-bottom:0px;
                 margin-top:0px;
                 align-self:center;
+                font-weight:bold;
                 text-transform:lowercase;
             }
 
@@ -221,6 +260,7 @@
                         overflow:hidden;
                         position:relative;
                         height:300px;
+                        background-color:$offBlack;
 
                         @media only screen and (max-height:400px) {
                             width:300px;
@@ -365,10 +405,13 @@
                                 height:40px;
                                 border-radius:50%;
                                 background-color:$offWhite;
+                                @include flexCenter;
 
                                 &:nth-of-type(2) {
                                     margin:10px 0px 0px 0px;
                                 }
+
+
                             }
                         }
                     }

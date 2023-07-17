@@ -12,3 +12,10 @@
     font-weight:500;
     src: url('/fonts/Gill_Sans.otf');
 }
+
+@font-face {
+    font-family:"Digital 7";
+    font-style:normal;
+    font-weight:500;
+    src: url('/fonts/digital-7.regular.ttf');
+}

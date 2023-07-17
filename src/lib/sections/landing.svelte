@@ -6,6 +6,8 @@
     export let path : string = "";
     export let screenWidth : number;
     export let screenHeight : number;
+    let min : any = new Date().getMinutes();
+    let hours : any = new Date().getHours();
     import Clock from "../clock.svelte";
 
     onMount(()=>{
@@ -48,12 +50,10 @@
        }
 
        if(intro.clientWidth >= window.innerWidth) {
-        alert("Sup");
+        intro.style.transform = "scale(" + 0.8 * window.innerWidth / 500 + ")";
        }
 
        let r : any = document.querySelector(":root");
-       let min : any = new Date().getMinutes();
-       let hours : any = new Date().getHours();
        r.style.setProperty("--minuteAngleStart", (360 * (min / 60)) + "deg");
        r.style.setProperty("--hourAngleStart", (360 * (hours % 12 / 12)) + "deg");
        
@@ -85,9 +85,7 @@
 
     <div id="clock">
 
-        <div id="hour_hand"></div>
-        <div id="minute_hand"></div>
-        <div id="second_hand"></div>
+        <p>{hours} <span>:</span> {min}</p>
 
     </div>
 
@@ -183,6 +181,15 @@
         }
     }
 
+    @keyframes blink {
+        0% {
+            opacity:0.0;
+        }
+        100% {
+            opacity: 1.0;
+        }
+    }
+
     #landing {
         width:100vw;
         height:100%;
@@ -192,48 +199,16 @@
 
         #clock {
             position:absolute;
-            bottom:20px;
-            left:20px;
-            border-radius:50%;
-            width:40px;
-            height:40px;
-            padding:15px;
-            box-shadow:0 0 5px $offBlack;
+            bottom:5px;
+            left:15px;
+            font-family:"Digital 7";
+            font-size:25px;
+            font-weight:bold;
+            line-height:0px;
 
-            #hour_hand {
-                width:5px;
-                height:25px;
-                background-color:$offBlack;
-                border-radius:50px;
-                position:absolute;
-                left:calc((100% - 5px) / 2);
-                top:calc((50% - 25px));
-                transform-origin:bottom;
-                animation:rotateHours 3600s linear infinite;
-            }
-
-            #minute_hand {
-                width:5px;
-                height:30px;
-                background-color:$offBlack;
-                border-radius:50px;
-                position:absolute;
-                left:calc((100% - 5px) / 2);
-                top:calc((50% - 30px));
-                transform-origin:bottom;
-                animation:rotateMinute 60s linear infinite;
-            }
-
-            #second_hand {
-                width:2px;
-                height:20px;
-                background-color:red;
-                border-radius:50px;
-                position:absolute;
-                left:calc((100% - 2px) / 2);
-                top:calc((50% - 20px));
-                transform-origin:bottom;
-                animation:rotate 1s linear infinite;
+            p > span {
+                animation:blink 1s linear infinite;
+                
             }
         }
 
@@ -252,7 +227,7 @@
             transform:translateY(-50%);*/
 
             h3 {
-                font-family:"Gill Sans";
+                font-family:$font-family;
                 margin-bottom:0px;
                 margin-top:0px;
                 padding-left:1vw;
