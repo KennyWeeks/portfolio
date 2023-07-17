@@ -236,7 +236,11 @@
                 transform:translateY(-50%);
             }
 
-            @include tablet {
+            @include tabletPhone {
+                display:none;
+            }
+
+            @include tabletLarge {
                 margin-top:30px;
             }
 

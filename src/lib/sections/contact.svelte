@@ -6,7 +6,8 @@
 
 <div id="contacts">
 
-    <img src="{path}/images/contact_header{screenWidth <= 1049 ? "_no_overlay" : "_dark"}.png" width=250px alt="contact_header"/>
+    
+    <h3>contact</h3>
 
     <p>I AM CURRENTLY NOT ACCEPTING ANY
         FREELANCE WORK, BUT FEEL FREE TO 
@@ -49,11 +50,24 @@
             margin-left:calc((100vw - 1600px) / 2);
             padding-left:20px;
         }
+
+        h3 {
+            font-size:50px;
+            font-family:$font-family;
+            margin:0px 0px 10px 0px;
+
+            @include randomTest("<#{$tabletMax}") {
+                color:$offWhite;
+            }
+            @include laptop {
+                color:$offBlack;
+            }
+        }
         
 
         p {
             margin-top:0px;
-            font-family:"Arial Black";
+            font-family:$font-family;
             font-size:15px;
             width:70vw;
             @include randomTest("<#{$tabletMax}") {
@@ -97,7 +111,7 @@
                         user-select: none;
                 text-align:right;
                 margin-bottom:2.5px;
-                font-family:"Goldoni";
+                font-family:$font-family;
                 font-weight:lighter;
                 font-size:25px;
                 @include randomTest("<#{$tabletMax}") {

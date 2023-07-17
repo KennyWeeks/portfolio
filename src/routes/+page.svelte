@@ -20,6 +20,12 @@
     h = e["target"].scrollTop;
 }}/>
 
+<div id="page_tracker">
+
+    <div id="page_tracker_cover"></div>
+
+</div>
+
 
 <Landing path={base} screenWidth={screenWidth} screenHeight={screenHeight}/>
 
@@ -31,5 +37,27 @@
 
 <style lang="scss">
     @import "../styles/theme.scss";
+
+    #page_tracker {
+        width:30px;
+        height:30px;
+        position:fixed;
+        z-index:10000;
+        bottom:15px;
+        right:10px;
+        background-color:rgba(30, 25, 25, 0.5);
+        border-radius:50%;
+        border:2px solid $offWhite;
+
+        #page_tracker_cover {
+            width:20px;
+            height:20px;
+            background-color:$offWhite;
+            border-radius:50%;
+            position:absolute;
+            top:5px;
+            left:5px;
+        }
+    }
 
 </style>

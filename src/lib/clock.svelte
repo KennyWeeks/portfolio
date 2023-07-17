@@ -35,9 +35,8 @@
     <!--<p><span><img src="{path}/images/sun.png"alt="time_of_day"/></span><span>{region}</span> <span>{hours}</span> <span class="semi-colon">:</span> <span>{minutes < 10 ? "0" : ""}{minutes}</span> <span>{amPm}</span></p>-->
 
     <div class="total_time_area">
-            <p>{region}</p>
 
-        <p>{hours} <span class="semi-colon">:</span> {minutes < 10 ? "0" : ""}{minutes} {amPm}</p>
+        <p>{region} &nbsp; <span class="time_thing">{hours} <span class="semi-colon">:</span> {minutes < 10 ? "0" : ""}{minutes} {amPm}</span></p>
     </div>
 
 </div>
@@ -53,15 +52,23 @@
     }
 
     .total_time_area {
-        margin-top:10px;
+        margin-top:5px;
         p {
             line-height:0px;
             margin:0px;
-            padding:20px;
+            padding:20px 4px 20px 20px;
             display:inline-block;
             border-radius:20px;
+            font-family:$font-family;
             @include desktop {
                 font-size:20px;
+            }
+
+            .time_thing {
+                background-color:$offWhite;
+                color:$offBlack;
+                padding:7px 20px;
+                border-radius:20px;
             }
         }
 

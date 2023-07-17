@@ -23,7 +23,7 @@
 <div id="projects" data-scroll={scroll}>
 
     <div class="intro_block">
-        <img src="{path}/images/project_header_dark.png" width=275px alt="project_intro"/>
+        <h3>Projects</h3>
 
         <div class="github_link">
             
@@ -57,17 +57,25 @@
 
                     </div>
 
+                    <div class="tablet_menu_options" style="{index % 2 == 0 ? "left:10px;" : "right:10px;"}">
+
+                        <div class="option_button"></div>
+
+                        <div class="option_button"></div>
+
+                        <div class="option_button"></div>
+
+                    </div>
+
                     <div class="project_body" style="{index % 2 == 0 ? "right:0px;" : "left:0px;"}">
 
                         <h3>{p["title"]} <span><img src="{path}/images/octocat.png" alt="octocat" width=20px/></span></h3>
 
                         <p class="desc">{p["description"]}</p>
 
-                        <p class="stack"><i>stack - </i></p>
-
                         <div>
                             {#each p["stack"] as st, j}
-                                <p class="tools">{st}{#if j !== p["stack"].length - 1},&nbsp;{/if}</p>
+                                <p class="tools">{st}</p>
                             {/each}
                         </div> 
 
@@ -101,15 +109,20 @@
                 width:90vw;
                 margin-left:5vw;
             }
+
             @include randomTest((">#{$laptopMax}")) {
                 width:1600px;
                 margin:auto;
             }
             
             
-
-            img {
-                margin-bottom:10px;
+            h3 {
+                font-family:$font-family;
+                font-size:50px;
+                margin-bottom:0px;
+                margin-top:0px;
+                align-self:center;
+                text-transform:lowercase;
             }
 
             .github_link {
@@ -120,6 +133,7 @@
                 margin-top:15px;
                 border-radius:60px;
                 position:relative;
+                align-self:center;
 
                 .github_icon {
                     width:47px;
@@ -180,7 +194,7 @@
                 .body_parts {
                     color:$offWhite;
                     margin:auto;
-                    font-family:"Gill Sans";
+                    font-family:$font-family;
                     position:relative;
 
                     @include phoneVert {
@@ -314,6 +328,31 @@
 
                     }
 
+                    .tablet_menu_options {
+                        @include tablet {
+                            width:40px;
+                            height:auto;
+                            padding:10px;
+                            position:absolute;
+                            top:50%;
+                            transform:translateY(-50%);
+                            background-color:$offBlack;
+                            border-radius:50px;
+
+
+                            .option_button {
+                                width:40px;
+                                height:40px;
+                                border-radius:50%;
+                                background-color:$offWhite;
+
+                                &:nth-of-type(2) {
+                                    margin:10px 0px;
+                                }
+                            }
+                        }
+                    }
+
                     .project_body {
                         padding-top:20px;
                         padding-bottom:20px;
@@ -334,37 +373,42 @@
                         //Here are the horizontal styles
                         @include phoneVert {
                             margin-left:0px;
-                            h3, .desc, .stack, {
+                            h3, .desc {
                                 @include flexRow;
                                 font-size:22px;
                                 width:100%;
                                 margin-top:0px;
                             }
                             .desc {
-                                margin:0px;
+                                margin:0px 0px 15px 0px;
                             }
                             div {
                                 width:100%;
                                 p {
                                     font-size:20px;
                                     display:inline-block;
-                                    margin:0px;
+                                    margin:0px 5px 5px 0px ;
+                                    line-height:0px;
+                                    padding:20px;
+                                    box-shadow:inset 0 0 0 2px $offWhite;
+                                    border-radius:20px;
+
                                 }
                             }
                         }
 
                         @include tablet {
-                            width:70%;
+                            width:calc(100% - 120px);
                             position:absolute;
                             top:50%;
                             transform:translateY(-50%);
 
-                            h3, .desc, .stack {
+                            h3, .desc {
                                 width:100%;
                                 font-size:22px;
                             }
 
-                            .desc, .stack {
+                            .desc {
                                 margin-top:0px;
                                 font-size:20px;
                             }
@@ -383,15 +427,16 @@
                         @include laptop {
                             //So this is the larger screens of this stuff
                             width:calc(100% - 450px);
+                            background-color:#00fff0;
                             @include flexCenter;
 
-                            h3, .desc, .stack {
+                            h3, .desc {
                                 margin-left:0%;
                                 width:80%;
                                 font-size:22px;
                             }
 
-                            .desc, .stack {
+                            .desc {
                                 margin:0px;
                                 font-size:20px;
                             }

@@ -254,8 +254,8 @@
                     p {
                         color:$offWhite;
                         font-family:$font-family;
-                        width:90%;
-                        margin-left:5%;
+                        width:80%;
+                        margin-left:10%;
                         @include randomTest((">800px")) {
                             font-size:25px;
                         }
@@ -422,9 +422,10 @@
                             display:inline-block;
                             border-radius:50px;
                             box-shadow:inset 0 0 0 2px $offWhite;
+                            line-height:0px;
                             @include randomTest((">800px")) {
                                 font-size:25px;
-                                padding:10px 20px;
+                                padding:20px;
                                 margin-right:15px;
                                 margin-top:0px;
                                 margin-bottom:10px;
@@ -432,7 +433,7 @@
 
                             @include randomTest(("<800px")) {
                                 font-size:20px;
-                                padding:10px 20px;
+                                padding:20px;
                                 margin-top:0px;
                                 margin-bottom:10px;
                                 margin-right:15px;
