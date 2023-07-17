@@ -4,7 +4,7 @@
             "title": "ThisMuch",
             "date": "Jan 2023 - Jun 2023",
             "description": "A react native app that allows users to take pictures of there receipts, and divide them with friends.",
-            "stack": ["React Native", "TypeScript", "Nativewind CSS", "PlanetScale", "MySQL", "AWS", "Python3"]
+            "stack": ["React Native", "TypeScript", "Nativewind", "PlanetScale", "MySQL", "AWS", "Python3"]
         },
         {
             "title": "Personal Portfolio",

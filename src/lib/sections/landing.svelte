@@ -216,6 +216,7 @@
 
                 @include phoneVert {
                     font-size:25vw;
+                    line-height:15vw;
                 }
             }
 
@@ -226,7 +227,7 @@
             height:50px;
             border-radius:50%;
             position:relative;
-            margin:auto;
+            margin:30px auto 0px auto;
             
 
             @include desktopSmallScreen {
@@ -238,18 +239,6 @@
 
             @include tabletPhone {
                 display:none;
-            }
-
-            @include tabletLarge {
-                margin-top:30px;
-            }
-
-            @include laptop {
-                margin-top:30px;
-            }
-
-            @include desktopFullScreen {
-                margin-top:30px;
             }
 
             img {

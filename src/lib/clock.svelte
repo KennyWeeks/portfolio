@@ -36,7 +36,7 @@
 
     <div class="total_time_area">
 
-        <p>{region} &nbsp; <span class="time_thing">{hours} <span class="semi-colon">:</span> {minutes < 10 ? "0" : ""}{minutes} {amPm}</span></p>
+        <p>{region} &nbsp;<span class="time_thing">{hours} <span class="semi-colon">:</span> {minutes < 10 ? "0" : ""}{minutes} {amPm}</span></p>
     </div>
 
 </div>
@@ -60,6 +60,7 @@
             display:inline-block;
             border-radius:20px;
             font-family:$font-family;
+            text-transform:uppercase;
             @include desktop {
                 font-size:20px;
             }

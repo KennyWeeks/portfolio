@@ -9,9 +9,7 @@
     
     <h3>contact</h3>
 
-    <p>I AM CURRENTLY NOT ACCEPTING ANY
-        FREELANCE WORK, BUT FEEL FREE TO 
-        MESSAGE ME AND VIEW OTHER PROJECTS</p>
+    <p>I am currently not accepting any freelance work, but feel free to message me and view other projects.</p>
 
     <ul>
         <li><span><img src="{path}/images/linkedin{screenWidth <= 1049 ? "_off_white" : ""}.png" alt="linkedin" width=20/></span>LinkedIN</li>
@@ -68,13 +66,17 @@
         p {
             margin-top:0px;
             font-family:$font-family;
-            font-size:15px;
             width:70vw;
             @include randomTest("<#{$tabletMax}") {
                 color:$offWhite;
+                font-size:15px;
             }
             @include laptop {
                 color:$offBlack;
+                font-size:20px;
+            }
+            @include desktop {
+                font-size:20px;
             }
         }
 

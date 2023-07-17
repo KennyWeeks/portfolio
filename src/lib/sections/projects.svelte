@@ -63,8 +63,6 @@
 
                         <div class="option_button"></div>
 
-                        <div class="option_button"></div>
-
                     </div>
 
                     <div class="project_body" style="{index % 2 == 0 ? "right:0px;" : "left:0px;"}">
@@ -99,7 +97,7 @@
         @include randomTest(">#{$tabletMax}") {
             padding-bottom:20px;
         }
-        font-family:"Arial Black";
+        font-family:$font-family;
 
         .intro_block{
             @include flexRow;
@@ -235,6 +233,11 @@
                             @include flexRow;
                         }
 
+                        @media only screen and (min-width:1600px) {
+                            width:600px;
+                            @include flexRow;
+                        }
+
                         @media only screen and (max-width:799px) and (min-width:500px) {
                             width:450px;
                             opacity:0.5;
@@ -247,7 +250,7 @@
                             width:100%;
                         }
 
-                        @media only screen and (min-width:1050px) {
+                        @media only screen and (min-width:1050px) and (max-width:1600px) {
                             width:450px;
                             @include flexRow;
                         }
@@ -308,7 +311,7 @@
                             }
                         }
 
-                        @media only screen and (min-width:1050px) {
+                        @media only screen and (min-width:1050px) and (max-width:1600px) {
 
                             .side_images {
                                 width:145px;
@@ -323,7 +326,24 @@
                                     margin-bottom:5px;
                                 }
                             }
+                        }
 
+                        @media only screen and (min-width:1600px) {
+                            .side_images {
+                                width:295px;
+                                height:300px;
+                                margin-left:5px;
+                                @include flexRow;
+                                flex-wrap:wrap;
+
+                                .side_act_img {
+                                    width:145px;
+                                    height:147.5px;
+                                    border-radius:20px;
+                                    background-color:$offWhite;
+                                    margin-bottom:5px;
+                                }
+                            }
                         }
 
                     }
@@ -347,7 +367,7 @@
                                 background-color:$offWhite;
 
                                 &:nth-of-type(2) {
-                                    margin:10px 0px;
+                                    margin:10px 0px 0px 0px;
                                 }
                             }
                         }
@@ -416,9 +436,13 @@
                             div {
                                 width:100%;
                                 p {
-                                    font-size:20px;
+                                    font-size:18px;
                                     display:inline-block;
-                                    margin:0px
+                                    margin:0px 5px 5px 0px ;
+                                    line-height:0px;
+                                    padding:20px;
+                                    box-shadow:inset 0 0 0 2px $offWhite;
+                                    border-radius:20px;
                                 }
                             }
 
@@ -427,7 +451,6 @@
                         @include laptop {
                             //So this is the larger screens of this stuff
                             width:calc(100% - 450px);
-                            background-color:#00fff0;
                             @include flexCenter;
 
                             h3, .desc {
@@ -437,35 +460,48 @@
                             }
 
                             .desc {
-                                margin:0px;
+                                margin:0px 0px 20px 0px;
                                 font-size:20px;
                             }
 
                             div {
                                 width:80%;
                                 .tools {
-                                    display:inline-block;
                                     font-size:20px;
-                                    margin:0px;
+                                    display:inline-block;
+                                    margin:0px 5px 5px 0px ;
+                                    line-height:0px;
+                                    padding:20px;
+                                    box-shadow:inset 0 0 0 2px $offWhite;
+                                    border-radius:20px;
                                 }
                             }
                         }
 
                         @include desktop {
-                            width:calc(100% - 450px);
+                            width:calc(100% - 650px);
                             @include flexCenter;
-                            h3, .desc, .stack {
+                            h3, .desc {
                                 width:80%;
                                 margin-left:0%;
-                                font-size:20px;
+                                font-size:25px;
+                            }
+
+                            .desc {
+                                font-size:22px;
+                                margin-top:0px;
                             }
 
                             div {
                                 width:80%;
                                 p {
-                                    display:inline-block;
-                                    margin:0px;
                                     font-size:20px;
+                                    display:inline-block;
+                                    margin:0px 5px 5px 0px ;
+                                    line-height:0px;
+                                    padding:20px;
+                                    box-shadow:inset 0 0 0 2px $offWhite;
+                                    border-radius:20px;
                                 }
                             }
                         }
