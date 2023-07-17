@@ -38,6 +38,12 @@ $font-family: "Gill Sans";
     }
 }
 
+@mixin tabletLarge {
+    @media only screen and (max-width:$tabletMax) and (min-width:$tabletMin) and (min-height:$mobile) {
+        @content;
+    }
+}
+
 @mixin laptop {
     @media only screen and (min-width:$laptopMin) and (max-width:$laptopMax) 
     {

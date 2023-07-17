@@ -43,8 +43,8 @@
        });
 
 
-       if(window.innerHeight <= 500) {
-        intro.style.transform = "scale(0.8)"; 
+       if(intro.offsetTop <= wolf.offsetTop + wolf.clientHeight || intro.offsetTop <= 0) {
+        intro.style.transform = "scale(" + 0.8 * window.innerHeight / 500 + ")"; 
        }
 
        //resizeChange();
@@ -167,15 +167,11 @@
                     font-size:6vw;
                 }
                 @include tablet {
-                    font-size:4vw;
+                    font-size:6vw;
                 }
 
                 @include laptop {
                     font-size: 5vw;
-                }
-                @include desktopSmallScreen {
-                    font-size:10vh;
-                    display:inline-block;
                 }
 
                 @include desktopFullScreen {
@@ -208,7 +204,12 @@
                     line-height:15vw;
                 }
 
-                @include tablet {
+                @include tabletPhone {
+                    font-size:25vw;
+                    line-height:20vw;
+                }
+
+                @include tabletLarge {
                     font-size:25vw;
                     line-height:17vw;
                 }
