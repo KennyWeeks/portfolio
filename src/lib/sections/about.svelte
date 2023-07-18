@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount, onDestroy } from "svelte";
-    export const path : string = ""
+    export let path : string = ""
     import skills from "../data/skills.json";
     let about: HTMLElement;
     let about_summary : HTMLElement;
