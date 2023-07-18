@@ -48,6 +48,8 @@
 
                 <div class="individual-edu">
                     <div class="in_ind_edu">
+
+                        <img src="{path}/images/education.png" width=200 alt="education-png-label"/>
                         <p>
                             <span class="university">University of Nevada, Las Vegas</span><br>
                             <span class="gpa">GPA: 3.657</span><br>
@@ -71,6 +73,8 @@
         </div>
 
         <div id="skills">
+
+            <img src="{path}/images/skills.png" height=250 alt="skill-png-label"/>
 
             <div id="compiled" class="skills-body">
 
@@ -272,8 +276,9 @@
 
                 #education {
                     margin:auto;
-                    height:100%;
+                    height:calc(100% - 40px);
                     margin-right:0px;
+                    margin-top:35px;
 
 
                     @include randomTest((">800px")) {
@@ -284,14 +289,14 @@
                     @include randomTest(("<800px", ">600px")) {
                         width:100%;
                         height:auto;
-                        margin-top:7px;
+                        margin-top:45px;
                         @include flexRow;
                     }
 
                     @include randomTest(("<600px")) {
                         width:100%;
                         height:auto;
-                        margin-top:7px;
+                        margin-top:45px;
                     } 
 
                     .individual-edu {
@@ -301,7 +306,6 @@
                         font-family:$font-family;
                         
                         @include flexCenter;
-                        overflow:hidden;
                         margin-right:0px;
 
                         @include randomTest((">800px")) {
@@ -330,22 +334,49 @@
                             }
                         }
 
-                        .university {
-                            font-weight:bolder;
-                        }
+                        .in_ind_edu {
+                            position:relative;
+                            width:80%;
 
-                        .gpa {
-                            font-size:18px;
-                        }
+                            .university {
+                                font-weight:bolder;
+                            }
 
-                        .major {
-                            font-size:20px;
-                            font-style:italic;
-                        }
+                            .gpa {
+                                font-size:18px;
+                            }
 
-                        .minor {
-                            font-size:18px;
-                            font-style:italic;
+                            .major {
+                                font-size:20px;
+                                font-style:italic;
+                            }
+
+                            .minor {
+                                font-size:18px;
+                                font-style:italic;
+                            }
+
+                            @include randomTest(("<600px")) {
+                                margin:auto;
+                                @include flexCenter;
+                            }
+
+                            img {
+                                position:absolute;
+                                left:-10%;
+
+                                @include randomTest(("<600px")) {
+                                    top:-55px;
+                                }
+
+                                @include randomTest((">600px", "<800px")) {
+                                    top:-55px;
+                                }
+
+                                @include randomTest((">800px")) {
+                                    top:-45px;
+                                }
+                            }
                         }
 
                     }
@@ -353,7 +384,16 @@
             }
 
             #skills {
-                width:100%;
+                @include randomTest((">600px")) {
+                    width:calc(100% - 40px);
+                    margin-left:40px;
+                }
+
+                @include randomTest(("<600px")) {
+                    width:100%;
+                }
+                
+                
                 padding:20px 0px;
                 background-color:$offBlack;
                 border-radius:$text-block-border-radius;
@@ -363,6 +403,17 @@
                 position:relative;
                 @include randomTest((">800px")) {
                     @include flexRow;
+                }
+
+                img {
+                    position:absolute;
+                    top:50%;
+                    transform:translateY(-50%);
+                    left:-45px;
+
+                    @include randomTest(("<600px")) {
+                        display:none;
+                    }
                 }
 
                 .vert-divide {
@@ -376,10 +427,7 @@
                     }
 
                     @include randomTest(("<800px")) {
-                        width:80%;
-                        height:2.5px;
-                        bottom:0px;
-                        left:10%;
+                        display:none;
                     }
                     
                 }
@@ -388,7 +436,7 @@
                     position:relative;
                     @include randomTest((">800px")) {
                         width:33.33%;
-                        height:400px;
+                        height:auto;
                     }
                     @include randomTest(("<800px")) {
                         width:100%;
@@ -402,13 +450,13 @@
 
                         h3 {
                             @include randomTest((">800px")) {
-                                font-size:25px;                    
-                                margin-top:10%;
+                                font-size:25px; 
+               
                             }
 
                             @include randomTest(("<800px")) {
                                 font-size:20px;
-
+                                margin-top:0px;
                             }
 
                             text-transform:capitalize;

@@ -68,6 +68,9 @@
             typeWriter3(welTxt);
         }, 2900);
 
+        let class2 : Element[] = [...document.querySelectorAll(".cls-2")];
+        console.log(class2);
+
        window.addEventListener("resize", ()=>{
         if(window.innerHeight < 500) {
             intro.style.transform = "scale(" + (0.8 * window.innerHeight / 500) + ")"; 
@@ -114,13 +117,22 @@
         <!--<img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_large"}.svg" alt="portfolio_text"/>
         -->
         <br>
-        <object data="{path}/images/portfolio_title_large.svg"></object>
+        <!--<object data="{path}/images/portfolio_title_large.svg"></object>-->
+        <svg id="Layer_1" style="width:90vw;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1380 250">
+            <text style="font-family:'Arial'; font-size:320px; font-weight:bold;">
+                <textPath xlink:href="#textLine">Portfolio</textPath>
+            </text>
+            <path id="textLine" d="m-20 240 h0"/>
+            <animate xlink:href="#textLine" attributeName="d" begin="4.7s" dur="4s" to="m-20 240 h1800" fill="freeze"/>
+        </svg>
 
         <div id="move_into_website">
             <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
             <div id="beacon_circle"></div>
         </div>
     </div>
+
+    
 
     
 
@@ -155,6 +167,15 @@
         }
         100% {
             opacity: 1.0;
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0.0;
+        }
+        100% {
+            opacity:1.0;
         }
     }
 
@@ -234,6 +255,9 @@
             border-radius:50%;
             position:relative;
             margin:30px auto 0px auto;
+            opacity:0.0;
+            animation: fadeIn 2s linear forwards;
+            animation-delay:7.5s;
             
 
             @include desktopSmallScreen {
@@ -264,7 +288,7 @@
                 transform: translate(-50%, -50%);
                 border-radius:50%;
                 animation: beacon 5s linear infinite;
-                animation-delay:5s;
+                animation-delay:6s;
             }
         }
     }

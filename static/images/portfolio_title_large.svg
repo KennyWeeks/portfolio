@@ -2,16 +2,10 @@
     <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1379.85 250.36">
     <defs>
     <style>
-    @font-face {
-        font-family:"Gill Sans";
-        font-style:normal;
-        font-weight:500;
-        src: url('/fonts/Gill_Sans.otf');
-    }
         .cls-1{font-family:"Arial"; font-weight:bold; line-height:0px; font-size:230px;}
     </style>
     </defs>
     <text class="cls-1" transform="translate(-10 200.31)">
-        <tspan x="0" y="0">PORTFOLIO</tspan>
+        <tspan x="0" y="0"><span class="cls-2">P</span><span class="cls-2">O</span>RTFOLIO</tspan>
     </text>
     </svg>
