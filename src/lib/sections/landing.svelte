@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import {onMount} from "svelte";
+    import {onMount, onDestroy} from "svelte";
     import Menu from "../menu.svelte";
 
     export let path : string = "";
@@ -9,28 +9,64 @@
     let min : any = new Date().getMinutes();
     let hours : any = new Date().getHours();
     import Clock from "../clock.svelte";
+    let wolf : HTMLElement;
+
+    let hiTxt : string = "Hi,";
+    let hiIn : string = "";
+    let myTxt : string = "My name is Kenny Weeks."
+    
+    let myIn : string = "";
+    let welTxt : string = "Welcome to my ...";
+    let welIn : string = "";
+
+
+    let i : number = 0;
+
+    function typeWriter1(text:string) : void {
+        if(i < text.length) {
+            console.log(text.charAt(i));
+            console.log(text);
+            hiIn += text.charAt(i);
+            i += 1;
+            setTimeout(()=>{typeWriter1(text)}, 100);
+        }
+    }
+
+    function typeWriter2(text:string) : void {
+        if(i < text.length) {
+            console.log(text.charAt(i));
+            console.log(text);
+            myIn += text.charAt(i);
+            i += 1;
+            setTimeout(()=>{typeWriter2(text)}, 100);
+        }
+    }
+
+    function typeWriter3(text:string) : void {
+        if(i < text.length) {
+            console.log(text.charAt(i));
+            console.log(text);
+            welIn += text.charAt(i);
+            i += 1;
+            setTimeout(()=>{typeWriter3(text)}, 100);
+        }
+    }
 
     onMount(()=>{
-       let hi : any = document.getElementById("hi");
-       let my : any = document.getElementById("my");
-       let wel : any = document.getElementById("welcome");
-       let wolf : any = document.getElementById("wolf");
-       let bl : any = document.getElementById("bottom_line");
-       let ml : any = document.getElementById("middle_line");
-        bl.style.top = wolf.offsetTop + wolf.clientHeight + "px";
-        ml.style.top = wolf.offsetTop + (wolf.clientHeight / 2) + "px";
         let menu : any = document.getElementById("menu");
-        menu.style.top = wolf.offsetTop + ((wolf.clientHeight - menu.clientHeight) / 2) + "px";
+        //menu.style.top = wolf.offsetTop + ((wolf.clientHeight - menu.clientHeight) / 2) + "px";
         let intro : any = document.getElementById("intro");
-       setTimeout(()=>{
-        hi.style.opacity = 1;
-       }, 500);
-       setTimeout(()=>{
-        my.style.opacity = 1;
-       }, 1400);
-       setTimeout(()=>{
-        wel.style.opacity = 1;
-       }, 2500);
+        typeWriter1(hiTxt);
+        setTimeout(()=>{
+            console.log("What");
+            i = 0;
+            typeWriter2(myTxt);
+        }, 400);
+        setTimeout(()=>{
+            console.log(welTxt);
+            i = 0;
+            typeWriter3(welTxt);
+        }, 2900);
 
        window.addEventListener("resize", ()=>{
         if(window.innerHeight < 500) {
@@ -45,6 +81,10 @@
         intro.style.transform = "scale(" + 0.8 * window.innerHeight / 500 + ")"; 
        }
 
+    });
+
+    onDestroy(()=>{
+        //window.removeEventListener("resize");
     });
 
 
@@ -65,11 +105,11 @@
 
     </div>
 
-    <img id="wolf" alt="wolf" src="{path}/images/wolf.png" width=80px/>
+    <img id="wolf" bind:this={wolf} alt="wolf" src="{path}/images/wolf.png" width=80px/>
 
     <div id="intro" class:layout_2_intro={screenWidth <= screenHeight} class:layout_1_intro={screenWidth > screenHeight} >
 
-        <h3 id="intro_text"><span id="hi">Hi,</span><br> <span id="my">my name is Kenny Weeks. </span><br> <span id="welcome">Welcome to my  ...</span> </h3>
+        <h3 id="intro_text"><span id="hi" contenteditable="true" bind:innerText={hiIn}></span><br> <span id="my" contenteditable="true" bind:innerText={myIn}></span><br> <span id="welcome" contenteditable="true" bind:innerText={welIn}></span> </h3>
 
         <!--<img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_large"}.svg" alt="portfolio_text"/>
         -->
@@ -154,6 +194,7 @@
             /*position:absolute;
             top:50%;
             transform:translateY(-50%);*/
+            color:$offBlack;
 
             object {
                 font-family:"Gill Sans";
@@ -182,7 +223,6 @@
                 }
                 
                 span {
-                    opacity:0;
                     transition:opacity 1s linear;
                 }
             }

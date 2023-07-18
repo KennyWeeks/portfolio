@@ -1,14 +1,14 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    export let path : string = ""
-    import skills from "../data/skills.json"
+    import { onMount, onDestroy } from "svelte";
+    export const path : string = ""
+    import skills from "../data/skills.json";
+    let about: HTMLElement;
+    let about_summary : HTMLElement;
 
     onMount(()=>{
 
-        let about_summary : any = document.getElementById("about-summary");
-        let education : any = document.getElementById("education");
-        let aboutContentArea : any = document.getElementById("about-content-area");
-        let about : any = document.getElementById("about");
+
+        //let about_summary : any = document.getElementById("about-summary");
         /*window.addEventListener("resize", ()=>{
             if(window.innerWidth <= 1250) {
 
@@ -18,7 +18,7 @@
     });
 </script>
 
-<div id="about">
+<div id="about" bind:this={about}>
 
     <div id="about-content-area">
 
@@ -28,7 +28,7 @@
 
         <div id="about-summary-and-edu">
 
-            <div id="about-summary">
+            <div id="about-summary" bind:this={about_summary}>
 
                 <div id="picture"></div>
 
@@ -47,19 +47,23 @@
             <div id="education">
 
                 <div class="individual-edu">
-                    <p>
-                        <span class="university">University of Nevada, Las Vegas</span><br>
-                        <span class="gpa">GPA: 3.657</span><br>
-                        <span class="major">Bachelors in Computer Science</span><br>
-                        <span class="minor">Minors in Physics and Mathematics</span><br>
-                    </p>
+                    <div class="in_ind_edu">
+                        <p>
+                            <span class="university">University of Nevada, Las Vegas</span><br>
+                            <span class="gpa">GPA: 3.657</span><br>
+                            <span class="major">Bachelors in Computer Science</span><br>
+                            <span class="minor">Minors in Physics and Mathematics</span><br>
+                        </p>
+                    </div>
                 </div>
                 <div class="individual-edu">
-                    <p>
-                        <span class="university">University of California, Irvine</span><br>
-                        <span class="gpa">GPA: 3.9</span><br>
-                        <span class="major">Masters in Computer Science</span>
-                    </p>
+                    <div class="in_ind_edu">
+                        <p>
+                            <span class="university">University of California, Irvine</span><br>
+                            <span class="gpa">GPA: 3.9</span><br>
+                            <span class="major">Masters in Computer Science</span>
+                        </p>
+                    </div>
                 </div>
 
             </div>

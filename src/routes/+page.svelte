@@ -7,6 +7,9 @@
     import Projects from "$lib/sections/projects.svelte";
     import About from "$lib/sections/about.svelte";
     import Landing from "$lib/sections/landing.svelte";
+    import type { PageData } from "./$types";
+    export let data : PageData;
+    console.log(data);
     let screenWidth : number;
     let screenHeight : number;
     let test : number;
