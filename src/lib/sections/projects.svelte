@@ -15,7 +15,26 @@
     let stackButton : boolean[] = [false, false, false];
     let stackButtonTrigger : number[] = Array(stackButton.length);
 
+    let projects : HTMLElement;
+
+    //This is the options that will go into the threshold thing
+    let options : object = {
+        root: null,
+        margin: "0px",
+        threshold: 0.2
+    }
+
     onMount(() => {
+
+        let observer = new IntersectionObserver((entries, observer)=>{
+            entries.forEach((entry)=>{
+                if(entry.isIntersecting) {
+                    console.log(entry.target);
+                }
+            });
+        }, options);
+
+        observer.observe(projects);
         const p = document.getElementById("projects");
         const body = document.getElementsByTagName("body");
         scroll = body[0].scrollTop;
@@ -43,7 +62,7 @@
 
 </script>
 
-<div id="projects" data-scroll={scroll}>
+<div id="projects" bind:this={projects}>
 
     <div class="intro_block">
         <h3>Projects</h3>
