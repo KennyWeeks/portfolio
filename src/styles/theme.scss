@@ -78,6 +78,7 @@ $font-family: "Arial";
 @function findNumber($value) {
     $numbers: ("0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9);
     $result: 0;
+    @debug $value;
     @for $i from 1 through str-length($value) {
         $digit: str-slice($value, $i, $i);
         $result: $result * 10 + map-get($numbers, $digit);
@@ -98,7 +99,7 @@ $font-family: "Arial";
     }
 }
 
-@mixin randomTest($list) {
+@mixin mediaDefinition($list) {
     $sep : "";
 
     @if length($list) == 2 {
@@ -106,6 +107,7 @@ $font-family: "Arial";
             @content;
         }
     } @else {
+        @debug "Since definition #{$list}";
         @media only screen and (minOrMax(nth($list, 1))) {
             @content;
         }

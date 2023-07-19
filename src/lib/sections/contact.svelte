@@ -54,7 +54,7 @@
             font-family:$font-family;
             margin:0px 0px 10px 0px;
 
-            @include randomTest("<#{$tabletMax}") {
+            @include mediaDefinition("<#{$tabletMax}") {
                 color:$offWhite;
             }
             @include laptop {
@@ -67,7 +67,7 @@
             margin-top:0px;
             font-family:$font-family;
             width:70vw;
-            @include randomTest("<#{$tabletMax}") {
+            @include mediaDefinition("<#{$tabletMax}") {
                 color:$offWhite;
                 font-size:15px;
             }
@@ -116,10 +116,10 @@
                 font-family:$font-family;
                 font-weight:lighter;
                 font-size:25px;
-                @include randomTest("<#{$tabletMax}") {
+                @include mediaDefinition("<#{$tabletMax}") {
                     color:$offWhite;
                 }
-                @include randomTest(">#{$tabletMax}") {
+                @include mediaDefinition(">#{$tabletMax}") {
                     color:$offBlack;
                 }
                 

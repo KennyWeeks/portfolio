@@ -76,6 +76,10 @@
 
             <img src="{path}/images/skills.png" height=250 alt="skill-png-label"/>
 
+            <!--This is a bad solution, but it will be what I roll with for now-->
+
+            <img src="{path}/images/skill_sideways.png" width="130" alt="skill-sideways-label"/>
+
             <div id="compiled" class="skills-body">
 
                 <div class="vert-divide"></div>
@@ -84,7 +88,9 @@
                     <h3>compiled languages</h3>
                 {#each skills["programming_languages"] as pl} 
 
-                    <p class="individual-skill">{pl}</p>
+                    <div class="individual-skill-button">
+                        <p class="individual-skill">{pl}</p>
+                    </div>
 
                 {/each}
                 </div>
@@ -99,7 +105,9 @@
                     <h3>Scripting languages</h3>
                     {#each skills["scripting_languages"] as pl} 
     
-                        <p class="individual-skill">{pl}</p>
+                        <div class="individual-skill-button">
+                            <p class="individual-skill">{pl}</p>
+                        </div>
     
                     {/each}
                 </div>
@@ -110,7 +118,9 @@
                     <h3>Design tools</h3>
                     {#each skills["design_tools"] as pl} 
     
-                        <p class="individual-skill">{pl}</p>
+                        <div class="individual-skill-button">
+                            <p class="individual-skill">{pl}</p>
+                        </div>
     
                     {/each}
                 </div>
@@ -125,6 +135,7 @@
 
     @import "../../styles/theme.scss";
 
+    //This will rotate the binding
     @keyframes rotate {
         0% {
             transform:rotate(0deg);
@@ -134,17 +145,22 @@
         }
     }
 
+    $breakpointOne: "800px";
+    $breakpointTwo: "600px";
+    $breakpointThree: "1250px";
+
+
     #about {
         width:100vw;
         height:auto;
         overflow:hidden;
         cursor:default;
-        @include randomTest((">800px")) {
+        @include mediaDefinition((">#{$breakpointOne}")) {
             @include flexCenter;
             padding:250px 0px 200px 0px;
         }
 
-        @include randomTest(("<800px")) {
+        @include mediaDefinition(("<#{$breakpointOne}")) {
             padding:250px 0px 10vw 0px;
         }
 
@@ -153,11 +169,14 @@
             position:relative;
             flex-flow:row wrap;
 
-            @include randomTest((">800px")) {
+            @include mediaDefinition((">#{$breakpointThree}")) {
                 width:1216px;
             }
 
-            @include randomTest(("<800px")) {
+            @include mediaDefinition(("<#{$breakpointThree}", ">#{$breakpointOne}")) {
+                width:800px;
+            }
+            @include mediaDefinition(("<#{$breakpointOne}")) {
                 width:90vw;
                 margin-left:5vw;
             }
@@ -167,19 +186,19 @@
                 width:340px;
                 height:340px;
                 top:-170px;
-                @include randomTest((">800px")) {
+                @include mediaDefinition((">#{$breakpointOne}")) {
                     left:calc((800px - 340px) / 2);
                     width:340px;
                     height:340px;
                     top:-170px;
                 }
-                @include randomTest(("<800px", ">500px")) {
+                @include mediaDefinition(("<#{$breakpointOne}", ">#{$breakpointTwo}")) {
                     left:calc((90vw - 340px) / 2);
                     width:340px;
                     height:340px;
                     top:-170px;
                 }
-                @include randomTest(("<500px")) {
+                @include mediaDefinition(("<#{$breakpointTwo}")) {
                     width:50vw;
                     height:50vw;
                     top:-25vw;
@@ -190,13 +209,13 @@
 
                 img {
                     animation: rotate 10s linear infinite;
-                    @include randomTest((">500px")) {
+                    @include mediaDefinition((">#{$breakpointTwo}")) {
                         width:500px;   
                         margin-left:calc((340px - 500px) / 2);
                         margin-top:calc((350px - 500px) / 2);
                     }
 
-                    @include randomTest(("<500px")) {
+                    @include mediaDefinition(("<#{$breakpointTwo}")) {
                         width:75vw;
                         margin-left:calc((50vw - 75vw) / 2);
                         margin-top:calc((50vw - 75vw) / 2);
@@ -215,24 +234,23 @@
                     background-color:$offBlack;
                     border-radius:$text-block-border-radius;
                     padding-bottom:20px;
-                    @include randomTest((">800px")) {
+                    @include mediaDefinition((">#{$breakpointThree}")) {
+                        
                         //So this will be the desktop styles
                         width:800px;
                         margin:auto;
-                        
-                        ;
                         margin-left:0px;
                     }
 
-                    @include randomTest(("<800px")) {
+                    @include mediaDefinition(("<#{$breakpointThree}", ">#{$breakpointOne}")) {
                         width:100%;
                     }
 
-                    @include randomTest((">500px")) {
+                    @include mediaDefinition((">#{$breakpointTwo}")) {
                         padding-top:170px;
                     }
 
-                    @include randomTest(("<500px")) {
+                    @include mediaDefinition(("<#{$breakpointTwo}")) {
                         padding-top:25vw;
                     }
 
@@ -244,14 +262,14 @@
                         left:50%;
                         transform:translate(-50%);
                         
-                        @include randomTest((">500px")) {
+                        @include mediaDefinition((">#{$breakpointTwo}")) {
                             width:320px;
                             height:320px;
                             border:20px solid $offBlack;
                             top:-170px;
                         }
 
-                        @include randomTest(("<500px")) {
+                        @include mediaDefinition(("<#{$breakpointTwo}")) {
                             width:50vw;
                             height:50vw;
                             box-shadow:inset 0 0 0 20px $offBlack;
@@ -264,11 +282,11 @@
                         font-family:$font-family;
                         width:80%;
                         margin-left:10%;
-                        @include randomTest((">800px")) {
+                        @include mediaDefinition((">#{$breakpointOne}")) {
                             font-size:25px;
                         }
 
-                        @include randomTest(("<800px")) {
+                        @include mediaDefinition(("<#{$breakpointOne}")) {
                             font-size:20px;
                         }
                     }
@@ -278,22 +296,29 @@
                     margin:auto;
                     height:calc(100% - 40px);
                     margin-right:0px;
-                    margin-top:35px;
+                    margin-top:40px;
 
 
-                    @include randomTest((">800px")) {
+                    @include mediaDefinition((">#{$breakpointThree}")) {
                         width:407px;
                         display:block;
                     }
 
-                    @include randomTest(("<800px", ">600px")) {
+                    @include mediaDefinition(("<#{$breakpointThree}", ">#{$breakpointOne}")) {
+                        width:100%;
+                        height:auto;
+                        @include flexRow;
+                    }
+
+
+                    @include mediaDefinition(("<#{$breakpointOne}", ">#{$breakpointTwo}")) {
                         width:100%;
                         height:auto;
                         margin-top:45px;
                         @include flexRow;
                     }
 
-                    @include randomTest(("<600px")) {
+                    @include mediaDefinition(("<#{$breakpointTwo}")) {
                         width:100%;
                         height:auto;
                         margin-top:45px;
@@ -308,7 +333,7 @@
                         @include flexCenter;
                         margin-right:0px;
 
-                        @include randomTest((">800px")) {
+                        @include mediaDefinition((">#{$breakpointThree}")) {
                             width:405px;
                             height:49%;
                             font-size:25px;
@@ -319,12 +344,18 @@
                             }
                         }
 
-                        @include randomTest(("<800px", ">600px")) {
+                        @include mediaDefinition(("<#{$breakpointThree}", ">#{$breakpointOne}")) {
                             width:49.5%;
                             padding:20px 0px;
                             font-size:20px;
                         }
-                        @include randomTest(("<600px")) {
+
+                        @include mediaDefinition(("<#{$breakpointOne}", ">#{$breakpointTwo}")) {
+                            width:49.5%;
+                            padding:20px 0px;
+                            font-size:20px;
+                        }
+                        @include mediaDefinition(("<#{$breakpointTwo}")) {
                             width:100%;
                             padding:20px 0px;
                             font-size:20px;
@@ -356,7 +387,7 @@
                                 font-style:italic;
                             }
 
-                            @include randomTest(("<600px")) {
+                            @include mediaDefinition(("<#{$breakpointTwo}")) {
                                 margin:auto;
                                 @include flexCenter;
                             }
@@ -365,16 +396,20 @@
                                 position:absolute;
                                 left:-10%;
 
-                                @include randomTest(("<600px")) {
+                                @include mediaDefinition(("<#{$breakpointTwo}")) {
                                     top:-55px;
                                 }
 
-                                @include randomTest((">600px", "<800px")) {
+                                @include mediaDefinition((">#{$breakpointTwo}", "<#{$breakpointOne}")) {
                                     top:-55px;
                                 }
 
-                                @include randomTest((">800px")) {
-                                    top:-45px;
+                                @include mediaDefinition(("<#{$breakpointThree}", ">#{$breakpointOne}")) {
+                                    top:-55px;
+                                }
+
+                                @include mediaDefinition((">#{$breakpointThree}")) {
+                                    top:-40px;
                                 }
                             }
                         }
@@ -384,13 +419,14 @@
             }
 
             #skills {
-                @include randomTest((">600px")) {
+                @include mediaDefinition((">#{$breakpointTwo}")) {
                     width:calc(100% - 40px);
                     margin-left:40px;
                 }
 
-                @include randomTest(("<600px")) {
+                @include mediaDefinition(("<#{$breakpointTwo}")) {
                     width:100%;
+                    margin-top:45px;
                 }
                 
                 
@@ -401,7 +437,7 @@
                 font-family:$font-family;
                 color:$offWhite;
                 position:relative;
-                @include randomTest((">800px")) {
+                @include mediaDefinition((">#{$breakpointOne}")) {
                     @include flexRow;
                 }
 
@@ -410,23 +446,40 @@
                     top:50%;
                     transform:translateY(-50%);
                     left:-45px;
+                }
 
-                    @include randomTest(("<600px")) {
+                & > img:nth-of-type(2) {
+                    @include mediaDefinition((">#{$breakpointTwo}")) {
+                        display:none;
+                    }
+                    @include mediaDefinition(("<#{$breakpointTwo}")) {
+                        display:block;
+                        top:-15px;
+                        left:10px;
+                    }
+                }
+
+                & > img:nth-of-type(1) {
+                    @include mediaDefinition((">#{$breakpointTwo}")) {
+                        display:block;
+                    }
+                    @include mediaDefinition(("<#{$breakpointTwo}")) {
                         display:none;
                     }
                 }
 
+
                 .vert-divide {
                     background-color:$offWhite;
                     position:absolute;
-                    @include randomTest((">800px")) {
+                    @include mediaDefinition((">#{$breakpointOne}")) {
                         height:80%;
                         width:2.5px;
                         top:10%;
                         right:0px;
                     }
 
-                    @include randomTest(("<800px")) {
+                    @include mediaDefinition(("<#{$breakpointOne}")) {
                         display:none;
                     }
                     
@@ -434,11 +487,11 @@
 
                 .skills-body {
                     position:relative;
-                    @include randomTest((">800px")) {
+                    @include mediaDefinition((">#{$breakpointOne}")) {
                         width:33.33%;
                         height:auto;
                     }
-                    @include randomTest(("<800px")) {
+                    @include mediaDefinition(("<#{$breakpointOne}")) {
                         width:100%;
                         padding:20px 0px;
                     }
@@ -449,12 +502,12 @@
                         margin:auto;
 
                         h3 {
-                            @include randomTest((">800px")) {
+                            @include mediaDefinition((">#{$breakpointThree}")) {
                                 font-size:25px; 
                
                             }
 
-                            @include randomTest(("<800px")) {
+                            @include mediaDefinition(("<#{$breakpointThree}")) {
                                 font-size:20px;
                                 margin-top:0px;
                             }
@@ -470,13 +523,42 @@
                                 display:block;
                             }
                         }
+
+                        .individual-skill-button {
+                            display:inline-block;
+                            color:$offWhite;
+                            box-shadow:inset 0 0 0 2px $offWhite;
+                            text-align:center;
+                            border-radius:50px;
+
+                            .individual-skill {
+                                margin:0px;
+                            }
+
+                            @include mediaDefinition((">#{$breakpointThree}")) {
+                                font-size:20px;
+                                padding:15px;
+                                margin-top:0px;
+                                margin-bottom:10px;
+                                margin-right:15px;
+                            }
+                            
+                            @include mediaDefinition(("<#{$breakpointThree}")) {
+                                font-size:18px;
+                                padding:10px;
+                                margin-top:0px;
+                                margin-bottom:10px;
+                                margin-right:15px;
+                            }
+                        }
                         
-                        .individual-skill {
+                        /*.individual-skill {
                             display:inline-block;
                             border-radius:50px;
                             box-shadow:inset 0 0 0 2px $offWhite;
                             line-height:0px;
-                            @include randomTest((">800px")) {
+                            word-wrap:break-word;
+                            @include mediaDefinition((">#{$breakpointOne}")) {
                                 font-size:25px;
                                 padding:20px;
                                 margin-right:15px;
@@ -484,14 +566,14 @@
                                 margin-bottom:10px;
                             }
 
-                            @include randomTest(("<800px")) {
+                            @include mediaDefinition(("<#{$breakpointOne}")) {
                                 font-size:20px;
                                 padding:20px;
                                 margin-top:0px;
                                 margin-bottom:10px;
                                 margin-right:15px;
                             }
-                        }
+                        }*/
                     }
                 }
             }

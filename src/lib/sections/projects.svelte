@@ -152,7 +152,7 @@
         position:relative;
         width:100vw;
         padding-top:10px;
-        @include randomTest(">#{$tabletMax}") {
+        @include mediaDefinition(">#{$tabletMax}") {
             padding-bottom:20px;
         }
         font-family:$font-family;
@@ -161,12 +161,12 @@
             @include flexRow;
             margin-top:5px;
             
-            @include randomTest(("<#{$laptopMax}")) {
+            @include mediaDefinition(("<#{$laptopMax}")) {
                 width:90vw;
                 margin-left:5vw;
             }
 
-            @include randomTest((">#{$laptopMax}")) {
+            @include mediaDefinition((">#{$laptopMax}")) {
                 width:1600px;
                 margin:auto;
             }
@@ -240,10 +240,10 @@
 
             #content-holder {
                 margin:auto;
-                @include randomTest("<#{$laptopMax}") {
+                @include mediaDefinition("<#{$laptopMax}") {
                     width:calc(90vw);
                 }
-                @include randomTest(">#{$laptopMax}") {
+                @include mediaDefinition(">#{$laptopMax}") {
                     width:1600px;
                 }
                 
@@ -257,7 +257,7 @@
                     @include phoneVert {
                         width:90%;
                     }
-                    @include randomTest(">#{$tabletMin}") {
+                    @include mediaDefinition(">#{$tabletMin}") {
                         @include flexRow;
                     }
 
@@ -439,7 +439,7 @@
                     .project_body {
                         padding-top:20px;
                         padding-bottom:20px;
-                        @include randomTest(">#{$tabletMin}") {
+                        @include mediaDefinition(">#{$tabletMin}") {
                             padding:20px;
                         }
                         border-radius:20px;
@@ -576,7 +576,7 @@
 
         //These are the styles to get the full screen
         .full_width {
-            @include randomTest("<#{$tabletMax}") {
+            @include mediaDefinition("<#{$tabletMax}") {
                 width:100vw;
                 margin-left:0vw;
                 border-top-left-radius:20px;
@@ -585,7 +585,7 @@
         }
 
         .partial_width {
-            @include randomTest("<#{$tabletMax}") {
+            @include mediaDefinition("<#{$tabletMax}") {
                 width:90vw;
                 margin-left:5vw;
                 border-top-left-radius:20px;
