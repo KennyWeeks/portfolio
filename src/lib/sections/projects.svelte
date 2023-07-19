@@ -15,48 +15,32 @@
     let stackButton : boolean[] = [false, false, false];
     let stackButtonTrigger : number[] = Array(stackButton.length);
 
-    let projects : HTMLElement;
+    let projects : Element;
 
     //This is the options that will go into the threshold thing
     let options : object = {
         root: null,
         margin: "0px",
-        threshold: 0.2
+        threshold: 0.5
     }
 
     onMount(() => {
 
+        //I'll have to do this for all of them.
         let observer = new IntersectionObserver((entries, observer)=>{
             entries.forEach((entry)=>{
                 if(entry.isIntersecting) {
-                    console.log(entry.target);
+                    entry.target.style.opacity = 1.0;
+                } else {
+                    console.log("Not there");
                 }
             });
         }, options);
 
-        observer.observe(projects);
-        const p = document.getElementById("projects");
-        const body = document.getElementsByTagName("body");
-        scroll = body[0].scrollTop;
-        top = p?.offsetTop;
-        console.log(p?.offsetTop);
-        console.log(scroll);
-        mobile = Device.isMobile;
-
-        const bodyParts = [...document.querySelectorAll(".project_body")];
-        const bodyP = document.querySelector(".body_parts");
-        window.addEventListener("resize", ()=>{
-            bodyParts.forEach((e, i)=>{
-                console.log(e);
-                if(bodyP.clientHeight < e.clientHeight) {
-                    stackButton[i] = true;
-                    stackButtonTrigger[i] = window.innerWidth;
-                } else {
-                    if(window.innerWidth > stackButtonTrigger[i]) {
-                        stackButton[i] = false;
-                    }
-                }
-            });
+        //observer.observe(document.querySelector(".body_parts"));
+        let bodyParts = document.querySelectorAll(".body_parts");
+        bodyParts.forEach(e=>{
+            observer.observe(e);
         });
     });
 
@@ -68,7 +52,7 @@
     
         <div id="content-holder">
             {#each project["project"] as p, index}
-                <div class="body_parts" style="flex-direction:{index % 2 === 1 ? "row-reverse": "row"}; margin-top:{index !== 0 ? "30px" : "0px"}">
+                <div class="body_parts" style="flex-direction:{index % 2 === 1 ? "row-reverse": "row"}; margin-top:{index !== 0 ? "80px" : "0px"}">
                     <div class="project_image">
 
                         <div class="main_image"></div>
@@ -143,7 +127,6 @@
             height:auto;/*This will be a dummy height, will size to content*/
             padding-top:20px;
             //background-color:$offBlack;
-            transition:all 0.2s linear;
             padding-bottom:20px;
 
             @include tablet {
@@ -153,12 +136,13 @@
 
             @include laptop {
                 width:90vw;
-                margin-left:5vw;
+                min-width:1040px;
+                margin:auto;
                 border-radius:20px;
             }
 
             @include desktop {
-                width:1600px;
+                width:1200px;
                 margin:auto;
                 border-radius:20px;
             }
@@ -172,7 +156,7 @@
                     width:800px;
                 }
                 @include mediaDefinition(">#{$tabletMax}") {
-                    width:1600px;
+                    width:100%;
                 }
                 
 
@@ -184,8 +168,19 @@
                     height:auto;
                     background-color:$offBlack;
                     border-radius:20px;
+                    opacity:0.0;
+                    transition:opacity 0.5s linear;
 
-                    @include mediaDefinition((">700px")) {
+                    @include mediaDefinition((">#{$tabletMax}")) {
+                        width:1040px;
+                        margin:0px;
+                        &:nth-of-type(2) {
+                            margin-left:calc(100% - 1040px);
+                        }
+                        @include flexRow;
+                    }
+
+                    @include mediaDefinition((">700px", "<#{$tabletMax}")) {
                         width:640px;
                     }
 
@@ -198,7 +193,14 @@
                     }
 
                     .project_image {
-                        @include mediaDefinition((">700px")) {
+                        @include mediaDefinition((">#{$tabletMax}")) {
+                            margin-left:0px;
+                            width:600px;
+                            transform:none;
+                            display:flex;
+                        }
+
+                        @include mediaDefinition((">700px", "<#{$tabletMax}")) {
                             width:600px;
                             display:flex;
                         }
@@ -310,6 +312,7 @@
                         padding:20px;
                         border-radius:20px;
                         background-color:$offBlack;
+                        @include flexCenter;
 
                         .body_title {
                             width:100%;
@@ -341,12 +344,13 @@
                         div {
 
                             div {
-                                padding:10px;
+                                padding:15px;
                                 box-shadow:inset 0 0 0 2px $offWhite;
-                                border-radius:20px;
+                                border-radius:25px;
                                 display:inline-block;
                                 margin-right:5px;
                                 margin-bottom:5px;
+                                font-size:18px;
                             }
                         }
                     }
