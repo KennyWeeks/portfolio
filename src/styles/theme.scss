@@ -78,7 +78,6 @@ $font-family: "Arial";
 @function findNumber($value) {
     $numbers: ("0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9);
     $result: 0;
-    @debug $value;
     @for $i from 1 through str-length($value) {
         $digit: str-slice($value, $i, $i);
         $result: $result * 10 + map-get($numbers, $digit);
@@ -90,11 +89,9 @@ $font-family: "Arial";
 @function minOrMax($string) {
     @if str-slice($string, 1, 1) == "<" {
         $sep : findNumber(str-slice($string, 2, -3));
-        @debug "max-width #{$sep - 1}";
         @return "max-width:" + ($sep - 1) + "px";
     } @else {
         $sep : str-slice($string, 2);
-        @debug "min-width #{$sep}";
         @return "min-width:" + $sep;
     }
 }
@@ -107,10 +104,20 @@ $font-family: "Arial";
             @content;
         }
     } @else {
-        @debug "Since definition #{$list}";
         @media only screen and (minOrMax(nth($list, 1))) {
             @content;
         }
+    }
+}
+
+@mixin underLine($word) {
+    #{$word}::after {
+        content:"";
+        display:block;
+        width:50%;
+        background-color:$offWhite;
+        height:3px;
+        box-shadow:none;
     }
 }
 
