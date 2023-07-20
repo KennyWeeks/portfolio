@@ -118,13 +118,7 @@
         -->
         <br>
         <!--<object data="{path}/images/portfolio_title_large.svg"></object>-->
-        <svg id="Layer_1" style="width:90vw;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1380 250">
-            <text style="font-family:'Arial'; font-size:320px; font-weight:bold;">
-                <textPath xlink:href="#textLine">Portfolio</textPath>
-            </text>
-            <path id="textLine" d="m-20 240 h0"/>
-            <animate xlink:href="#textLine" attributeName="d" begin="4.7s" dur="4s" to="m-20 240 h1800" fill="freeze"/>
-        </svg>
+        <object data="{path}/images/portfolio_made_header.svg"></object>
 
         <div id="move_into_website">
             <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
