@@ -122,7 +122,7 @@
 
         <div id="move_into_website">
             <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
-            <div id="beacon_circle"></div>
+            <div type="image/svg+xml" id="beacon_circle"></div>
         </div>
     </div>
 
