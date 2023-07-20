@@ -55,38 +55,42 @@
         border-radius:50%;
         border:2px solid $offWhite;
         overflow:hidden;
+        background-color:$offWhite;
 
         #half-cover {
             width:50%;
             height:100%;
             background-color:$offWhite;
             position:absolute;
-            z-index:1000;
+            z-index:100000000;
+            border:5px solid $offWhite;
         }
 
         #first-half {
-            width:calc(100% - 10px);
-            height:calc(100% - 10px);
+            width:calc(100% - 11px);
+            height:calc(100% - 11px);
             border-radius:50%;
             border-left:5px solid $offBlack;
             border-bottom:5px solid $offBlack;
             border-top:5px solid transparent;
             border-right:5px solid transparent;
-            transform:rotate(225deg);
+            transform:rotate(45deg);
+            background-color:$offWhite;
         }
 
-        #second-half {
+        #econd-half {
             position:absolute;
             width:calc(100% - 10px);
             height:calc(100% - 10px);
-            top:0px;
-            left:0px;
+            top:00;
+            left:1px;
             border-radius:50%;
             border-left:5px solid $offBlack;
             border-bottom:5px solid $offBlack;
             border-top:5px solid transparent;
             border-right:5px solid transparent;
             z-index:1000000;
+            transform:rotate(45deg);
         }
     }
 
