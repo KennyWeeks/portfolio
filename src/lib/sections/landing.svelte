@@ -49,11 +49,11 @@
 
 <div id="landing">
 
-    <div id="clock">
+    <!--<div id="clock">
 
         <p>{hours} <span>:</span> {min}</p>
 
-    </div>
+    </div>-->
 
     <img id="wolf" bind:this={wolf} alt="wolf" src="{path}/images/wolf.png" width=80px/>
 

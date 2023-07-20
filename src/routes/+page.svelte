@@ -7,9 +7,6 @@
     import Projects from "$lib/sections/projects.svelte";
     import About from "$lib/sections/about.svelte";
     import Landing from "$lib/sections/landing.svelte";
-    import type { PageData } from "./$types";
-    export let data : PageData;
-    console.log(data);
     let screenWidth : number;
     let screenHeight : number;
     let test : number;
@@ -47,6 +44,7 @@
         document.querySelector("#second-half").style.zIndex = 1000000;
         document.querySelector("#second-half").style.borderRight = "5px solid transparent";
     }
+    
     //console.log(b?.clientHeight);
     //console.log(b?.scrollTop);
 }}/>
@@ -107,7 +105,7 @@
             transform:rotate(45deg);
         }
 
-        #econd-half {
+        #second-half {
             position:absolute;
             width:calc(90% - 10px);
             height:calc(90% - 10px);

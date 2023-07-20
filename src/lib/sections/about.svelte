@@ -62,7 +62,7 @@
                     <div class="in_ind_edu">
                         <p>
                             <span class="university">University of California, Irvine</span><br>
-                            <span class="gpa">GPA: 3.9</span><br>
+                            <span class="gpa">GPA: 3.922</span><br>
                             <span class="major">Masters in Computer Science</span>
                         </p>
                     </div>
@@ -157,11 +157,11 @@
         cursor:default;
         @include mediaDefinition((">#{$breakpointOne}")) {
             @include flexCenter;
-            padding:250px 0px 200px 0px;
+            padding:250px 0px 0px 0px;
         }
 
         @include mediaDefinition(("<#{$breakpointOne}")) {
-            padding:250px 0px 10vw 0px;
+            padding:250px 0px 0px 0px;
         }
 
         #about-content-area {
@@ -409,7 +409,7 @@
                                 }
 
                                 @include mediaDefinition((">#{$breakpointThree}")) {
-                                    top:-40px;
+                                    top:-35px;
                                 }
                             }
                         }
@@ -552,28 +552,6 @@
                             }
                         }
                         
-                        /*.individual-skill {
-                            display:inline-block;
-                            border-radius:50px;
-                            box-shadow:inset 0 0 0 2px $offWhite;
-                            line-height:0px;
-                            word-wrap:break-word;
-                            @include mediaDefinition((">#{$breakpointOne}")) {
-                                font-size:25px;
-                                padding:20px;
-                                margin-right:15px;
-                                margin-top:0px;
-                                margin-bottom:10px;
-                            }
-
-                            @include mediaDefinition(("<#{$breakpointOne}")) {
-                                font-size:20px;
-                                padding:20px;
-                                margin-top:0px;
-                                margin-bottom:10px;
-                                margin-right:15px;
-                            }
-                        }*/
                     }
                 }
             }

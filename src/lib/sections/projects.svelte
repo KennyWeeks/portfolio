@@ -48,6 +48,23 @@
 
 <div id="projects" bind:this={projects}>
 
+    <div id="project_description">
+        <h3>Projects</h3>
+
+        <p>Below are some of the projects I have worked on in the past. I wanted to put them here not just to fill up my website, but to also give an opportunity to display them when demo aren't available to maintain at all times. </p>
+
+        <div id="github_link_area">
+            <img src="{path}/images/octocat.png" alt="octocat" width=25px/> 
+            <p>This icon, when pressed will link you back to the github repo of the project </p> 
+            
+        </div><br>
+
+        <div id="demo_link_area">
+            <p>This icon, when pressed will link you to a demo if one is available. <img src="{path}/images/octocat.png" alt="octocat" width=25px/></p> 
+            
+        </div>
+    </div>
+
     <div id="projects_floating_tab" class:full_width={scroll > top} class:partial_width={scroll <= top}>
     
         <div id="content-holder">
@@ -121,6 +138,43 @@
         font-family:$font-family;
         padding-bottom:20px;
 
+        #project_description {
+            width:70%;
+            max-width:1200px;
+            margin:20px auto;
+
+            h3 {
+                font-size:35px;
+                margin-top:0px;
+                margin-bottom:0px;
+                text-transform:uppercase;
+            }
+
+            p {
+                font-size:18px;
+            }
+
+            div{
+                display:inline-block;
+
+                p {
+                    margin:0px 0px 0px 0px;
+                }
+
+                img {
+                    background-color:$offBlack;
+                    border-radius:50%;
+                    float:left;
+                    margin-right:10px;
+                }
+
+                &:nth-of-type(2) {
+                    margin-top:10px;
+                    display:none;
+                }
+            }
+        }
+
         //This is is the body of the content;
 
         #projects_floating_tab {
@@ -137,6 +191,7 @@
             @include laptop {
                 width:90vw;
                 min-width:1040px;
+                max-width:1200px;
                 margin:auto;
                 border-radius:20px;
             }
@@ -290,6 +345,7 @@
                                     @include mediaDefinition((">540px")) {
                                         width:149px;
                                         height:149px;
+                                        margin-bottom:2px;
                                     }
 
                                     @include mediaDefinition(("<540px")) {
@@ -300,7 +356,6 @@
                                     }
                                     
                                     background-color:$offWhite;
-                                    box-shadow:inset 0 0 0 2px $offBlack;
                                     border-radius:20px;
                                 }
                             }
