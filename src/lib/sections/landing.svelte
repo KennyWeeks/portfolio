@@ -10,63 +10,10 @@
     let hours : any = new Date().getHours();
     import Clock from "../clock.svelte";
     let wolf : HTMLElement;
-
-    let hiTxt : string = "Hi,";
-    let hiIn : string = "";
-    let myTxt : string = "My name is Kenny Weeks."
-    
-    let myIn : string = "";
-    let welTxt : string = "Welcome to my ...";
-    let welIn : string = "";
-
-
-    let i : number = 0;
-
-    function typeWriter1(text:string) : void {
-        if(i < text.length) {
-            console.log(text.charAt(i));
-            console.log(text);
-            hiIn += text.charAt(i);
-            i += 1;
-            setTimeout(()=>{typeWriter1(text)}, 100);
-        }
-    }
-
-    function typeWriter2(text:string) : void {
-        if(i < text.length) {
-            console.log(text.charAt(i));
-            console.log(text);
-            myIn += text.charAt(i);
-            i += 1;
-            setTimeout(()=>{typeWriter2(text)}, 100);
-        }
-    }
-
-    function typeWriter3(text:string) : void {
-        if(i < text.length) {
-            console.log(text.charAt(i));
-            console.log(text);
-            welIn += text.charAt(i);
-            i += 1;
-            setTimeout(()=>{typeWriter3(text)}, 100);
-        }
-    }
+    let intro : HTMLElement;
 
     onMount(()=>{
         let menu : any = document.getElementById("menu");
-        //menu.style.top = wolf.offsetTop + ((wolf.clientHeight - menu.clientHeight) / 2) + "px";
-        let intro : any = document.getElementById("intro");
-        typeWriter1(hiTxt);
-        setTimeout(()=>{
-            console.log("What");
-            i = 0;
-            typeWriter2(myTxt);
-        }, 400);
-        setTimeout(()=>{
-            console.log(welTxt);
-            i = 0;
-            typeWriter3(welTxt);
-        }, 2900);
 
         let class2 : Element[] = [...document.querySelectorAll(".cls-2")];
         console.log(class2);
@@ -110,21 +57,21 @@
 
     <img id="wolf" bind:this={wolf} alt="wolf" src="{path}/images/wolf.png" width=80px/>
 
-    <div id="intro" class:layout_2_intro={screenWidth <= screenHeight} class:layout_1_intro={screenWidth > screenHeight} >
+    <div id="intro" bind:this={intro} class:layout_2_intro={screenWidth <= screenHeight} class:layout_1_intro={screenWidth > screenHeight} >
 
-        <h3 id="intro_text"><span id="hi" contenteditable="true" bind:innerText={hiIn}></span><br> <span id="my" contenteditable="true" bind:innerText={myIn}></span><br> <span id="welcome" contenteditable="true" bind:innerText={welIn}></span> </h3>
+        <h3 id="intro_text"><span id="hi">Hi</span><br> <span id="my">My name is Kenny Weeks</span><br> <span id="welcome">Welcome to my ...</span> </h3>
 
         <!--<img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_large"}.svg" alt="portfolio_text"/>
         -->
         <br>
         <!--<object data="{path}/images/portfolio_title_large.svg"></object>-->
         <!--<object type="image/svg+xml" data="{path}/images/portfolio_made_header.svg"></object>-->
-        <svg id="Layer_1" style="width:90vw;" xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 250">
-            <text style="font-family:'Arial'; font-size:320px; font-weight:bold;">
+        <svg id="Layer_1" style="width:90vw;" xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 260">
+            <text style="font-family:'Arial'; font-size:340px; font-weight:bold;">
                 <textPath xlink:href="#textLine">Portfolio</textPath>
             </text>
-            <path id="textLine" d="m-20 240 h0"/>
-            <animate xlink:href="#textLine" attributeName="d" begin="4.7s" dur="4s" to="m-20 240 h1800" fill="freeze"/>
+            <path id="textLine" d="m-20 250 h1800"/>
+            <!--<animate xlink:href="#textLine" attributeName="d" begin="4.7s" dur="4s" to="m-20 240 h1800" fill="freeze"/>-->
         </svg>
 
         <div id="move_into_website">
@@ -218,14 +165,16 @@
             transform:translateY(-50%);*/
             color:$offBlack;
 
-            object {
-                font-family:"Gill Sans";
+            svg {
+                opacity:0.0;
+                animation:fadeIn 2s linear forwards;
+                animation-delay:9s;
+                font-family:"Arial";
                 width:80vw;
             }
 
             h3 {
                 font-family:"Arial";
-                font-weight:lighter;
                 margin-bottom:0px;
                 margin-top:0px;
 
@@ -241,11 +190,26 @@
                 }
 
                 @include desktopFullScreen {
-                    font-size:3vw
+                    font-size:3vw;
                 }
                 
                 span {
-                    transition:opacity 1s linear;
+                    opacity:0.0;
+                }
+
+                #hi {
+                    animation:fadeIn 2s linear forwards;
+                }
+
+                #my {
+                    
+                    animation:fadeIn 2s linear forwards;
+                    animation-delay:3s;
+                }
+
+                #welcome {
+                    animation:fadeIn 2s linear forwards;
+                    animation-delay:6s;
                 }
             }
 
@@ -258,7 +222,7 @@
             margin:30px auto 0px auto;
             opacity:0.0;
             animation: fadeIn 2s linear forwards;
-            animation-delay:7.5s;
+            animation-delay:9s;
             
 
             @include desktopSmallScreen {
