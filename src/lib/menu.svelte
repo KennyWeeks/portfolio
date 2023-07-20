@@ -47,6 +47,8 @@ right:{size == "100" ? "0px" : "15px"};">
 
     #menu {
         position:absolute;
+        top:40px;
+        transform:translateY(-50%);
         right:15px;
         z-index:10000;
         width:40px;
@@ -83,7 +85,6 @@ right:{size == "100" ? "0px" : "15px"};">
             padding:0px;
             text-align:left;
             margin-top:0px;
-            font-family:"Goldoni";
             font-size:60px;
             cursor:default;
 
@@ -95,6 +96,7 @@ right:{size == "100" ? "0px" : "15px"};">
                 -moz-user-select: none; /* Old versions of Firefox */
                     -ms-user-select: none; /* Internet Explorer/Edge */
                         user-select: none;
+
 
                 a {
                     text-decoration:none;

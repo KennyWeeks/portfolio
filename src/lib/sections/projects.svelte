@@ -21,7 +21,7 @@
     let options : object = {
         root: null,
         margin: "0px",
-        threshold: 0.5
+        threshold: 0.3
     }
 
     onMount(() => {

@@ -25,7 +25,11 @@
 
 <div id="page_tracker">
 
-    <div id="page_tracker_cover"></div>
+    <div id="half-cover"></div>
+
+    <div id="first-half"></div>
+
+    <div id="second-half"></div>
 
 </div>
 
@@ -46,20 +50,43 @@
         height:30px;
         position:fixed;
         z-index:10000;
-        bottom:15px;
-        right:10px;
-        background-color:rgba(30, 25, 25, 0.5);
+        bottom:20px;
+        right:20px;
         border-radius:50%;
         border:2px solid $offWhite;
+        overflow:hidden;
 
-        #page_tracker_cover {
-            width:20px;
-            height:20px;
+        #half-cover {
+            width:50%;
+            height:100%;
             background-color:$offWhite;
-            border-radius:50%;
             position:absolute;
-            top:5px;
-            left:5px;
+            z-index:1000;
+        }
+
+        #first-half {
+            width:calc(100% - 10px);
+            height:calc(100% - 10px);
+            border-radius:50%;
+            border-left:5px solid $offBlack;
+            border-bottom:5px solid $offBlack;
+            border-top:5px solid transparent;
+            border-right:5px solid transparent;
+            transform:rotate(225deg);
+        }
+
+        #second-half {
+            position:absolute;
+            width:calc(100% - 10px);
+            height:calc(100% - 10px);
+            top:0px;
+            left:0px;
+            border-radius:50%;
+            border-left:5px solid $offBlack;
+            border-bottom:5px solid $offBlack;
+            border-top:5px solid transparent;
+            border-right:5px solid transparent;
+            z-index:1000000;
         }
     }
 

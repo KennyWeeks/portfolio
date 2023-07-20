@@ -168,7 +168,7 @@
             svg {
                 opacity:0.0;
                 animation:fadeIn 2s linear forwards;
-                animation-delay:9s;
+                animation-delay:6s;
                 font-family:"Arial";
                 width:80vw;
             }
@@ -204,12 +204,12 @@
                 #my {
                     
                     animation:fadeIn 2s linear forwards;
-                    animation-delay:3s;
+                    animation-delay:2s;
                 }
 
                 #welcome {
-                    animation:fadeIn 2s linear forwards;
-                    animation-delay:6s;
+                    animation:fadeIn 1s linear forwards;
+                    animation-delay:4s;
                 }
             }
 
@@ -221,8 +221,8 @@
             position:relative;
             margin:30px auto 0px auto;
             opacity:0.0;
-            animation: fadeIn 2s linear forwards;
-            animation-delay:9s;
+            animation: fadeIn 1s linear forwards;
+            animation-delay:6s;
             
 
             @include desktopSmallScreen {
