@@ -2,6 +2,6 @@
     <text style="font-family:'Arial'; font-size:320px; font-weight:bold;">
         <textPath xlink:href="#textLine">Portfolio</textPath>
     </text>
-    <path id="textLine" d="m-20 240 h0"/>
-    <animate xlink:href="#textLine" attributeName="d" begin="4.7s" dur="4s" to="m-20 240 h1800" fill="freeze"/>
+    <path id="textLine" d="m-20 240" style="width:1800px"/>
+    <!--<animate xlink:href="#textLine" attributeName="d" begin="4.7s" dur="4s" to="m-20 240 h1800" fill="freeze"/>-->
 </svg>
