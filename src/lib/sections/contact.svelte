@@ -29,7 +29,7 @@
         width:100vw; 
         position:relative;
         margin-top:0px;
-        padding-bottom:30px; 
+        padding:30px 0px;
 
         @include phoneVert {
             background-color:$offBlack;

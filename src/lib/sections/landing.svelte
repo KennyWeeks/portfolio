@@ -129,8 +129,7 @@
 
     #landing {
         width:100vw;
-        height:100%;
-        background-color:$offWhite;
+        height:100vh;
         position:relative;
         @include flexCenter;
         text-size-adjust:none;
