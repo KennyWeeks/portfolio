@@ -83,7 +83,6 @@
         right:20px;
         border-radius:50%;
         overflow:hidden;
-        border:2px solid $offWhite;
         background-color:$offWhite;
 
         #half-cover {
@@ -108,7 +107,7 @@
             transform:rotate(45deg);
         }
 
-        #second-half {
+        #econd-half {
             position:absolute;
             width:calc(90% - 10px);
             height:calc(90% - 10px);
