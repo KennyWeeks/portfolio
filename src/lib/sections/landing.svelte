@@ -1,6 +1,7 @@
 <script lang="ts">
 
     import {onMount, onDestroy} from "svelte";
+    import {fly, draw, fade} from "svelte/transition";
     import Menu from "../menu.svelte";
 
     export let path : string = "";
@@ -11,6 +12,7 @@
     import Clock from "../clock.svelte";
     let wolf : HTMLElement;
     let intro : HTMLElement;
+    let visible : boolean = false;
 
     onMount(()=>{
         let menu : any = document.getElementById("menu");
@@ -30,6 +32,10 @@
        if(intro.offsetTop <= wolf.offsetTop + wolf.clientHeight || intro.offsetTop <= 0) {
         intro.style.transform = "scale(" + 0.8 * window.innerHeight / 500 + ")"; 
        }
+
+       setTimeout(()=>{
+        visible = true;
+       }, 5000);
 
     });
 
@@ -66,13 +72,22 @@
         <br>
         <!--<object data="{path}/images/portfolio_title_large.svg"></object>-->
         <!--<object type="image/svg+xml" data="{path}/images/portfolio_made_header.svg"></object>-->
-        <svg id="Layer_1" style="width:90vw;" xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 260">
+        <!--<svg id="Layer_1" style="width:90vw;" xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 260">
             <text style="font-family:'Arial'; font-size:340px; font-weight:bold;">
                 <textPath xlink:href="#textLine">Portfolio</textPath>
             </text>
             <path id="textLine" d="m-20 250 h1800"/>
-            <!--<animate xlink:href="#textLine" attributeName="d" begin="4.7s" dur="4s" to="m-20 240 h1800" fill="freeze"/>-->
-        </svg>
+        </svg>-->
+        {#if visible}
+            <svg style="width:90vw;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 260">
+
+                <text x="-20" y=255 fill="#000" style="font-size:340px; font-weight:bold;">
+                        {#each "Portfolio" as char, i}
+                        <tspan in:fade|global={{delay: i * 150, duration: 800}}>{char}</tspan>
+                        {/each}
+                </text>
+            </svg>
+        {/if}
 
         <div id="move_into_website">
             <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
@@ -159,17 +174,15 @@
             //width:90vw;
             display:inline-block;
             cursor:default;
+            width:90vw;
             /*position:absolute;
             top:50%;
             transform:translateY(-50%);*/
             color:$offBlack;
+            position:relative;
 
             svg {
-                opacity:0.0;
-                animation:fadeIn 2s linear forwards;
-                animation-delay:6s;
                 font-family:"Arial";
-                width:80vw;
             }
 
             h3 {
