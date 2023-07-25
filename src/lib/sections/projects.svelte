@@ -30,7 +30,8 @@
         let observer = new IntersectionObserver((entries, observer)=>{
             entries.forEach((entry)=>{
                 if(entry.isIntersecting) {
-                    entry.target.style.opacity = 1.0;
+                    let test = entry.target as HTMLElement;
+                    test.style.opacity = "1.0";
                 } else {
                     console.log("Not there");
                 }

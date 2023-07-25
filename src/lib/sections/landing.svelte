@@ -21,21 +21,27 @@
         console.log(class2);
 
        window.addEventListener("resize", ()=>{
-        if(window.innerHeight < 500) {
-            intro.style.transform = "scale(" + (0.8 * window.innerHeight / 500) + ")"; 
-        } if (window.innerHeight >= 500) {
-            intro.style.transform = "scale(1.0)";
+        let intro = document.querySelector("#intro") as HTMLElement;
+        if(window.innerHeight < 650 || intro.offsetTop < wolf.clientHeight + wolf.offsetTop) {
+            intro["style"].transform = "scale(" + window.innerHeight / 650 + ")";
+        } if (window.innerHeight >= 650) {
+            intro["style"].transform = "scale(1.0)";
         }
-       });
-
-
-       if(intro.offsetTop <= wolf.offsetTop + wolf.clientHeight || intro.offsetTop <= 0) {
-        intro.style.transform = "scale(" + 0.8 * window.innerHeight / 500 + ")"; 
-       }
+       });     
 
        setTimeout(()=>{
         visible = true;
-       }, 5000);
+       }, 50);
+
+       setTimeout(()=>{
+        let intro = document.querySelector("#intro") as HTMLElement;
+        console.log(intro.offsetTop);
+        console.log(wolf.clientHeight + wolf.offsetTop);
+        if(intro.offsetTop < wolf.clientHeight + wolf.offsetTop) {
+            console.log("Hello")
+            intro["style"].transform = "scale(" + 0.8 * window.innerHeight / 650 + ")";
+        }
+       }, 60)
 
     });
 
@@ -63,39 +69,43 @@
 
     <img id="wolf" bind:this={wolf} alt="wolf" src="{path}/images/wolf.png" width=80px/>
 
-    <div id="intro" bind:this={intro} class:layout_2_intro={screenWidth <= screenHeight} class:layout_1_intro={screenWidth > screenHeight} >
+    <div id="intro" bind:this={intro}>
 
-        <h3 id="intro_text"><span id="hi">Hi</span><br> <span id="my">My name is Kenny Weeks</span><br> <span id="welcome">Welcome to my ...</span> </h3>
-
-        <!--<img id="portfolio_text" src="{path}/images/portfolio_title{screenWidth > screenHeight ? "_large" : "_large"}.svg" alt="portfolio_text"/>
-        -->
-        <br>
-        <!--<object data="{path}/images/portfolio_title_large.svg"></object>-->
-        <!--<object type="image/svg+xml" data="{path}/images/portfolio_made_header.svg"></object>-->
-        <!--<svg id="Layer_1" style="width:90vw;" xmlns="http://www.w3.org/2000/svg"  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 260">
-            <text style="font-family:'Arial'; font-size:340px; font-weight:bold;">
-                <textPath xlink:href="#textLine">Portfolio</textPath>
+        <!--<h3 id="intro_text"><span id="hi">Hi</span><br> <span id="my">My name is Kenny Weeks</span><br> <span id="welcome">Welcome to my ...</span> </h3>-->
+    {#if visible} 
+        <svg width="80%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 250">
+            <text x=0 y=70 fill="#000" style="font-size:80px; font-weight:bold;">
+                {#each "Hi" as char, i}
+                    <tspan in:fade|global={{delay: i * 150, duration: 200}}>{char}</tspan>
+                {/each}
             </text>
-            <path id="textLine" d="m-20 250 h1800"/>
-        </svg>-->
-        {#if visible}
-            <svg style="width:90vw;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 260">
+            <text x=0 y=140 fill="#000" style="font-size:80px; font-weight:bold;">
+                {#each "My name is Kenny Weeks" as char, i}
+                    <tspan in:fade|global={{delay: (2 * 150) + i * 150, duration: 200}}>{char}</tspan>
+                {/each}
+            </text>
+            <text x=5 y=220 fill="#000" style="font-size:80px; font-weight:bold;">
+                {#each "Welcome to my ... " as char, i}
+                    <tspan in:fade|global={{delay: ((2 + 22)  * 150) + i * 150, duration: 200}}>{char}</tspan>
+                {/each}
+            </text>
+        </svg>
+        <svg style="width:90vw;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 260">
 
-                <text x="-20" y=255 fill="#000" style="font-size:340px; font-weight:bold;">
+            <text x="-20" y=255 fill="#000" style="font-size:340px; font-weight:bold;">
                         {#each "Portfolio" as char, i}
-                        <tspan in:fade|global={{delay: i * 150, duration: 800}}>{char}</tspan>
+                        <tspan in:fade|global={{delay: ((2 + 22 + 18) * 150) + i * 150, duration: 200}}>{char}</tspan>
                         {/each}
-                </text>
-            </svg>
-        {/if}
+            </text>
+        </svg>
+    {/if}
 
-        <div id="move_into_website">
-            <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
-            <div  id="beacon_circle"></div>
-        </div>
+    <div id="move_into_website">
+        <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
+        <div  id="beacon_circle"></div>
     </div>
-
     
+    </div>
 
     
 
@@ -135,7 +145,7 @@
 
     @keyframes fadeIn {
         0% {
-            opacity: 0.0;
+            opacity:0.0;
         }
         100% {
             opacity:1.0;
@@ -185,47 +195,8 @@
                 font-family:"Arial";
             }
 
-            h3 {
-                font-family:"Arial";
-                margin-bottom:0px;
-                margin-top:0px;
-
-                @include phoneVert {
-                    font-size:6vw;
-                }
-                @include tablet {
-                    font-size:6vw;
-                }
-
-                @include laptop {
-                    font-size: 5vw;
-                }
-
-                @include desktopFullScreen {
-                    font-size:3vw;
-                }
-                
-                span {
-                    opacity:0.0;
-                }
-
-                #hi {
-                    animation:fadeIn 2s linear forwards;
-                }
-
-                #my {
-                    
-                    animation:fadeIn 2s linear forwards;
-                    animation-delay:2s;
-                }
-
-                #welcome {
-                    animation:fadeIn 1s linear forwards;
-                    animation-delay:4s;
-                }
-            }
-
         }
+
         #move_into_website {
             width:50px;
             height:50px;
@@ -234,19 +205,7 @@
             margin:30px auto 0px auto;
             opacity:0.0;
             animation: fadeIn 1s linear forwards;
-            animation-delay:6s;
-            
-
-            @include desktopSmallScreen {
-                position:absolute;
-                right:30px;
-                top:50%;
-                transform:translateY(-50%);
-            }
-
-            @include tabletPhone {
-                display:none;
-            }
+            animation-delay:7.6s;
 
             img {
                 position:absolute;
@@ -265,7 +224,7 @@
                 transform: translate(-50%, -50%);
                 border-radius:50%;
                 animation: beacon 5s linear infinite;
-                animation-delay:6s;
+                animation-delay:7.6s;
             }
         }
     }
