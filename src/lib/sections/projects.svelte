@@ -71,6 +71,9 @@
         <div id="content-holder">
             {#each project["project"] as p, index}
                 <div class="body_parts" style="flex-direction:{index % 2 === 1 ? "row-reverse": "row"}; margin-top:{index !== 0 ? "80px" : "0px"}">
+
+                    <h3 class="project_counter" style="{index % 2 == 0 ? 'left:20px;': 'right:20px;'}">Project {index + 1}</h3>
+
                     <div class="project_image">
 
                         <div class="main_image"></div>
@@ -226,6 +229,17 @@
                     border-radius:20px;
                     opacity:0.0;
                     transition:opacity 0.5s linear;
+
+                    .project_counter {
+                        position:absolute;
+                        top:-22px;
+                        font-weight:bolder;
+                        font-family:"Arial";
+                        text-transform:uppercase;
+                        font-size:25px;
+                        margin:0px;
+                        color:$offBlack;
+                    }
 
                     @include mediaDefinition((">#{$tabletMax}")) {
                         width:1040px;
