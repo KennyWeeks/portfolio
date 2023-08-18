@@ -25,11 +25,8 @@
     @import "../../styles/theme.scss";
 
     #contacts {
-        overflow:hidden;
-        width:100vw; 
-        position:relative;
-        margin-top:0px;
-        padding:30px 0px;
+        //This will style the main area display
+        @include mainAreaAndHeader;
 
         @include phoneVert {
             background-color:$offBlack;
@@ -50,16 +47,12 @@
         }
 
         h3 {
-            font-size:50px;
-            font-family:$font-family;
-            margin:0px 0px 10px 0px;
-
-            @include mediaDefinition("<#{$tabletMax}") {
+            /*@include mediaDefinition("<#{$tabletMax}") {
                 color:$offWhite;
             }
             @include laptop {
                 color:$offBlack;
-            }
+            }*/
         }
         
 
@@ -109,8 +102,8 @@
                 -webkit-user-select: none; /* Safari */
                 -khtml-user-select: none; /* Konqueror HTML */
                 -moz-user-select: none; /* Old versions of Firefox */
-                    -ms-user-select: none; /* Internet Explorer/Edge */
-                        user-select: none;
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none;
                 text-align:right;
                 margin-bottom:2.5px;
                 font-family:$font-family;

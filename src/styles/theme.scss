@@ -1,5 +1,11 @@
-$offWhite: #f2f2f2;
-$offBlack: #1e1919;
+//$offWhite: #f2f2f2;
+//$offBlack: #1e1919;
+
+//$offWhite: #b1d8b7;
+//$offBlack: #2f5233;
+
+$offWhite: #d4f1f4;
+$offBlack: #05445e;
 
 //Defining breakpoints here in the code
 $mobile: 499px;
@@ -110,6 +116,7 @@ $font-family: "Arial";
     }
 }
 
+//This will add an underline to the page
 @mixin underLine($word) {
     #{$word}::after {
         content:"";
@@ -121,6 +128,7 @@ $font-family: "Arial";
     }
 }
 
+//This will define a few flex content displays
 @mixin flexRow {
     display:flex;
     justify-content:space-between;
@@ -133,9 +141,27 @@ $font-family: "Arial";
     flex-direction:column;
 }
 
+
+//This one will specifically center everything to the center of a content area
 @mixin flexCenter {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+//This will be the common media display for the main area of each page.
+@mixin mainAreaAndHeader {
+    width: 100vw;
+    position:relative;
+    margin-top:0px;
+    padding:30px 0px;
+    overflow:hidden;
+    font-family:$font-family;
+
+    //This will style each header
+    h3 {
+        font-size:50px;
+        margin:0px 0px 10px 0px;
+    }
 }
