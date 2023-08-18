@@ -4,7 +4,8 @@
 //$offWhite: #b1d8b7;
 //$offBlack: #2f5233;
 
-$offWhite: #d4f1f4;
+$offWhite: rgba(212, 241, 244, 1);
+$offWhiteFull: rgb(212, 241, 244);
 $offBlack: #05445e;
 
 //Defining breakpoints here in the code
@@ -150,6 +151,21 @@ $font-family: "Arial";
     align-items: center;
 }
 
+//This will be some corner styles
+@mixin cornerStyles {
+    border-top-left-radius:25px;
+    border-bottom-right-radius:25px;
+    border-top-right-radius:0px;
+    border-bottom-left-radius:0px;
+}
+
+@mixin flipCorners {
+    border-top-right-radius:25px;
+    border-bottom-left-radius:25px;
+    border-top-left-radius:0px;
+    border-bottom-right-radius:0px;
+}
+
 //This will be the common media display for the main area of each page.
 @mixin mainAreaAndHeader {
     width: 100vw;
@@ -158,6 +174,8 @@ $font-family: "Arial";
     padding:30px 0px;
     overflow:hidden;
     font-family:$font-family;
+    background-color:$offWhite;
+    color:$offBlack;
 
     //This will style each header
     h3 {

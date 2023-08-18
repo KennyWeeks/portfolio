@@ -136,26 +136,20 @@
     @import "../../styles/theme.scss";
 
     #projects {
-        position:relative;
-        width:100vw;
-        padding-top:10px;
-        font-family:$font-family;
-        padding-bottom:20px;
+        @include mainAreaAndHeader;
 
         #project_description {
-            width:70%;
+            width:80vw;
             max-width:1200px;
-            margin:20px auto;
+            margin:auto;
 
             h3 {
-                font-size:35px;
-                margin-top:0px;
-                margin-bottom:0px;
+                font-size:1.75rem;
                 text-transform:uppercase;
             }
 
             p {
-                font-size:18px;
+                font-size:1.25rem;
             }
 
             div{
@@ -193,10 +187,10 @@
             }
 
             @include laptop {
-                width:90vw;
-                min-width:1040px;
+                width:80vw;
                 max-width:1200px;
                 margin:auto;
+                margin-top:30px;
                 border-radius:20px;
             }
 
@@ -208,6 +202,7 @@
 
             #content-holder {
                 margin:auto;
+
                 @include mediaDefinition("<800px") {
                     width:90vw;
                 }
@@ -220,15 +215,17 @@
                 
 
                 .body_parts {
-                    color:$offWhite;
+                    color:$offBlack;
                     margin:auto;
                     font-family:$font-family;
                     position:relative;
                     height:auto;
-                    background-color:$offBlack;
                     border-radius:20px;
                     opacity:0.0;
                     transition:opacity 0.5s linear;
+                    width:100%;
+                    box-shadow:inset 0 0 0 2px #000;
+                    @include flexRow;
 
                     .project_counter {
                         position:absolute;
@@ -239,27 +236,6 @@
                         font-size:25px;
                         margin:0px;
                         color:$offBlack;
-                    }
-
-                    @include mediaDefinition((">#{$tabletMax}")) {
-                        width:1040px;
-                        margin:0px;
-                        &:nth-of-type(2) {
-                            margin-left:calc(100% - 1040px);
-                        }
-                        @include flexRow;
-                    }
-
-                    @include mediaDefinition((">700px", "<#{$tabletMax}")) {
-                        width:640px;
-                    }
-
-                    @include mediaDefinition(("<700px", ">540px")) {
-                        width:490px;
-                    }
-
-                    @include mediaDefinition(("<540px")) {
-                        width:90vw;
                     }
 
                     .project_image {
@@ -297,7 +273,7 @@
                             @include mediaDefinition(("<540px")) {
                                 width:100%;
                             }
-                            background-color:$offWhite;
+                            background-color:$offBlack;
                             border-radius:20px;
                         }
 
@@ -330,8 +306,6 @@
 
                             }
 
-                            
-
                             .side_images {
 
                                 @include mediaDefinition((">700px")) {
@@ -354,7 +328,6 @@
                                 height:300px;
                                 overflow:hidden;
                                 margin-left:2px;
-                                
 
                                 .side_act_img {
                                     @include mediaDefinition((">540px")) {
@@ -370,7 +343,7 @@
                                         display:inline-block;
                                     }
                                     
-                                    background-color:$offWhite;
+                                    background-color:$offBlack;
                                     border-radius:20px;
                                 }
                             }
@@ -381,7 +354,6 @@
                     .project_body {
                         padding:20px;
                         border-radius:20px;
-                        background-color:$offBlack;
                         @include flexCenter;
 
                         .body_title {
@@ -415,7 +387,7 @@
 
                             div {
                                 padding:15px;
-                                box-shadow:inset 0 0 0 2px $offWhite;
+                                box-shadow:inset 0 0 0 2px $offBlack;
                                 border-radius:25px;
                                 display:inline-block;
                                 margin-right:5px;

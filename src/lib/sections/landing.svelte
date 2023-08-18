@@ -88,15 +88,15 @@
 
         {#if visible2}
         <svg style="display:inline-block;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 320">
-            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#1e1919" : "none"}" stroke-width=2 stroke="#1e1919" d="{path1}"/>
-            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#1e1919" : "none"}" stroke-width=2 stroke="#1e1919" d="{path2}"/>
-            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#1e1919" : "none"}" stroke-width=2 stroke="#1e1919" d="{path3}"/>
-            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#1e1919" : "none"}" stroke-width=2 stroke="#1e1919" d="{path4}"/>
-            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#1e1919" : "none"}" stroke-width=2 stroke="#1e1919" d="{path5}"/>
-            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#1e1919" : "none"}" stroke-width=2 stroke="#1e1919" d="{path6}"/>
-            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#1e1919" : "none"}" stroke-width=2 stroke="#1e1919" d="{path7}"/>
-            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#1e1919" : "none"}" stroke-width=2 stroke="#1e1919" d="{path8}"/>
-            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#1e1919" : "none"}" stroke-width=2 stroke="#1e1919" d="{path9}"/>
+            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path1}"/>
+            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path2}"/>
+            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path3}"/>
+            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path4}"/>
+            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path5}"/>
+            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path6}"/>
+            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path7}"/>
+            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path8}"/>
+            <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path9}"/>
         </svg>
         {/if}
 
@@ -187,6 +187,7 @@
         position:relative;
         @include flexCenter;
         text-size-adjust:none;
+        background-color:$offWhite;
 
         #clock {
             position:absolute;
