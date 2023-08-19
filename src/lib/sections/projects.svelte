@@ -86,17 +86,16 @@
                             
                             <div class="body_title">
                                 <h3>{p["title"]}</h3>
-                                <div class="option_buttons">
-                                    <img src="{path}/images/octocat.png" alt="octocat" width=25px/>
-                                </div>
                             </div>
+
+                            <button class="open-dialog">Read More</button>
 
                             <p class="desc">{p["description"]}</p>
 
                             <div>
                                 {#if stackButton[index] === false}
                                     {#each p["stack"] as st, j}
-                                        <div class="tools">{st}</div>
+                                        <p class="tools">{st}</p>
                                     {/each}
                                 {:else}
                                     <button>stack {stackButton[index]}</button>
@@ -119,6 +118,9 @@
 
     #projects {
         @include mainAreaAndHeader;
+
+        $twoCardsWidth : 1388px;
+        $oneCardWidth: 925px;
 
         #project_description {
             width:80vw;
@@ -185,8 +187,19 @@
                 .body_parts {
                     width:22.5em;
                     margin:5px;
-                    height:30em;
+                    height:25em;
                     overflow:hidden;
+                    border-radius:20px;
+                    transition:all 0.25s linear;
+
+                    @include mediaDefinition(("<#{$twoCardsWidth}", ">#{$oneCardWidth}")) {
+                        width:calc(50% - 10px);
+                        min-width:22.5em;
+                    }
+
+                    @include mediaDefinition(("<#{$oneCardWidth}")) {
+                        width:100%;
+                    }
                     
                     .body-content {
                         width:100%;
@@ -210,16 +223,53 @@
                             bottom:0px;
                             left:2.5%;
                             bottom:calc(2.5*22.25em/100);
-                            border-top-left-radius:20px;
-                            border-top-right-radius:20px;
+                            border-radius:20px;
+                            border-radius:20px;
+                            text-align:center;
+
+                            @include mediaDefinition(("<#{$oneCardWidth}")) {
+                                bottom: calc(2.5 * 80vw / 100);
+                            }
 
                             h3 {
                                 font-size:1.75rem;
                                 text-transform:capitalize;
                                 text-decoration:underline;
-                                width:80%;
                                 margin:auto;
                                 text-align:center;
+                            }
+
+                            .open-dialog {
+                                font-size:1.15rem;
+                                background-color:$offBlack;
+                                color:$offWhite;
+                                padding:10px 15px;
+                                border:none;
+                                margin-top:10px;
+                                border-radius:20px;
+                                margin:10px auto 0px auto;
+                            }
+
+                            .desc {
+                                width:80%;
+                                margin:10px auto;
+                                font-size:1.15rem;
+                                display:none;
+                            }
+
+                            div {
+                                width:80%;
+                                margin:auto;
+
+                                .tools {
+                                    padding:10px;
+                                    font-size:1.1rem;
+                                    box-shadow:inset 0 0 0 2px $offBlack;
+                                    display:inline-block;
+                                    margin:2px;
+                                    border-radius:20px;
+                                    display:none;
+                                }
                             }
                         }
                     }
