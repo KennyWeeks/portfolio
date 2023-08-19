@@ -116,11 +116,11 @@
 
     @import "../../styles/theme.scss";
 
+    $twoCardsWidth : 1388px;
+    $oneCardWidth: 925px;
+
     #projects {
         @include mainAreaAndHeader;
-
-        $twoCardsWidth : 1388px;
-        $oneCardWidth: 925px;
 
         #project_description {
             width:80vw;
@@ -138,13 +138,13 @@
 
             div{
                 display:inline-block;
+                width:80vw;
 
                 p {
                     margin:0px 0px 0px 0px;
                 }
 
                 img {
-                    background-color:$offBlack;
                     border-radius:50%;
                     float:left;
                     margin-right:10px;
