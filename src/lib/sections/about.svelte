@@ -71,15 +71,24 @@
 
         </div>
 
+        <h3>Skills &amp; Tools : <span>Click each to learn more about my proficiency and projects</span></h3>
+
         <div id="skills">
 
+            
 
-            <div id="compiled" class="skills-body">
+            {#each skills["all_of_it"] as pl} 
 
-                <div class="vert-divide"></div>
+                <div class="individual-skill-button">
+                    <p class="individual-skill">{pl}</p>
+                </div>
+
+            {/each}
+
+
+            <!--<div id="compiled" class="skills-body">
 
                 <div class="individual-skill-contain">
-                    <h3>compiled languages</h3>
                 {#each skills["programming_languages"] as pl} 
 
                     <div class="individual-skill-button">
@@ -87,7 +96,6 @@
                         <div class="bar">
                             <div class="inner-bar"></div>
                         </div>
-                        <p class="proficiency">proficient</p>
                     </div>
 
                 {/each}
@@ -97,10 +105,8 @@
 
             <div id="scripting" class="skills-body">
 
-                <div class="vert-divide"></div>
 
                 <div class="individual-skill-contain">
-                    <h3>Scripting languages</h3>
                     {#each skills["scripting_languages"] as pl} 
     
                         <div class="individual-skill-button">
@@ -108,7 +114,6 @@
                             <div class="bar">
                                 <div class="inner-bar"></div>
                             </div>
-                            <p class="proficiency">proficient</p>
                         </div>
     
                     {/each}
@@ -117,7 +122,6 @@
 
             <div id="tools" class="skills-body">
                 <div class="individual-skill-contain">
-                    <h3>Design tools</h3>
                     {#each skills["design_tools"] as pl} 
     
                         <div class="individual-skill-button">
@@ -125,12 +129,11 @@
                             <div class="bar">
                                 <div class="inner-bar"></div>
                             </div>
-                            <p class="proficiency">proficient</p>
                         </div>
     
                     {/each}
                 </div>
-            </div>
+            </div>-->
 
         </div>
     </div>
@@ -143,6 +146,21 @@
 
     #about {
         @include mainAreaAndHeader;
+
+        #about-content-area > h3 {
+            font-size:1.75rem;
+            margin:20px auto;
+            width:80vw;
+            max-width:1200px;
+            text-transform:uppercase;
+
+            span {
+                text-transform:none;
+                font-weight:normal;
+                font-size:1.25rem;
+                text-decoration:underline;
+            }
+        }
 
         #about-summary-and-edu {
             width:80vw;
@@ -232,60 +250,31 @@
             max-width:1200px; //This is just something I am setting right now, idk, if I will go through with it
             margin:auto;
             margin-top:10px;
+            color:$offWhite;
+            @include flexRow;
+            justify-content:center;
+            flex-wrap:wrap;
+            align-items:center;
 
-            .skills-body {
-                width:100%;
-                background-color:$offBlack;
-                color:$offWhite;
-                padding:20px 0px;
+            .individual-skill-button {
                 overflow:hidden;
-                @include cornerStyles;
 
-                &:nth-child(2) {
-                    margin:10px 0px;
-                } 
+                p {
+                    background-color:$offBlack;
+                    box-shadow:inset 0 0 0 2px $offBlack;
+                    display:inline-block;
+                    font-size:1.5rem;
+                    padding:30px;
+                    border-radius:30px;
+                    margin:2.5px;
+                    cursor:default;
+                    transition:background-color 0.25s linear;
 
-                .individual-skill-contain {
-                    width:100%;
-                    height:100%;
-                        h3 {
-                        font-size:1.5em;
-                        text-transform:uppercase;
-                        text-decoration:underline;
-                        margin-left:30px;
-                        margin-top:0px;
+                    &:hover {
+                        background-color:$offWhite;
+                        color:$offBlack;
                     }
-
-                    .individual-skill-button {
-                        width:calc(100% - 60px);
-                        margin-left:20px;
-                        @include flexRow;
-                        overflow:hidden;
-
-                        p {
-                            padding:0px 10px;
-                            font-size:1.25rem;
-                        }
-
-                        .bar {
-                            width:80%;
-                            height:10px;
-                            border-radius:50px;
-                            background-color:$offWhite;
-                            margin-top:28px;
-                            overflow:hidden;
-
-                            .inner-bar {
-                                width:80%;
-                                height:5px;
-                                margin-top:2.5px;
-                                margin-left:2.5px;
-                                background-color:$offBlack;
-                                border-radius:50px;
-                            }
-                        }
-                    }
-                } 
+                }
             }
         }
 

@@ -70,58 +70,40 @@
     
         <div id="content-holder">
             {#each project["project"] as p, index}
-                <div class="body_parts" style="flex-direction:{index % 2 === 1 ? "row-reverse": "row"}; margin-top:{index !== 0 ? "80px" : "0px"}">
+                <div class="body_parts">
 
-                    <h3 class="project_counter" style="{index % 2 == 0 ? 'left:20px;': 'right:20px;'}">Project {index + 1}</h3>
+                    <!--<h3 class="project_counter">Project {index + 1}</h3>-->
 
-                    <div class="project_image">
+                    <div class="body-content">
+                        <div class="project_image">
 
-                        <div class="main_image"></div>
-                        
-                        <div class="move_right"></div>
-                        
-                        <div class="side_images_container">
+                            <div class="main_image"></div>
+
+                        </div>
+
+                        <div class="project_body">
 
                             
-
-                            <div class="side_images">
-
-                                <div class="side_act_img"></div>
-
-                                <div class="side_act_img"></div>
-
-                                <div class="side_act_img"></div>
-
-                                <div class="side_act_img"></div>
-
+                            <div class="body_title">
+                                <h3>{p["title"]}</h3>
+                                <div class="option_buttons">
+                                    <img src="{path}/images/octocat.png" alt="octocat" width=25px/>
+                                </div>
                             </div>
 
+                            <p class="desc">{p["description"]}</p>
+
+                            <div>
+                                {#if stackButton[index] === false}
+                                    {#each p["stack"] as st, j}
+                                        <div class="tools">{st}</div>
+                                    {/each}
+                                {:else}
+                                    <button>stack {stackButton[index]}</button>
+                                {/if}
+                            </div> 
+
                         </div>
-
-                    </div>
-
-                    <div class="project_body" style="{index % 2 == 0 ? "right:0px;" : "left:0px;"};">
-
-                        
-                        <div class="body_title">
-                            <h3>{p["title"]}</h3>
-                            <div class="option_buttons">
-                                <img src="{path}/images/octocat.png" alt="octocat" width=25px/>
-                            </div>
-                        </div>
-
-                        <p class="desc">{p["description"]}</p>
-
-                        <div>
-                            {#if stackButton[index] === false}
-                                {#each p["stack"] as st, j}
-                                    <div class="tools">{st}</div>
-                                {/each}
-                            {:else}
-                                <button>stack {stackButton[index]}</button>
-                            {/if}
-                        </div> 
-
                     </div>
                 </div>
             {/each}
@@ -176,17 +158,9 @@
         //This is is the body of the content;
 
         #projects_floating_tab {
-            height:auto;/*This will be a dummy height, will size to content*/
-            padding-top:20px;
-            //background-color:$offBlack;
-            padding-bottom:20px;
+            height:auto;
 
-            @include tablet {
-                margin-top:10px;
-                padding-bottom:20px;
-            }
-
-            @include laptop {
+            @include mediaDefinition(("<#{$laptopMax}")) {
                 width:80vw;
                 max-width:1200px;
                 margin:auto;
@@ -202,201 +176,53 @@
 
             #content-holder {
                 margin:auto;
-
-                @include mediaDefinition("<800px") {
-                    width:90vw;
-                }
-                @include mediaDefinition(("<#{$tabletMax}", ">800px")) {
-                    width:800px;
-                }
-                @include mediaDefinition(">#{$tabletMax}") {
-                    width:100%;
-                }
+                width:100%;
+                display:flex;
+                flex-flow:row;
+                flex-wrap:wrap;
+                justify-content:center;
                 
-
                 .body_parts {
-                    color:$offBlack;
-                    margin:auto;
-                    font-family:$font-family;
-                    position:relative;
-                    height:auto;
-                    border-radius:20px;
-                    opacity:0.0;
-                    transition:opacity 0.5s linear;
-                    width:100%;
-                    box-shadow:inset 0 0 0 2px #000;
-                    @include flexRow;
-
-                    .project_counter {
-                        position:absolute;
-                        top:-22px;
-                        font-weight:bolder;
-                        font-family:"Arial";
-                        text-transform:uppercase;
-                        font-size:25px;
-                        margin:0px;
-                        color:$offBlack;
-                    }
-
-                    .project_image {
-                        @include mediaDefinition((">#{$tabletMax}")) {
-                            margin-left:0px;
-                            width:600px;
-                            transform:none;
-                            display:flex;
-                        }
-
-                        @include mediaDefinition((">700px", "<#{$tabletMax}")) {
-                            width:600px;
-                            display:flex;
-                        }
-
-                        @include mediaDefinition(("<700px", ">540px")) {
-                            width:450px;
-                            display:flex;
-                        }
-
-                        @include mediaDefinition(("<540px")) {
-                            width:90%;
-                        }
-                        padding:20px;
-                        margin-left:50%;
-                        margin-top:0px;
-                        margin-bottom:0px;
-                        transform:translateX(-50%);
+                    width:22.5em;
+                    margin:5px;
+                    height:30em;
+                    overflow:hidden;
+                    
+                    .body-content {
+                        width:100%;
+                        height:100%;
+                        overflow:hidden;
                         position:relative;
-                        
 
-                        .main_image {
-                            width:300px;
-                            height:300px;
-                            @include mediaDefinition(("<540px")) {
-                                width:100%;
-                            }
-                            background-color:$offBlack;
-                            border-radius:20px;
-                        }
-
-                        @include mediaDefinition(("<540px")) {
-                            .move_right {
-                                height:50px;
-                                width:25px;
-                                background-color:$offBlack;
-                                border-top-left-radius:50px;
-                                border-bottom-left-radius:50px;
-                                position:absolute;
-                                top:calc(310px + 70px);
-                                transform:translateY(-50%);
-                                right:18px;
-                                z-index:1000;
-                            }
-                        }
-
-                        .side_images_container {
-                            @include mediaDefinition(("<540px")) {
-                                position:relative;
-                                width:100%;
-                                overflow-x:scroll;
-                                cursor:pointer;
-                                margin-top:10px;
-                                position:relative;
-                                &::-webkit-scrollbar {
-                                    display:none;
-                                }
-
-                            }
-
-                            .side_images {
-
-                                @include mediaDefinition((">700px")) {
-                                    width:300px;
-                                    @include flexRow;
-                                    flex-wrap:wrap;
-                                }
-
-                                @include mediaDefinition(("<700px", ">540px")) {
-                                    width:150px;
-                                    @include flexRow;
-                                    flex-wrap:wrap;
-                                }
-
-                                @include mediaDefinition(("<540px")) {
-                                    height:100px;
-                                    margin-left:0px;
-                                    width:500px;
-                                }
-                                height:300px;
-                                overflow:hidden;
-                                margin-left:2px;
-
-                                .side_act_img {
-                                    @include mediaDefinition((">540px")) {
-                                        width:149px;
-                                        height:149px;
-                                        margin-bottom:2px;
-                                    }
-
-                                    @include mediaDefinition(("<540px")) {
-                                        height:100px;
-                                        width:100px;
-                                        box-shadow:none;
-                                        display:inline-block;
-                                    }
-                                    
-                                    background-color:$offBlack;
-                                    border-radius:20px;
-                                }
-                            }
-
-                        }
-                    }
-
-                    .project_body {
-                        padding:20px;
-                        border-radius:20px;
-                        @include flexCenter;
-
-                        .body_title {
+                        .project_image {
                             width:100%;
-                            @include flexRow;
+                            height:100%;
+                            background-color:$offBlack;
+                        }
+
+                        .project_body {
+                            width:95%;
+                            height:auto;
+                            padding:10px 0px;
+                            background-color:$offWhite;
+                            overflow:hidden;
+                            position:absolute;
+                            bottom:0px;
+                            left:2.5%;
+                            bottom:calc(2.5*22.25em/100);
+                            border-top-left-radius:20px;
+                            border-top-right-radius:20px;
 
                             h3 {
-                                margin-top:0px;
-                                margin-bottom:0px;
-                                align-self:center;
-                                font-size:22px;
-                                display:inline-block;
-
-                                @include underLine("&");
-                            }
-
-                            .option_buttons {
-                                display:inline-block;
-                                padding:0px 10px;
-                                @include flexCenter;
-                                border-radius:50%;
-                                box-shadow:none;
-                            }
-                        }
-
-                        .desc {
-                            font-size:18px;
-                        }
-
-                        div {
-
-                            div {
-                                padding:15px;
-                                box-shadow:inset 0 0 0 2px $offBlack;
-                                border-radius:25px;
-                                display:inline-block;
-                                margin-right:5px;
-                                margin-bottom:5px;
-                                font-size:18px;
+                                font-size:1.75rem;
+                                text-transform:capitalize;
+                                text-decoration:underline;
+                                width:80%;
+                                margin:auto;
+                                text-align:center;
                             }
                         }
                     }
-
                 }
             }
         }
