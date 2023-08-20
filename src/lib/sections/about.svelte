@@ -144,6 +144,12 @@
 
     @import "../../styles/theme.scss";
 
+    $educationBreak: 1000px;
+
+    $summaryBreak: 860px;
+
+    $pictureBreak: 400px;
+
     #about {
         @include mainAreaAndHeader;
 
@@ -170,10 +176,24 @@
             #about-summary {
                 width:100%;
                 @include flexRow;
+                @include mediaDefinition(("<#{$summaryBreak}")) {
+                    flex-wrap:wrap;
+                }
 
                 #picture {
                     width:20em;
                     height:20em;
+                    @include mediaDefinition(("<#{$summaryBreak}")) {
+                        margin-left:calc((80vw - 20em) / 2);
+                        margin-bottom:20px;
+                    }
+
+                    @include mediaDefinition(("<#{$pictureBreak}")) {
+                        width:80vw;
+                        height:80vw;
+                        margin-left:auto;
+                    }
+
                     @include cornerStyles;
                     background-color:$offBlack;
                 }
@@ -182,6 +202,12 @@
                     overflow:hidden;
                     width:calc(100% - 22em);
                     height:20em;
+
+                    @include mediaDefinition(("<#{$summaryBreak}")) {
+                        width:100%;
+                        height:auto;
+                    }
+                    
                     text-align:left;
                     @include flexCenter;
 
@@ -189,6 +215,10 @@
                         width:100%;
                         font-size:1.75rem;
                         text-transform:uppercase;
+
+                        @include mediaDefinition(("<#{$summaryBreak}")) {
+                            text-align:center;
+                        }
                     }
 
                     p {
@@ -205,8 +235,15 @@
                 margin-top:10px;
                 color:$offWhiteFull;
 
+                @include mediaDefinition(("<#{$educationBreak}")) {
+                    flex-wrap:wrap;
+                }
+
                 :nth-child(1) {
-                    @include flipCorners;        
+                    @include flipCorners;  
+                    @include mediaDefinition(("<#{$educationBreak}")) {
+                        margin-bottom:10px;
+                    }
                 }
 
                 :nth-child(2) {
@@ -219,9 +256,14 @@
                     padding:10px 0px;
                     transition:border-radius 0.25s linear;
 
+                    @include mediaDefinition(("<#{$educationBreak}")) {
+                        width:80vw;
+                    }
+
                     .in_ind_edu {
-                        width:100%;
+                        width:90%;
                         height:100%;
+                        margin:auto;
                         @include flexCenter;
 
                         .university {
@@ -263,8 +305,8 @@
                     background-color:$offBlack;
                     box-shadow:inset 0 0 0 2px $offBlack;
                     display:inline-block;
-                    font-size:1.5rem;
-                    padding:30px;
+                    font-size:1.15rem;
+                    padding:20px;
                     border-radius:30px;
                     margin:2.5px;
                     cursor:default;
