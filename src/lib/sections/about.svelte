@@ -2,8 +2,11 @@
     import { onMount, onDestroy } from "svelte";
     export let path : string = ""
     import skills from "../data/skills.json";
+    import Modal from "../modal.svelte";
     let about: HTMLElement;
     let about_summary : HTMLElement;
+
+    let openModal : boolean;
 
     onMount(()=>{
 
@@ -75,70 +78,24 @@
 
         <div id="skills">
 
-            
-
             {#each skills["all_of_it"] as pl} 
 
-                <div class="individual-skill-button">
+                <div role="button" tabindex="-1" class="individual-skill-button" on:click={()=>{
+                    openModal = true;
+                }} on:keydown={()=>{}}>
                     <p class="individual-skill">{pl}</p>
                 </div>
 
             {/each}
 
-
-            <!--<div id="compiled" class="skills-body">
-
-                <div class="individual-skill-contain">
-                {#each skills["programming_languages"] as pl} 
-
-                    <div class="individual-skill-button">
-                        <p class="individual-skill">{pl}</p>
-                        <div class="bar">
-                            <div class="inner-bar"></div>
-                        </div>
-                    </div>
-
-                {/each}
-                </div>
-
-            </div>
-
-            <div id="scripting" class="skills-body">
-
-
-                <div class="individual-skill-contain">
-                    {#each skills["scripting_languages"] as pl} 
-    
-                        <div class="individual-skill-button">
-                            <p class="individual-skill">{pl}</p>
-                            <div class="bar">
-                                <div class="inner-bar"></div>
-                            </div>
-                        </div>
-    
-                    {/each}
-                </div>
-            </div>
-
-            <div id="tools" class="skills-body">
-                <div class="individual-skill-contain">
-                    {#each skills["design_tools"] as pl} 
-    
-                        <div class="individual-skill-button">
-                            <p class="individual-skill">{pl}</p>
-                            <div class="bar">
-                                <div class="inner-bar"></div>
-                            </div>
-                        </div>
-    
-                    {/each}
-                </div>
-            </div>-->
-
         </div>
     </div>
 
 </div>
+
+{#if openModal}
+    <Modal bind:openModal={openModal}></Modal>
+{/if}
 
 <style lang="scss">
 

@@ -86,7 +86,7 @@
 
     <div id="intro" bind:this={intro}>
 
-        {#if visible2}
+    {#if visible2}
         <svg style="display:inline-block;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 320">
             <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path1}"/>
             <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path2}"/>
@@ -97,35 +97,6 @@
             <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path7}"/>
             <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path8}"/>
             <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path9}"/>
-        </svg>
-        {/if}
-
-        <!--<h3 id="intro_text"><span id="hi">Hi</span><br> <span id="my">My name is Kenny Weeks</span><br> <span id="welcome">Welcome to my ...</span> </h3>-->
-    {#if visible} 
-        <svg width="80%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 250">
-            <text x=0 y=70 fill="#000" style="font-size:80px; font-weight:bold;">
-                {#each "Hi" as char, i}
-                    <tspan in:fade|global={{delay: i * 150, duration: 200}}>{char}</tspan>
-                {/each}
-            </text>
-            <text x=0 y=140 fill="#000" style="font-size:80px; font-weight:bold;">
-                {#each "My name is Kenny Weeks" as char, i}
-                    <tspan in:fade|global={{delay: (2 * 150) + i * 150, duration: 200}}>{char}</tspan>
-                {/each}
-            </text>
-            <text x=5 y=220 fill="#000" style="font-size:80px; font-weight:bold;">
-                {#each "Welcome to my ... " as char, i}
-                    <tspan in:fade|global={{delay: ((2 + 22)  * 150) + i * 150, duration: 200}}>{char}</tspan>
-                {/each}
-            </text>
-        </svg>
-        <svg style="width:90vw;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1380 260">
-
-            <text x="-20" y=255 fill="#000" style="font-size:340px; font-weight:bold;">
-                        {#each "Portfolio" as char, i}
-                        <tspan in:fade|global={{delay: ((2 + 22 + 18) * 150) + i * 150, duration: 200}}>{char}</tspan>
-                        {/each}
-            </text>
         </svg>
     {/if}
 

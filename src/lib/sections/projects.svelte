@@ -11,6 +11,7 @@
     let zIndexImages : number[] = [100, 100, 100];
     let zIndexBody : number[] = [10000, 1000, 1000];
     let opacity : number[] = [0.3, 0.3, 0.3];
+    let openDescription : boolean[] = [false, false, false];
 
     let stackButton : boolean[] = [false, false, false];
     let stackButtonTrigger : number[] = Array(stackButton.length);
@@ -88,11 +89,18 @@
                                 <h3>{p["title"]}</h3>
                             </div>
 
-                            <button class="open-dialog">Read More</button>
+                            <button class="open-dialog" on:click={(e)=>{
+                                let target = openDescription[index];
+                                if(target == false) {
+                                    openDescription[index] = true;
+                                } else {
+                                    openDescription[index] = false;
+                                }
+                            }}>{openDescription[index] ? "Close" : "Read More"}</button>
 
-                            <p class="desc">{p["description"]}</p>
+                            <p style={openDescription[index] == true ? "display:block" : "display:none"} class="desc">{p["description"]}</p>
 
-                            <div>
+                            <div class="tools-area" style={openDescription[index] == true ? "display:block" : "display:none"} >
                                 {#if stackButton[index] === false}
                                     {#each p["stack"] as st, j}
                                         <p class="tools">{st}</p>
@@ -257,9 +265,10 @@
                                 display:none;
                             }
 
-                            div {
+                            .tools-area {
                                 width:80%;
                                 margin:auto;
+                                display:none;
 
                                 .tools {
                                     padding:10px;
@@ -268,7 +277,7 @@
                                     display:inline-block;
                                     margin:2px;
                                     border-radius:20px;
-                                    display:none;
+                                    
                                 }
                             }
                         }
