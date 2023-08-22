@@ -76,9 +76,7 @@
                     <!--<h3 class="project_counter">Project {index + 1}</h3>-->
 
                     <div class="body-content">
-                        <div class="project_image">
-
-                            <div class="main_image"></div>
+                        <div class="project_image" style={p["image"] !== "" ? "background-image:url(" + path + "/images/" + p["image"] + ")": ""}>
 
                         </div>
 
@@ -220,6 +218,9 @@
                             width:100%;
                             height:100%;
                             background-color:$offBlack;
+                            background-size:cover;
+                            background-position:center center;
+                            background-repeat:no-repeat;
                         }
 
                         .project_body {

@@ -82,7 +82,7 @@
 
     </div>-->
 
-    <img id="wolf" bind:this={wolf} alt="wolf" src="{path}/images/wolf.png" width=80px/>
+    <img id="wolf" bind:this={wolf} alt="wolf" src="{path}/images/me_logo.png" style="transform:scale(-1, 1)" height=50/>
 
     <div id="intro" bind:this={intro}>
 
@@ -99,12 +99,12 @@
             <path in:draw={{duration:800}} on:introend={()=>{fill = true;}} fill="{fill ? "#05445e" : "none"}" stroke-width=2 stroke="#05445e" d="{path9}"/>
         </svg>
     {/if}
+    
+    </div>
 
     <div id="move_into_website">
         <img src="{path}/images/mouse.png" width=25 alt="mouse"/>
         <div  id="beacon_circle"></div>
-    </div>
-    
     </div>
 
     
@@ -206,11 +206,9 @@
             width:50px;
             height:50px;
             border-radius:50%;
-            position:relative;
-            margin:30px auto 0px auto;
-            opacity:0.0;
-            animation: fadeIn 1s linear forwards;
-            animation-delay:7.6s;
+            position:absolute;
+            bottom:10px;
+            left:10px;
 
             img {
                 position:absolute;
@@ -229,7 +227,7 @@
                 transform: translate(-50%, -50%);
                 border-radius:50%;
                 animation: beacon 5s linear infinite;
-                animation-delay:7.6s;
+                animation-delay:1s;
             }
         }
     }

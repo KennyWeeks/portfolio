@@ -4,19 +4,23 @@
             "title": "ThisMuch",
             "date": "Jan 2023 - Jun 2023",
             "description": "A react native app that allows users to take pictures of there receipts, and divide them with friends.",
-            "stack": ["React Native", "TypeScript", "Nativewind", "PlanetScale", "MySQL", "AWS", "Python3"]
+            "stack": ["React Native", "TypeScript", "Nativewind", "PlanetScale", "MySQL", "AWS", "Python3"],
+            "image": ""
         },
         {
             "title": "Personal Portfolio",
             "date": "June 2023 - July 2023",
             "description": "My personal portfolio, where I will keep my projects hosted. I really needed one",
-            "stack": ["SvelteKit", "SASS", "TypeScript", "Github Pages"]
+            "stack": ["SvelteKit", "SASS", "TypeScript", "Github Pages"],
+            "image": ""
         },
         {
             "title": "Demerit Tool",
             "date": "Dec 2023",
             "description": "This is a tool that I built for a friend that created a simulated version of his fire academy demerit slip. It allowed him to edit it anywhere, and print it anywhere.",
-            "stack": ["SvelteJS", "SASS", "Javascript", "Github Pages"]
+            "stack": ["SvelteJS", "SASS", "Javascript", "Github Pages"],
+            "image": "demerit_tool.png"
+            
         }
     ]
 }
