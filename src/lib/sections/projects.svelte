@@ -199,6 +199,7 @@
                     overflow:hidden;
                     border-radius:20px;
                     transition:all 0.25s linear;
+                    box-shadow:0 0 5px rgba(5, 68, 94, 0.8);
 
                     @include mediaDefinition(("<#{$twoCardsWidth}", ">#{$oneCardWidth}")) {
                         width:calc(50% - 10px);
@@ -227,7 +228,7 @@
                             padding:10px 0px;
                             background-color:$offWhite;
                             overflow-y:scroll;
-                            max-height:calc(22.5em - (2.5*22.5em/100));
+                            max-height:calc(25em - 36px);
                             position:absolute;
                             bottom:0px;
                             left:2.5%;
