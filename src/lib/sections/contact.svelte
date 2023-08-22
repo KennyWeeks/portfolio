@@ -60,7 +60,7 @@
                 text-align:right;
                 margin-bottom:2.5px;
                 font-family:$font-family;
-                font-weight:lighter;
+                font-weight:normal;
                 font-size:1.15rem;
                 color:$offBlack;
                 

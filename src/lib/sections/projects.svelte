@@ -226,11 +226,12 @@
                             height:auto;
                             padding:10px 0px;
                             background-color:$offWhite;
-                            overflow:hidden;
+                            overflow-y:scroll;
+                            max-height:calc(22.5em - (2.5*22.5em/100));
                             position:absolute;
                             bottom:0px;
                             left:2.5%;
-                            bottom:calc(2.5*22.25em/100);
+                            bottom:calc(2.5*22.5em/100);
                             border-radius:20px;
                             border-radius:20px;
                             text-align:center;

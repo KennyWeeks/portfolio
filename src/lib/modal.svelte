@@ -1,6 +1,7 @@
 <script lang="ts">
 
     export let openModal : boolean = false;
+    export let path : string = "";
 
 </script>
 
@@ -10,11 +11,17 @@
 
         <div class="close-area" role="button" tabindex="-2" on:click={()=>{
             openModal = false;
-        }} on:keydown={()=>{}}></div>
+        }} on:keydown={()=>{}}>
+        <img src="{path}/images/close.png" height=15 alt="close"/>    
+    </div>
         
-        <div class="move-next"></div>
+        <div class="move-next">
+            <img src="{path}/images/move.png" style="margin-left:2px;" height=12 alt="close"/>
+        </div>
 
-        <div class="move-previous"></div>
+        <div class="move-previous">
+            <img src="{path}/images/move.png" style="transform:rotate(-180deg); margin-right:2px;" height=12 alt="close"/>
+        </div>
         
         <div class="content">
 
@@ -84,6 +91,8 @@
                 position:absolute;
                 top:-15px;
                 right:5%;
+                overflow:hidden;
+                @include flexCenter;
             }
 
             .move-next {

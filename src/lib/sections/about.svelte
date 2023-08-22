@@ -94,7 +94,7 @@
 </div>
 
 {#if openModal}
-    <Modal bind:openModal={openModal}></Modal>
+    <Modal path={path} bind:openModal={openModal}/>
 {/if}
 
 <style lang="scss">
@@ -259,6 +259,12 @@
                 overflow:hidden;
 
                 p {
+                    -webkit-touch-callout: none; /* iOS Safari */
+                    -webkit-user-select: none; /* Safari */
+                    -khtml-user-select: none; /* Konqueror HTML */
+                    -moz-user-select: none; /* Old versions of Firefox */
+                    -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none;
                     background-color:$offBlack;
                     box-shadow:inset 0 0 0 2px $offBlack;
                     display:inline-block;
