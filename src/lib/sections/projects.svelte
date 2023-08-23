@@ -12,6 +12,7 @@
     let zIndexBody : number[] = [10000, 1000, 1000];
     let opacity : number[] = [0.3, 0.3, 0.3];
     let openDescription : boolean[] = Array(project["project"].length).fill(false);
+    export let thirdPart : HTMLElement;
 
     let stackButton : boolean[] = [false, false, false];
     let stackButtonTrigger : number[] = Array(stackButton.length);
@@ -43,6 +44,23 @@
         let bodyParts = document.querySelectorAll(".body_parts");
         bodyParts.forEach(e=>{
             observer.observe(e);
+        });
+
+        //I'll have to do this for all of them.
+        let observer2 = new IntersectionObserver((entries, observer)=>{
+            entries.forEach((entry)=>{
+                if(entry.isIntersecting) {
+                    thirdPart.style.opacity = "1.0";
+                } else {
+                    thirdPart.style.opacity = "0.0";
+                }
+            });
+        }, options);
+
+        //observer.observe(document.querySelector(".body_parts"));
+        let bodyParts2 = document.querySelectorAll("#projects");
+        bodyParts.forEach(e=>{
+            observer2.observe(e);
         });
     });
 

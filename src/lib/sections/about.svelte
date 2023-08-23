@@ -5,19 +5,37 @@
     import Modal from "../modal.svelte";
     let about: HTMLElement;
     let about_summary : HTMLElement;
+    let divideByColor : boolean = false;
+    export let secondPart : HTMLElement;
+    
 
     let openModal : boolean;
 
+    let options : object = {
+        root: null,
+        margin: "0px",
+        threshold: 0.3
+    }
+
     onMount(()=>{
 
+        //I'll have to do this for all of them.
+        let observer = new IntersectionObserver((entries, observer)=>{
+            entries.forEach((entry)=>{
+                if(entry.isIntersecting) {
+                    secondPart.style.opacity = "1.0";
+                } else {
+                    secondPart.style.opacity = "0.0";
+                }
+            });
+        }, options);
 
-        //let about_summary : any = document.getElementById("about-summary");
-        /*window.addEventListener("resize", ()=>{
-            if(window.innerWidth <= 1250) {
+        //observer.observe(document.querySelector(".body_parts"));
+        let bodyParts = document.querySelectorAll("#about");
+        bodyParts.forEach(e=>{
+            observer.observe(e);
+        });
 
-                aboutContentArea.style.transform = "scale(" + (0.9 * window.innerWidth / 1200) + ")";
-            }
-        });*/
     });
 </script>
 
@@ -74,7 +92,18 @@
 
         </div>
 
-        <h3>Skills &amp; Tools : <span>Click each to learn more about my proficiency and projects</span></h3>
+        <h3>Skills &amp; Tools : <span>Click each to learn more about my proficiency and projects. Flip the swich to see the skills & tools divided by category.</span></h3>
+
+        <div class="flip-cover">
+            <div class="flip-icon" role="button" tabindex="-3" on:click={(e)=>{
+                divideByColor = !divideByColor;
+                if(divideByColor) {
+                    e.target.style.marginLeft = "2.25em";
+                } else {
+                    e.target.style.marginLeft = "0.25em";
+                }
+            }} on:keydown={()=>{}}></div>
+        </div>
 
         <div id="skills">
 
@@ -84,7 +113,7 @@
                     openModal = true;
                 }} on:keydown={()=>{}}>
                     <p class="individual-skill"
-                    data-type={skills["programming_languages"].includes(pl) ? "compiled" : skills["scripting_languages"].includes(pl) ? "scripting" : "tool"}
+                    data-type={!divideByColor ? "" : skills["programming_languages"].includes(pl) ? "compiled" : skills["scripting_languages"].includes(pl) ? "scripting" : "tool"}
                     >{pl}</p>
                 </div>
 
@@ -174,7 +203,6 @@
                         width:100%;
                         font-size:1.75rem;
                         text-transform:uppercase;
-
                         @include mediaDefinition(("<#{$summaryBreak}")) {
                             text-align:center;
                         }
@@ -246,6 +274,27 @@
             }
         }
 
+        .flip-cover {
+            width:4em;
+            height:2em;
+            box-shadow:inset 0 0 0 2px $offBlack;
+            margin-left:10vw;
+            margin-top:0px;
+            border-radius:20px;
+            overflow:hidden;
+            background-color:$offBlack;
+
+            .flip-icon {
+                margin-top:0.25em;
+                margin-left:0.25em;
+                height:1.5em;
+                width:1.5em;
+                border-radius:50%;
+                box-shadow:inset 0 0 0 2px $offBlack;
+                background-color:$offWhite;
+            }
+        }
+
         #skills {
             width:80vw;
             max-width:1200px; //This is just something I am setting right now, idk, if I will go through with it
@@ -297,7 +346,8 @@
                     -moz-user-select: none; /* Old versions of Firefox */
                     -ms-user-select: none; /* Internet Explorer/Edge */
                     user-select: none;
-                    
+                    background-color:$offBlack;
+                    box-shadow:inset 0 0 0 2px $offBlack;
                     display:inline-block;
                     font-size:1.15rem;
                     padding:20px;

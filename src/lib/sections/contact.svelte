@@ -1,6 +1,33 @@
 <script lang="ts">
     export let path : string = ""
     export let screenWidth : number;
+    import {onMount} from "svelte";
+    export let fourthPart : HTMLElement;
+
+    let options : object = {
+        root: null,
+        margin: "0px",
+        threshold: 0.3
+    }
+
+    onMount(() => {
+        //I'll have to do this for all of them.
+        let observer = new IntersectionObserver((entries, observer)=>{
+            entries.forEach((entry)=>{
+                if(entry.isIntersecting) {
+                    fourthPart.style.opacity = "1.0";
+                } else {
+                    fourthPart.style.opacity = "0.0";
+                }
+            });
+        }, options);
+
+        //observer.observe(document.querySelector(".body_parts"));
+        let bodyParts = document.querySelectorAll("#contacts");
+        bodyParts.forEach(e=>{
+            observer.observe(e);
+        });
+    });
 </script>
 
 

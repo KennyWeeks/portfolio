@@ -26,6 +26,16 @@
     let path8 : string = "M1151.78,40.16c.39,11.93-8.35,21.47-22.27,21.47-12.32,0-21.07-9.54-21.07-21.47s9.14-21.87,21.87-21.87,21.47,9.54,21.47,21.87Zm-38.97,246.52V94.23h34.99v192.44h-34.99Z"
     let path9 : string ="M1380,188.87c0,71.17-49.3,102.18-95.83,102.18-52.09,0-92.24-38.17-92.24-99,0-64.41,42.15-102.19,95.43-102.19s92.64,40.16,92.64,99.01Zm-152.68,1.99c0,42.15,24.26,73.96,58.45,73.96s58.45-31.41,58.45-74.75c0-32.6-16.3-73.96-57.65-73.96s-59.25,38.17-59.25,74.75Z"
 
+    export let firstPart : HTMLElement;
+    export let returnToTop : HTMLElement;
+
+    //This is the options that will go into the threshold thing
+    let options : object = {
+        root: null,
+        margin: "0px",
+        threshold: 0.3
+    }
+        
     onMount(()=>{
         let menu : any = document.getElementById("menu");
 
@@ -58,6 +68,25 @@
         visible2 = true;
        }, 100)
 
+       //I'll have to do this for all of them.
+       let observer = new IntersectionObserver((entries, observer)=>{
+            entries.forEach((entry)=>{
+                if(entry.isIntersecting) {
+                    firstPart.style.opacity = "1.0";
+                    returnToTop.style.opacity = "0.0";
+                } else {
+                    firstPart.style.opacity = "0.0";
+                    returnToTop.style.opacity = "1.0";
+                }
+            });
+        }, options);
+
+        //observer.observe(document.querySelector(".body_parts"));
+        let bodyParts = document.querySelectorAll("#landing");
+        bodyParts.forEach(e=>{
+            observer.observe(e);
+        });
+
     });
 
     onDestroy(()=>{
@@ -82,7 +111,7 @@
 
     </div>-->
 
-    <img id="wolf" bind:this={wolf} alt="wolf" src="{path}/images/logo_name.png" height=30/>
+    <img id="wolf" bind:this={wolf} alt="wolf" src="{path}/images/logo_name.png" height=50/>
 
     <div id="intro" bind:this={intro}>
 
@@ -208,7 +237,7 @@
             border-radius:50%;
             position:absolute;
             bottom:10px;
-            left:10px;
+            left:15px;
 
             img {
                 position:absolute;

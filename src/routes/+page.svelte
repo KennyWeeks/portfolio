@@ -21,65 +21,57 @@
     let firstHalf : HTMLElement;
     let secondHalf : HTMLElement;
 
-    onMount(()=>{
-        let t : HTMLElement = document.querySelector("body") as HTMLElement;
-        console.log(t.childNodes);
-        b = t.childNodes[1] as HTMLElement;
-    })
+    let firstPart : HTMLElement;
+    let secondPart : HTMLElement;
+    let thirdPart : HTMLElement;
+    let fourthPart : HTMLElement;
+    let returnToTop : HTMLElement;
 
+    let mainBody : HTMLElement;
 
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight} bind:scrollY={y}/>
 
-<svelte:body on:scroll={(e)=>{
-    console.log(b.clientHeight);
-    console.log(b.offsetTop)
-    /*console.log(bh);
-    console.log(b);
-    let totalHeight = bh.clientHeight - b.clientHeight;
-    calc = (b.scrollTop / totalHeight) * 360;
-    console.log(calc);
-    if(b.scrollTop >= (totalHeight / 2) - 20) {
-        firstHalf.style.borderRight = "5px solid #1e1919";
-    } else {
-        calc1 = calc;
-        firstHalf.style.borderRight = "5px solid transparent";
-    }
+<svelte:body/>
 
-    if(b.scrollTop >= (totalHeight / 2) - 20 && b.scrollTop < totalHeight - 20) {
-        secondHalf.style.zIndex = "1000000000";
-        secondHalf.style.borderRight = "5px solid transparent";
-        
-    } else if(b.scrollTop >= totalHeight - 20) {
-        console.log("Is this ever happening")
-        secondHalf.style.zIndex = "1000000000";
-        secondHalf.style.borderRight = "5px solid #1e1919";
-    } else {
-        secondHalf.style.zIndex = "1000000";
-        secondHalf.style.borderRight = "5px solid transparent";
-    }*/
-    
-}}/>
+<div id="page_tracker" role="button" tabindex="-4" on:click={()=>{
+    document.querySelector("body").scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+    });
+    /*window.scrollTo({
+  top: 0,
+  left: 0,
+  behavior: "smooth",
+});*/
+}} on:keydown={()=>{}}>
 
-<div id="page_tracker">
+    <div id="half-cover">
 
-    <div id="half-cover"></div>
+        <img bind:this={returnToTop} src="{base}/images/return_to_top.png" height=20 alt="return to top"/>
 
-    <div bind:this={firstHalf} id="first-half" style="transform:rotate({calc1+45}deg);"></div>
+    </div>
 
-    <div bind:this={secondHalf} id="second-half" style="transform:rotate({calc+45}deg);"></div>
+    <div bind:this={firstPart} class="progress-bars" id="first-part"></div>
+
+    <div bind:this={secondPart} class="progress-bars" id="second-part"></div>
+
+    <div bind:this={thirdPart} class="progress-bars" id="third-part"></div>
+
+    <div bind:this={fourthPart} class="progress-bars" id="fourth-part"></div>
 
 </div>
 
-<div style="width:auto; height:100%;">
-    <Landing path={base} screenWidth={screenWidth} screenHeight={screenHeight}/>
+<div bind:this={mainBody} style="width:auto; height:100%;">
+    <Landing path={base} screenWidth={screenWidth} screenHeight={screenHeight} firstPart={firstPart} returnToTop={returnToTop}/>
 
-    <About path={base}/>
+    <About path={base} secondPart={secondPart}/>
 
-    <Projects scroll={h} path={base}/>
+    <Projects scroll={h} path={base} thirdPart={thirdPart}/>
 
-    <Contact path={base} screenWidth={screenWidth}/>
+    <Contact path={base} screenWidth={screenWidth} fourthPart={fourthPart}/>
 </div>
 
 <style lang="scss">
@@ -101,36 +93,53 @@
         z-index:10000;
         bottom:20px;
         right:20px;
-        border-radius:50%;
         overflow:hidden;
-        background-color:$offWhite;
+        background-color:rgba(5, 68, 94, 0.4);
+        transform:rotate(45deg);
 
         #half-cover {
-            width:15px;
-            height:30px;
-            position:absolute;
+            width:20px;
+            height:20px;
             background-color:$offWhite;
-            z-index:1000000000;
-            border-right:1px solid $offWhite;
+            margin-top:5px;
+            margin-left:5px;
+
+            img {
+                transform:rotate(-45deg);
+                opacity:0.0;
+            }
         }
 
-        #first-half {
-            width:calc(90% - 10px);
-            height:calc(90% - 10px);
-            margin-left:calc(5%);
-            margin-top:calc(5%);
-            @include borderSpecs; 
-        }
-
-        #second-half {
+        .progress-bars {
             position:absolute;
-            width:calc(90% - 10px);
-            height:calc(90% - 10px);
-            top:5%;
-            left:5%;
-            z-index:1000000;
-            @include borderSpecs;
+            width:30px;
+            height:5px;
+            background-color:$offBlack;
+            opacity:0.0;
+            transition:opacity 0.25s linear;
         }
+
+        #first-part {
+            top:0px;
+            opacity:1.0;            
+        }
+
+        #second-part {
+            transform:rotate(-90deg);
+            top:13px;
+            left:12.5px;
+        }
+
+        #third-part {
+            bottom:0px;
+        }
+
+        #fourth-part {
+            transform:rotate(-90deg);
+            top:13px;
+            left:-12.5px;
+        }
+
     }
 
 

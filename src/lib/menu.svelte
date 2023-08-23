@@ -47,8 +47,7 @@ right:{size == "100" ? "0px" : "15px"};">
 
     #menu {
         position:absolute;
-        top:40px;
-        transform:translateY(-50%);
+        top:15px;
         right:15px;
         z-index:10000;
         width:40px;
