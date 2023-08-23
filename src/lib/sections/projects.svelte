@@ -237,6 +237,7 @@
                             border-radius:20px;
                             border-radius:20px;
                             text-align:center;
+                            box-shadow:0 0 5px rgba(5, 68, 94, 0.8);
 
                             @include mediaDefinition(("<#{$oneCardWidth}")) {
                                 bottom: calc(2.5 * 80vw / 100);

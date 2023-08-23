@@ -82,7 +82,7 @@
 
     </div>-->
 
-    <img id="wolf" bind:this={wolf} alt="wolf" src="{path}/images/me_logo.png" style="transform:scale(-1, 1)" height=50/>
+    <img id="wolf" bind:this={wolf} alt="wolf" src="{path}/images/logo_name.png" height=30/>
 
     <div id="intro" bind:this={intro}>
 
