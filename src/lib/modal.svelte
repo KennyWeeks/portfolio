@@ -2,6 +2,13 @@
 
     export let openModal : boolean = false;
     export let path : string = "";
+    import skills from "./data/skills.json";
+    export let skillTool : string = "C"; //This will be the key that will determine what is placed where
+    let languagePos : number = skills["all_of_it"].indexOf(skillTool);
+
+    $: {
+        languagePos = skills["all_of_it"].indexOf(skillTool);
+    }
 
 </script>
 
@@ -15,27 +22,41 @@
         <img src="{path}/images/close.png" height=15 alt="close"/>    
     </div>
         
-        <div class="move-next">
+        <div class="move-next" role="button" tabindex="-3" on:click={()=>{
+            languagePos++;
+            if(languagePos > 12) {
+                languagePos = 0; //The last index;
+            }
+
+            skillTool = skills["all_of_it"][languagePos];
+        }} on:keydown={()=>{}}>
             <img src="{path}/images/move.png" style="margin-left:2px;" height=12 alt="close"/>
         </div>
 
-        <div class="move-previous">
+        <div class="move-previous" role="button" tabindex="-4" on:click={()=>{
+            languagePos--;
+            if(languagePos < 0) {
+                languagePos = 12; //The last index;
+            }
+
+            skillTool = skills["all_of_it"][languagePos];
+        }} on:keydown={()=>{}}>
             <img src="{path}/images/move.png" style="transform:rotate(-180deg); margin-right:2px;" height=12 alt="close"/>
         </div>
         
         <div class="content">
 
-            <h3 class="lang">Language Header</h3>
+            <h3 class="lang">{skillTool}</h3>
 
-            <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas earum dolore quo similique esse commodi, odit tempora qui accusamus veritatis voluptatibus accusantium facere cumque autem in ut? Ratione, dolorum autem?</p>
+            <p class="desc">{skills["desc"][skillTool]}</p>
 
             <h4 class="courses-projs">Courses that used this language</h4>
 
             <div class="descriptors">
 
-                {#each Array(10) as index}
+                {#each skills["used_it"][skillTool] as skt}
 
-                    <div>Self Taught</div>
+                    <div>{skt}</div>
 
                 {/each}
 
@@ -45,9 +66,9 @@
 
             <div class="descriptors">
 
-                {#each Array(10) as index}
+                {#each skills["projects"][skillTool] as prjt}
 
-                    <div>Self Taught</div>
+                    <div>{prjt}</div>
 
                 {/each}
 

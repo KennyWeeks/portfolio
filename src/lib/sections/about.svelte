@@ -10,7 +10,8 @@
     
 
     let openModal : boolean;
-
+    let currentSkillTool : string = "C"; //This will default to c;
+    
     let options : object = {
         root: null,
         margin: "0px",
@@ -111,6 +112,7 @@
 
                 <div role="button" tabindex="-1" class="individual-skill-button" on:click={()=>{
                     openModal = true;
+                    currentSkillTool=pl;
                 }} on:keydown={()=>{}}>
                     <p class="individual-skill"
                     data-type={!divideByColor ? "" : skills["programming_languages"].includes(pl) ? "compiled" : skills["scripting_languages"].includes(pl) ? "scripting" : "tool"}
@@ -125,7 +127,7 @@
 </div>
 
 {#if openModal}
-    <Modal path={path} bind:openModal={openModal}/>
+    <Modal path={path} bind:openModal={openModal} skillTool={currentSkillTool}/>
 {/if}
 
 <style lang="scss">
