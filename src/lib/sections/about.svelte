@@ -83,7 +83,9 @@
                 <div role="button" tabindex="-1" class="individual-skill-button" on:click={()=>{
                     openModal = true;
                 }} on:keydown={()=>{}}>
-                    <p class="individual-skill">{pl}</p>
+                    <p class="individual-skill"
+                    data-type={skills["programming_languages"].includes(pl) ? "compiled" : skills["scripting_languages"].includes(pl) ? "scripting" : "tool"}
+                    >{pl}</p>
                 </div>
 
             {/each}
@@ -258,6 +260,36 @@
             .individual-skill-button {
                 overflow:hidden;
 
+                [data-type="compiled"] {
+                    background-color:$compiledLanguages;
+                    box-shadow:inset 0 0 0 2px $compiledLanguages;
+
+                    &:hover {
+                        background-color:$offWhite;
+                        color:$compiledLanguages;
+                    }
+                }
+
+                [data-type="scripting"] {
+                    background-color:$scriptingLanguages;
+                    box-shadow:inset 0 0 0 2px $scriptingLanguages;
+
+                    &:hover {
+                        background-color:$offWhite;
+                        color:$scriptingLanguages;
+                    }
+                }
+
+                [data-type="tool"] {
+                    background-color:$designTools;
+                    box-shadow:inset 0 0 0 2px $designTools;
+
+                    &:hover {
+                        background-color:$offWhite;
+                        color:$designTools;
+                    }
+                }
+
                 p {
                     -webkit-touch-callout: none; /* iOS Safari */
                     -webkit-user-select: none; /* Safari */
@@ -265,8 +297,7 @@
                     -moz-user-select: none; /* Old versions of Firefox */
                     -ms-user-select: none; /* Internet Explorer/Edge */
                     user-select: none;
-                    background-color:$offBlack;
-                    box-shadow:inset 0 0 0 2px $offBlack;
+                    
                     display:inline-block;
                     font-size:1.15rem;
                     padding:20px;
@@ -275,10 +306,6 @@
                     cursor:default;
                     transition:background-color 0.25s linear;
 
-                    &:hover {
-                        background-color:$offWhite;
-                        color:$offBlack;
-                    }
                 }
             }
         }

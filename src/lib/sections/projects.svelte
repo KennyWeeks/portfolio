@@ -11,7 +11,7 @@
     let zIndexImages : number[] = [100, 100, 100];
     let zIndexBody : number[] = [10000, 1000, 1000];
     let opacity : number[] = [0.3, 0.3, 0.3];
-    let openDescription : boolean[] = [false, false, false];
+    let openDescription : boolean[] = Array(project["project"].length).fill(false);
 
     let stackButton : boolean[] = [false, false, false];
     let stackButtonTrigger : number[] = Array(stackButton.length);
@@ -99,14 +99,21 @@
                             <p style={openDescription[index] == true ? "display:block" : "display:none"} class="desc">{p["description"]}</p>
 
                             <div class="tools-area" style={openDescription[index] == true ? "display:block" : "display:none"} >
-                                {#if stackButton[index] === false}
-                                    {#each p["stack"] as st, j}
-                                        <p class="tools">{st}</p>
-                                    {/each}
-                                {:else}
-                                    <button>stack {stackButton[index]}</button>
-                                {/if}
+                                {#each p["stack"] as st, j}
+                                    <p class="tools">{st}</p>
+                                {/each}
                             </div> 
+
+                            {#if p["resources"]}
+                            <div class="resources-area" style={openDescription[index] == true ? "display:block" : "display:none"}>
+                                <h4>Resources</h4>
+
+                                <!--If I have external fonts, I want to link them-->
+                                {#each p["resources"]["font"] as f, fi}
+                                    fonts: <a href="{p["resources"]["link"][fi]}">{f}</a>
+                                {/each}
+                            </div>
+                            {/if}
 
                         </div>
                     </div>
@@ -244,6 +251,7 @@
                             }
 
                             h3 {
+                                width:80%;
                                 font-size:1.75rem;
                                 text-transform:capitalize;
                                 text-decoration:underline;
@@ -269,7 +277,8 @@
                                 display:none;
                             }
 
-                            .tools-area {
+                            .tools-area, 
+                            .resources-area {
                                 width:80%;
                                 margin:auto;
                                 display:none;
@@ -282,6 +291,15 @@
                                     margin:2px;
                                     border-radius:20px;
                                     
+                                }
+
+                                h4 {
+                                    font-size:1.15rem;
+                                    margin:5px 0px;
+                                }
+
+                                a {
+                                    color:$offBlack;
                                 }
                             }
                         }

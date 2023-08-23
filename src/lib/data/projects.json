@@ -5,14 +5,15 @@
             "date": "Jan 2023 - Jun 2023",
             "description": "A react native app that allows users to take pictures of there receipts, and divide them with friends.",
             "stack": ["React Native", "TypeScript", "Nativewind", "PlanetScale", "MySQL", "AWS", "Python3"],
-            "image": ""
+            "image": "thismuch.png"
         },
         {
             "title": "Personal Portfolio",
             "date": "June 2023 - July 2023",
             "description": "My personal portfolio, where I will keep my projects hosted. I really needed one",
-            "stack": ["SvelteKit", "SASS", "TypeScript", "Github Pages"],
-            "image": ""
+            "stack": ["SvelteKit", "SASS", "TypeScript", "Github Pages", "Adobe Photoshop", "Adobe Illustrator"],
+            "image": "portfolio.png",
+            "resources": {"font": ["Creattion Demo"], "link": ["https://www.1001fonts.com/creattion-demo-font.html"]}
         },
         {
             "title": "Demerit Tool",
@@ -20,6 +21,14 @@
             "description": "This is a tool that I built for a friend that created a simulated version of his fire academy demerit slip. It allowed him to edit it anywhere, and print it anywhere.",
             "stack": ["SvelteJS", "SASS", "Javascript", "Github Pages"],
             "image": "demerit_tool.png"
+            
+        },
+        {
+            "title": "Computational Physics Labs - UNLV",
+            "date": "2022",
+            "stack": ["Python3", "Jupyter Notebook"],
+            "description": "This github repo hosts my labs that I completed when I was in my Physics degree at UNLV. These labs include fourier transforms, time series and differential series graphs and predictions, as well as modeling chaotic and thermal systems.",
+            "image": "physics.png"
             
         }
     ]

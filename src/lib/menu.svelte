@@ -26,7 +26,7 @@
 
 <div id="background_menu" style="width:{size}{size == "100" ? "vw" : "px"}; 
 height:{size}{size == "100" ? "vh" : "px"}; 
-background-color:{size == "100" ? "#f2f2f2" : "transparent"}; 
+background-color:{size == "100" ? "#D4F1F4" : "transparent"}; 
 top:{size == "100" ? "0px" : "15px"}; 
 right:{size == "100" ? "0px" : "15px"};">
 
@@ -103,7 +103,6 @@ right:{size == "100" ? "0px" : "15px"};">
                     color:$offBlack;
 
                     &:hover {
-                        color:red;
                         text-decoration:line-through;
                     }
                 }
